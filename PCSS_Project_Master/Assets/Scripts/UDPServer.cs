@@ -126,20 +126,44 @@ public class UDPServer : MonoBehaviour
 
                 string[] textContent = text.Split(',');
 
-                // Den abgerufenen Text anzeigen.
-                print(">> " + text);
 
-                // latest UDPpacket
-                lastReceivedUDPPacket = text;
-
-                // ....
-                allReceivedUDPPackets = allReceivedUDPPackets + text;
-                AddClient(textContent[1], textContent[3]);
-                foreach (Client c in clientList)
+                if (clientList.Count == 0)
                 {
-                    if (c.IP == textContent[1])
+                    // Den abgerufenen Text anzeigen.
+                    print(">> " + text);
+
+                    // latest UDPpacket
+                    lastReceivedUDPPacket = text;
+
+                    // ....
+                    allReceivedUDPPackets = allReceivedUDPPackets + text;
+
+                    AddClient(textContent[1], textContent[3]);
+                }
+                else
+                {
+                    foreach (Client c in clientList)
                     {
-                        c.SetHV(float.Parse(textContent[5]), float.Parse(textContent[7]));
+                        if (c.IP == textContent[1])
+                        {
+
+                            c.SetHV(float.Parse(textContent[5]), float.Parse(textContent[7]));
+                            Debug.Log(c.h + "" + c.v);
+
+                        }
+                        else
+                        {
+                            // Den abgerufenen Text anzeigen.
+                            print(">> " + text);
+
+                            // latest UDPpacket
+                            lastReceivedUDPPacket = text;
+
+                            // ....
+                            allReceivedUDPPackets = allReceivedUDPPackets + text;
+
+                            AddClient(textContent[1], textContent[3]);
+                        }
                     }
                 }
 

@@ -54,14 +54,19 @@ public class UDPClient : MonoBehaviour
 
     public void Update()
     {
+
         //w,a,s,d directions, value should be the ones to go into the fish controller
-        if (Input.GetKeyDown(KeyCode.W))
-        {
+
+        h = Input.GetAxis("Horizontal").ToString();
+
+        v = Input.GetAxis("Vertical");
 
 
-            //in the end of update we send the movement information to the server
-            sendButtonData("IP," + clientIP, "Name," + strMessage, "H," + h, "V," + v);
-        }
+        //in the end of update we send the movement information to the server
+
+        sendButtonData("IP," + clientIP, "Name," + strMessage, "H," + h, "V," + v);
+
+
     }
 
     // OnGUI
@@ -212,7 +217,5 @@ public class UDPClient : MonoBehaviour
         while (true);
 
     }
-
-
 
 }
