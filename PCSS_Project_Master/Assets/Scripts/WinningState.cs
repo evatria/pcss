@@ -11,6 +11,7 @@ public class WinningState : MonoBehaviour {
 
 
 
+
 	// Use this for initialization
 	void Start () {
 		GameObject controllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
@@ -18,6 +19,8 @@ public class WinningState : MonoBehaviour {
 
 		GameObject saveNameScript = GameObject.FindGameObjectWithTag ("SavedName");
 		_saveName = saveNameScript.GetComponent<saveName>();
+
+
 	}
 	
 	// Update is called once per frame
@@ -28,15 +31,21 @@ public class WinningState : MonoBehaviour {
 
 	void Winner() {
 
-		if (_controller.roundCount == 1) {
+		if (_controller.roundCount == 2) {
 			winnerIs.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().text = "" + _saveName.savePlayerName;
+
 			_controller.isRacing = false;
-
-
 		}
+	}
 
+	public void PlayAgain(){
+		Application.LoadLevel("PCSS");
+	}
+
+	public void GoToMenu(){
+		Application.LoadLevel("menuFish");
 	}
 
 
