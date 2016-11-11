@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/PCSS.unity
+- path: Assets/Scenes/menuFish.unity
   isLoaded: 1
   isActive: 1
