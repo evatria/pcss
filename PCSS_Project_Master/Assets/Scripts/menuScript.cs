@@ -71,12 +71,13 @@ public class menuScript : MonoBehaviour {
 }
     */
 
-    /* public void menuJoinServer()
+     public void menuJoinServer()
     {
         //Click button Join
         //Click button Back
         //Click button Manual Search
-    } */
+		Application.LoadLevel("PCSS");
+    } 
 
     public void ExitPress()
     {
