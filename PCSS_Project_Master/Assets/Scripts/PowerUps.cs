@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PowerUps : MonoBehaviour {
 
-	public int moveSpeed = 10;
+	public int rotationSpeed = 5;
+	public float pivotSize = 0.75f;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +14,13 @@ public class PowerUps : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate(Vector3.up * moveSpeed, Space.World);
+		transform.Rotate(Vector3.up * rotationSpeed, Space.World);
+	}
+
+
+	void OnDrawGizmos() {
+
+		Gizmos.DrawWireSphere (transform.position, pivotSize);
+
 	}
 }
