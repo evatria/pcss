@@ -119,7 +119,7 @@ public class UDPClient : MonoBehaviour
         print("Testing: nc -lu " + serverIP + " : " + port);
 
     }
-
+    //Finds the ip adresse for the client
     public static string GetLocalIPAddress()
     {
         var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -192,10 +192,10 @@ public class UDPClient : MonoBehaviour
             //if (message != "")
             //{
 
-            // Daten mit der UTF8-Kodierung in das Binärformat kodieren.
+
             byte[] data = Encoding.UTF8.GetBytes(clientIP + ',' + name + ',' + _h + ',' + _v);
 
-            // Den message zum Remote-Client senden.
+
             client.Send(data, data.Length, remoteEndPoint);
             //}
         }

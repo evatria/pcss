@@ -92,11 +92,6 @@ public class UDPServer : MonoBehaviour
         print("Test-Sending to this Port: nc -u " + IP + " " + port + "");
 
 
-        // ----------------------------
-        // Abhören
-        // ----------------------------
-        // Lokalen Endpunkt definieren (wo Nachrichten empfangen werden).
-        // Einen neuen Thread für den Empfang eingehender Nachrichten erstellen.
         receiveThread = new Thread(
             new ThreadStart(ReceiveData));
         receiveThread.IsBackground = true;
@@ -115,21 +110,21 @@ public class UDPServer : MonoBehaviour
 
             try
             {
-                // Bytes empfangen.
+
                 IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
                 byte[] data = client.Receive(ref anyIP);
 
 
-                // Bytes mit der UTF8-Kodierung in das Textformat kodieren.
+
                 string text = Encoding.UTF8.GetString(data);
 
 
                 string[] textContent = text.Split(',');
 
-
+                //If the client list is 0, add, the first client
                 if (clientList.Count == 0)
                 {
-                    // Den abgerufenen Text anzeigen.
+
                     print(">> " + text);
 
                     // latest UDPpacket
@@ -142,18 +137,21 @@ public class UDPServer : MonoBehaviour
                 }
                 else
                 {
+                    //for each client in the client list
                     foreach (Client c in clientList)
                     {
+
                         if (c.IP == textContent[1])
                         {
-
+                            //Sets the H & V for the client, to be the input for
                             c.SetHV(float.Parse(textContent[5]), float.Parse(textContent[7]));
+                            //Prints the clients h and v
                             Debug.Log(c.h + "" + c.v);
 
                         }
                         else
                         {
-                            // Den abgerufenen Text anzeigen.
+
                             print(">> " + text);
 
                             // latest UDPpacket
@@ -162,7 +160,8 @@ public class UDPServer : MonoBehaviour
                             // ....
                             allReceivedUDPPackets = allReceivedUDPPackets + text;
 
-                            AddClient(textContent[1], textContent[3]);
+                            //The function for adding a client to a list 
+                            AddClient(textContent[1], textContent[3]);  //I think here it's the problem with adding a client constantly
                         }
                     }
                 }
@@ -183,6 +182,7 @@ public class UDPServer : MonoBehaviour
         return lastReceivedUDPPacket;
     }
 
+
     void OnDisable()
     {
         if (receiveThread != null)
@@ -190,6 +190,8 @@ public class UDPServer : MonoBehaviour
 
         client.Close();
     }
+
+    //Adds clients to a list function
     public void AddClient(string ip, string name)
     {
         clientList.Add(new Client(ip, name));
