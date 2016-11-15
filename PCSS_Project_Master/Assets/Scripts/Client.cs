@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 [System.Serializable]
-public class Client
+public class Client 
 {
     //The clients IP
     public string IP;
@@ -26,5 +26,4 @@ public class Client
         this.h = _h;
         this.v = _v;
     }
-
 }

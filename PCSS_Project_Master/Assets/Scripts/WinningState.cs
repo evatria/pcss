@@ -4,7 +4,7 @@ using System.Collections;
 
 public class WinningState : MonoBehaviour {
 
-	Controller _controller;
+	GameController _gameController;
 	saveName _saveName;
 	public Text winnerName;
 	public Text winnerIs;
@@ -14,8 +14,8 @@ public class WinningState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject controllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
-		_controller = controllerScript.GetComponent<Controller>();
+		GameObject gameControllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
+		_gameController = gameControllerScript.GetComponent<GameController>();
 
 		GameObject saveNameScript = GameObject.FindGameObjectWithTag ("SavedName");
 		_saveName = saveNameScript.GetComponent<saveName>();
@@ -31,12 +31,12 @@ public class WinningState : MonoBehaviour {
 
 	void Winner() {
 
-		if (_controller.roundCount == 2) {
+		if (_gameController.roundCount == 2) {
 			winnerIs.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().text = "" + _saveName.savePlayerName;
 
-			_controller.isRacing = false;
+            _gameController.isRacing = false;
 		}
 	}
 

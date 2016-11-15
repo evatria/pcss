@@ -72,8 +72,10 @@ public class UDPClient : MonoBehaviour
     // OnGUI
     void OnGUI()
     {
+        
         Rect rectObj = new Rect(40, 380, 200, 400);
         GUIStyle style = new GUIStyle();
+        GUI.color = Color.white;
         style.alignment = TextAnchor.UpperLeft;
         GUI.Box(rectObj, "# UDPSend-Data\n" + serverIP + " : " + port + " #\n"
             + "shell> nc -lu " + serverIP + " : " + port + " \n"

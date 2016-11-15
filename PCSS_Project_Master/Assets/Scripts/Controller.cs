@@ -6,29 +6,20 @@ using System.Collections;
 
 public class Controller : MonoBehaviour
 {
-	
+	private GameController gameController;
 	private Rigidbody rb;
 
 	public float movementSpeed = 10f;
 	public Animation anim;
-	public Text displayTimer;
 
-	bool goal = false;
 	bool isHit = false;
-	public bool isRacing = false;
-	bool start = false;
 	bool powerIsReady = true;
-
-	float timeLeft = 6f;
-
-	public int roundCount = 1;
-	public int positionCount = 0;
 
 
 	// Use this for initialization
 	void Start ()
 	{
-
+        gameController = GetComponent<GameController>();
 		rb = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animation> ();
 
@@ -37,11 +28,11 @@ public class Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (start == false) {
-			countdown ();
+		if (gameController.start == false) {
+            gameController.countdown();
 		}
 
-		if (isRacing == true) {
+		if (gameController.isRacing == true) {
 			
 		
 			if (isHit == false) {
@@ -65,24 +56,6 @@ public class Controller : MonoBehaviour
 
 		}
 
-		if (col.CompareTag("Goal") && goal == true) {
-			
-			roundCount++;
-			print (roundCount);
-			goal = false;
-		}
-
-		if (col.CompareTag("Checkpoint")) {
-			
-			goal = true;
-			print ("checkpoint");
-		}
-
-		if (col.CompareTag("PositionRank")) {
-
-			positionCount++;
-			print (positionCount);
-		}
 
 		if (col.CompareTag("PowerUps")) {
 
@@ -121,21 +94,5 @@ public class Controller : MonoBehaviour
 		powerIsReady = true;
 		print ("ready again");
 	}
-
-
-	void countdown(){
-		timeLeft -= Time.deltaTime;
-
-			displayTimer.GetComponent<Text> ().text = "" + (int)timeLeft;
-
-			if (timeLeft <= 0) {
-				isRacing = true;
-				start = true;
-				displayTimer.GetComponent<Text> ().enabled = false;
-			}
-
-
-	}
-
 
 }

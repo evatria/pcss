@@ -9,7 +9,9 @@ using System.Threading;
 
 public class UDPServer : MonoBehaviour
 {
-
+    public Vector3 spawnPosition;
+    public GameObject[] fishPrefabArray;
+    public GameObject fishPrefab;
     //List
     public List<Client> clientList = new List<Client>();
     // receiving Thread
@@ -22,6 +24,7 @@ public class UDPServer : MonoBehaviour
 
     public string IP; // local
     public int port; // define > init
+    public int cnr;
 
     // infos
     public string lastReceivedUDPPacket = "";
@@ -122,43 +125,51 @@ public class UDPServer : MonoBehaviour
                 string[] textContent = text.Split(',');
 
                 //If the client list is 0, add, the first client
+                fishPrefabArray = new GameObject[clientList.Count];
                 if (clientList.Count == 0)
                 {
-
+                    /*
                     print(">> " + text);
 
                     // latest UDPpacket
                     lastReceivedUDPPacket = text;
 
                     // ....
-                    allReceivedUDPPackets = allReceivedUDPPackets + text;
+                    allReceivedUDPPackets = allReceivedUDPPackets + text; */
 
                     AddClient(textContent[1], textContent[3]);
                 }
-                else
+                else if(clientList.Count <= 1)
                 {
                     //for each client in the client list
                     foreach (Client c in clientList)
                     {
+                         
+                        if (cnr < clientList.Count)
+                            cnr++;
+                        else
+                            cnr = 0;
 
+                        fishPrefabArray[cnr] = fishPrefab;
                         if (c.IP == textContent[1])
                         {
                             //Sets the H & V for the client, to be the input for
+                            Instantiate(fishPrefabArray[cnr], spawnPosition, Quaternion.identity); // This causes the program to crash
                             c.SetHV(float.Parse(textContent[5]), float.Parse(textContent[7]));
                             //Prints the clients h and v
                             Debug.Log(c.h + "" + c.v);
 
                         }
-                        else
+                        else if(c.IP != textContent[1])
                         {
 
                             print(">> " + text);
-
+                            /*
                             // latest UDPpacket
                             lastReceivedUDPPacket = text;
 
                             // ....
-                            allReceivedUDPPackets = allReceivedUDPPackets + text;
+                            allReceivedUDPPackets = allReceivedUDPPackets + text; */
 
                             //The function for adding a client to a list 
                             AddClient(textContent[1], textContent[3]);  //I think here it's the problem with adding a client constantly
