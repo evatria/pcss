@@ -4,7 +4,7 @@ using System.Collections;
 
 public class WinningState : MonoBehaviour {
 
-	GameController _gameController;
+	UDPServer udpServer;
 	saveName _saveName;
 	public Text winnerName;
 	public Text winnerIs;
@@ -16,7 +16,7 @@ public class WinningState : MonoBehaviour {
 	void Start () {
 		//GameObject gameControllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
        
-		_gameController = GetComponent<GameController>();
+		udpServer = GetComponent<UDPServer>();
 
 	//	GameObject saveNameScript = GameObject.FindGameObjectWithTag ("SavedName");
 	//	_saveName = saveNameScript.GetComponent<saveName>();
@@ -32,12 +32,12 @@ public class WinningState : MonoBehaviour {
 
 	void Winner() {
 
-		if (_gameController.roundCount == 2) {
+		if (udpServer.roundCount == 2) {
 			winnerIs.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().enabled = true;
 			winnerName.GetComponent<Text> ().text = "" + _saveName.savePlayerName;
 
-            _gameController.isRacing = false;
+            udpServer.isRacing = false; 
 		}
 	}
 

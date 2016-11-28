@@ -65,14 +65,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Client.cs" />
     <Compile Include="Assets\Scripts\Controller.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Obstacles.cs" />
     <Compile Include="Assets\Scripts\PowerUps.cs" />
+    <Compile Include="Assets\Scripts\UDPClient.cs" />
     <Compile Include="Assets\Scripts\UDPServer.cs" />
     <Compile Include="Assets\Scripts\WinningState.cs" />
     <Compile Include="Assets\Scripts\menuScript.cs" />
     <Compile Include="Assets\Scripts\saveName.cs" />
-    <Compile Include="Assets\UDPClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3D Objects\FishCharacter\README.txt" />
