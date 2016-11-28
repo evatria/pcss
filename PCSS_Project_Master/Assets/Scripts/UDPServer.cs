@@ -10,8 +10,8 @@ using System.Threading;
 public class UDPServer : MonoBehaviour
 {
     public Vector3 spawnPosition;
-    public GameObject[] fishPrefabArray;
-    public GameObject fishPrefab;
+    //public GameObject[] fishPrefabArray;
+    //public GameObject fishPrefab;
     //List
     public List<Client> clientList = new List<Client>();
     // receiving Thread
@@ -30,6 +30,10 @@ public class UDPServer : MonoBehaviour
     public string lastReceivedUDPPacket = "";
     public string allReceivedUDPPackets = ""; // clean up this from time to time!
 
+    void Update()
+    {
+        
+    }
 
     // start from shell
     private static void Main()
@@ -125,7 +129,7 @@ public class UDPServer : MonoBehaviour
                 string[] textContent = text.Split(',');
 
                 //If the client list is 0, add, the first client
-                fishPrefabArray = new GameObject[clientList.Count];
+                
                 if (clientList.Count == 0)
                 {
                     /*
@@ -142,19 +146,19 @@ public class UDPServer : MonoBehaviour
                 else if(clientList.Count <= 1)
                 {
                     //for each client in the client list
-                    foreach (Client c in clientList)
-                    {
-                         
-                        if (cnr < clientList.Count)
-                            cnr++;
-                        else
-                            cnr = 0;
+                     foreach (Client c in clientList)
+                      {
+                            /*
+                          if (cnr < clientList.Count)
+                              cnr++;
+                          else
+                              cnr = 0;
 
-                        fishPrefabArray[cnr] = fishPrefab;
-                        if (c.IP == textContent[1])
+                          fishPrefabArray[cnr] = fishPrefab; */
+                    if (c.IP == textContent[1])
                         {
                             //Sets the H & V for the client, to be the input for
-                            Instantiate(fishPrefabArray[cnr], spawnPosition, Quaternion.identity); // This causes the program to crash
+                            
                             c.SetHV(float.Parse(textContent[5]), float.Parse(textContent[7]));
                             //Prints the clients h and v
                             Debug.Log(c.h + "" + c.v);

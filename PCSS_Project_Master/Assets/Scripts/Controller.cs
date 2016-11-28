@@ -2,52 +2,60 @@
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class Controller : MonoBehaviour
 {
-	private GameController gameController;
-	private Rigidbody rb;
-
+    public GameObject manager; 
+    UDPServer udpServer;
+    private Rigidbody rb;
+    public string tempIP; 
 	public float movementSpeed = 10f;
 	public Animation anim;
-
 	bool isHit = false;
 	bool powerIsReady = true;
+    
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Awake()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager");
+        udpServer = manager.GetComponent<UDPServer>();
+        
+    }
+    void Start ()
 	{
-        gameController = GetComponent<GameController>();
+       
 		rb = GetComponent<Rigidbody> ();
-		anim = GetComponent<Animation> ();
+        
+        anim = GetComponent<Animation> ();
 
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		if (gameController.start == false) {
-            gameController.countdown();
-		}
+        if (isHit == false)
+        {
+            Debug.Log("It get here 1");
+            foreach (Client c in udpServer.clientList)
+            {
+                Debug.Log("It get here 2");
+                if (tempIP == c.IP)
+                {
+                    Debug.Log("temp ip: " + tempIP  + "client ip: " + c.IP);
+                    Debug.Log("It get here 3");
+                    Vector3 move = transform.forward * movementSpeed * c.v;
+                    Vector3 rotation = new Vector3(0, c.h * 5, 0);
+                    transform.Rotate(rotation);
+                    rb.velocity = move + new Vector3(0, rb.velocity.y, 0);
+                }
 
-		if (gameController.isRacing == true) {
-			
-		
-			if (isHit == false) {
-			
-		
-				float h = Input.GetAxis ("Horizontal");
-				float v = Input.GetAxis ("Vertical");
-				Vector3 move = transform.forward * movementSpeed * v;
-				Vector3 rotation = new Vector3 (0, h * 5, 0);
-				transform.Rotate (rotation);
-				rb.velocity = move + new Vector3 (0, rb.velocity.y, 0);
-			}
-		}
+            }
+        }
 	}
-
 
 	void OnTriggerEnter (Collider col) {
 

@@ -4,22 +4,43 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+    UDPServer udpServer;
+    public GameObject[] fishPrefabArray;
+    public GameObject fishPrefab;
+    public int cnr;
     public Text displayTimer;
     public bool start = false;
     bool goal = false;
     float timeLeft = 6f;
     public bool isRacing = false;
     public int positionCount = 0;
-    public int roundCount = 1;
+    public int roundCount = 0;
+
+    
 
     // Use this for initialization
     void Start () {
+        udpServer = GetComponent<UDPServer>();
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+    // Update is called once per frame
+    void Update()
+    {
+
+        //    fishPrefabArray = new GameObject[udpServer.clientList.Count];
+        foreach (Client c in udpServer.clientList)
+        {
+            if(!c.isCreated)
+            InitFish();
+            fishPrefab.GetComponentInChildren<Controller>().tempIP = c.IP; 
+            c.isCreated = true;
+        }
+
+        if (start == false)
+        {
+            countdown();
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -61,4 +82,14 @@ public class GameController : MonoBehaviour {
 
 
     }
+
+    public void InitFish()
+    {
+                //fishPrefabArray[cnr] = fishPrefab;
+                Instantiate(fishPrefab, udpServer.spawnPosition, Quaternion.identity); // This causes the program to crash      
+    }
+
+
+    
+
 }

@@ -3,6 +3,7 @@ using System.Collections;
 [System.Serializable]
 public class Client 
 {
+    public bool isCreated = false;
     //The clients IP
     public string IP;
     //The clients username

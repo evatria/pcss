@@ -15,8 +15,8 @@ public class Obstacles : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject controllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
-		controller = controllerScript.GetComponent<Controller>();
+		//GameObject controllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
+		//controller = controllerScript.GetComponent<Controller>();
 	}
 	
 	// Update is called once per frame

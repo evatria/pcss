@@ -10,7 +10,7 @@ using System.Threading;
 public class UDPClient : MonoBehaviour
 {
 
-    UDPServer server;
+    
     public string clientIP;
     private static int localPort;
 
@@ -48,7 +48,7 @@ public class UDPClient : MonoBehaviour
     // start from unity3d
     public void Start()
     {
-        server = GetComponent<UDPServer>();
+        
         init();
     }
 

@@ -14,11 +14,12 @@ public class WinningState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject gameControllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
-		_gameController = gameControllerScript.GetComponent<GameController>();
+		//GameObject gameControllerScript = GameObject.FindGameObjectWithTag ("FishCharacter");
+       
+		_gameController = GetComponent<GameController>();
 
-		GameObject saveNameScript = GameObject.FindGameObjectWithTag ("SavedName");
-		_saveName = saveNameScript.GetComponent<saveName>();
+	//	GameObject saveNameScript = GameObject.FindGameObjectWithTag ("SavedName");
+	//	_saveName = saveNameScript.GetComponent<saveName>();
 
 
 	}
