@@ -3,7 +3,7 @@
 We have had a lot of trouble with GitHub. These problems and how we have solved them, will be explained after the documentation on how to download and run the game.
 
 # How to download and play
-To download the game simply download the file called : ""
+To download the game simply download the file called : "FishRacingBuild" and then choose either (Mac) or (Windows) depending on your system.
 
 How to start game:
 1. Write your name
