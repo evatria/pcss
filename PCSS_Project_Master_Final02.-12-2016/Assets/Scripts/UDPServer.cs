@@ -179,8 +179,6 @@ public class UDPServer : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         init();
-
-        
         serverCreated = true;
         
 
