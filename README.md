@@ -3,7 +3,9 @@
 We have had a lot of trouble with GitHub. These problems and how we have solved them, will be explained after the documentation on how to download and run the game.
 
 # How to download and play
-To download the game simply download the file called : "FishRacingBuild" and then choose either (Mac) or (Windows) depending on your system.
+To download the game simply download the file called "FishRacingBuild"
+
+There has been some problems with a mac build, but if it is for mac, open it in Unity editor and play it there. It work perfectly in the editor.
 
 How to start game:
 1. Write your name.
