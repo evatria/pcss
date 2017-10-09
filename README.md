@@ -16,7 +16,8 @@ Jens Hornshøj-Møller
 
 Simon Ravn
 
-Student emails
+
+Student emails:
 
 josjen16@student.aau.dk
 
