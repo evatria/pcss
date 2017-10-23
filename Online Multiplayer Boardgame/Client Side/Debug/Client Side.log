@@ -1,3 +1,2 @@
 ﻿  CLIENT.cpp
-  Client Side.vcxproj -> c:\users\junker\documents\visual studio 2017\Projects\Online Multiplayer Boardgame\Debug\Client Side.exe
-  Client Side.vcxproj -> c:\users\junker\documents\visual studio 2017\Projects\Online Multiplayer Boardgame\Debug\Client Side.pdb (Partial PDB)
+c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\GitHub\PCSS2017\CLIENT.cpp': No such file or directory
