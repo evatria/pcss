@@ -47,36 +47,10 @@ void main()
 
 		CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
 
-		cout << "\n\tMessage from SERVER:\n\n\t" << CONVERTER << endl;
-
 		CONVERTER = "0";
 		//////////////////////////////////////////////////////////////////////////////////
-
-		cout << "\n\tCLIENT: Do you want to count A's?(Y/N)";
-		cin >> RESPONSE;
-		RESPONSE[0] = tolower(RESPONSE[0]);
-
-		if (RESPONSE == "n")
-		{
-			cout << "\n\tOK. Quitting instead.";
-			exit(1);
-		}
-
-		if (RESPONSE == "y") {
-			SUCCESSFUL = send(sock, "How many a's is in this sentence?", 46, NULL);
-		}
-		
-
-		SUCCESSFUL = recv(sock, MESSAGEANSWER, sizeof(1), NULL); //MESSAGE 2 (Result of amount of A's
-
-		cout << "\n\tThis many A's was counted from Server: " << MESSAGEANSWER[0] << endl;
-		
-	
 	}
-	else
-	{
-		cout << "\n\tThat was an inappropriate RESPONSE!";
-	}
+		
 	
 	cout << "\n\n\t";
 	system("PAUSE");
