@@ -14,7 +14,8 @@ void main()
 	SUCCESSFUL = WSAStartup(DLLVersion, &WinSockData);
 	int count = 0;
 
-
+	int LOBBYCHOICE;
+	bool valid; //to make switch case run again
 	string RESPONSE; // These a instances of the type string
 	string CONVERTER; // in C++ you have to do a lot of convertions with strings because some functions can only handle certain types of strings
 	string CONVERTER01;
@@ -30,7 +31,7 @@ void main()
 	ADDRESS.sin_family = AF_INET;
 	ADDRESS.sin_port = htons(444); // Have to use htons method to convert it to network style
 
-	cout << "\n\tCLIENT: Do you want to connect to this SERVER? (Y/N)";
+	cout << "\n\tCLIENT: Do you want to connect to this server? Press 'y' for yes or 'n' for no.";
 	cin >> RESPONSE;
 
 	RESPONSE[0] = tolower(RESPONSE[0]); // Convert first letter to lower case and only this so if you type YES it takes Y = y
@@ -52,8 +53,36 @@ void main()
 		CONVERTER = "0";
 		//////////////////////////////////////////////////////////////////////////////////
 	}
-		
-	
+
+	//The Lobby
+
+	cout << "\n\tCLIENT:\n\nHello, welcome to this amazing game.";
+	do { //do while loop to make switch case run again if choice is not valid
+		cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
+		cin >> LOBBYCHOICE;
+
+		switch (LOBBYCHOICE) {
+		case 1:
+			//createGame();
+			cout << "Game was created";
+			valid = true;
+			break;
+		case 2:
+			//joinGame();
+			cout << "There is no game to join";
+			valid = true;
+			break;
+		case 3:
+			cout << "Goodbye";
+			valid = true;
+			break;
+		default:
+			cout << "That not a valid answer";
+			valid = false;
+			break;
+		}
+	} while (!valid);
+
 	cout << "\n\n\t";
 	system("PAUSE");
 	exit(1);
