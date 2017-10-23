@@ -38,7 +38,7 @@ void main()
 	if (RESPONSE == "n")
 	{
 		cout << "\n\tOK. Quitting instead.";
-	}
+	}efhvsfhiosh
 	else if (RESPONSE == "y")
 	{
 		connect(sock, (SOCKADDR*)&ADDRESS, sizeof(ADDRESS));
@@ -46,6 +46,8 @@ void main()
 		SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull //MESSAGE 1
 
 		CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
+
+		cout << '	' << CONVERTER;
 
 		CONVERTER = "0";
 		//////////////////////////////////////////////////////////////////////////////////
