@@ -38,7 +38,7 @@ void main()
 	if (RESPONSE == "n")
 	{
 		cout << "\n\tOK. Quitting instead.";
-	}efhvsfhiosh
+	}
 	else if (RESPONSE == "y")
 	{
 		connect(sock, (SOCKADDR*)&ADDRESS, sizeof(ADDRESS));
