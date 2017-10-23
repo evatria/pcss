@@ -58,29 +58,17 @@ void main()
 		{
 		cout << "\n\tA connection was found!" << endl;
 
+		
+		
 		SUCCESSFUL = send(sock_CONNECTION, "Welcome! You have connected to the Server!", 46, NULL);
 
-		//////////////////////////////////////////////////////////////////////////////////////////
 		
-		SUCCESSFUL = recv(sock_CONNECTION, MESSAGE, 46, NULL); //RECEIVED MESSAGE FROM CLIENT
-		for (int i = 0; i < strlen(MESSAGE); i++)
-			if (MESSAGE[i] == 'a') {
-				counter++;
-				MESSAGEANSWER[0] = counter;
-			}
-			
-		/*
-		if (counter == 1) {
-			MESSAGEANSWER[0] = '1';
-		}
-		if (counter == 2) {
-			MESSAGEANSWER[0] = '2';
-		}
-		if (counter == 3) {
-			MESSAGEANSWER[0] = '3';
-		}
-		*/
-		SUCCESSFUL = send(sock_CONNECTION, MESSAGEANSWER, 46, NULL); //RESULT of how many A's
+		
+		//SUCCESSFUL = recv(sock_CONNECTION, MESSAGE, 46, NULL); //RECEIVED MESSAGE FROM CLIENT
+		
+	
+	
+		
 		
 		
 		

@@ -1,2 +1,6 @@
-﻿  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junker\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
+﻿  SERVER.cpp
+c:\users\junker\documents\github\pcss2017\server.cpp(17): warning C4101: 'a': unreferenced local variable
+c:\users\junker\documents\github\pcss2017\server.cpp(22): warning C4101: 'MESSAGEANSWER': unreferenced local variable
+c:\users\junker\documents\github\pcss2017\server.cpp(21): warning C4101: 'MESSAGE': unreferenced local variable
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junker\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
   Online Multiplayer Boardgame.vcxproj -> C:\Users\Junker\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.pdb (Partial PDB)
