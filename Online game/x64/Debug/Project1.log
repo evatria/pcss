@@ -1,4 +1,0 @@
-﻿  CLIENT.cpp
-c:\users\camil\onedrive\dokumenter\github\project1\client.cpp(22): warning C4101: 'MESSAGEANSWER': unreferenced local variable
-  Project1.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\x64\Debug\Sockets_TCP_CLIENT.exe
-  Project1.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\x64\Debug\Sockets_TCP_CLIENT.pdb (Partial PDB)
