@@ -1,4 +1,3 @@
 ﻿  CLIENT.cpp
-c:\users\camil\onedrive\dokumenter\github\pcss2017\client.cpp(23): warning C4101: 'MESSAGEANSWER': unreferenced local variable
-  Client Side.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Client Side.exe
-  Client Side.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Client Side.pdb (Partial PDB)
+  Client Side.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Client Side.exe
+  Client Side.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Client Side.pdb (Partial PDB)
