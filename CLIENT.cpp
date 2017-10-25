@@ -23,7 +23,7 @@ string RESPONSE; // These a instances of the type string
 int LOBBYCHOICE;
 bool valid; //to make switch case run again
 bool gameisCreated=false;
-bool showMenuText = false;
+bool showMenuText =false;
 
 
 

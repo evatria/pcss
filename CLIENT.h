@@ -6,9 +6,9 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS //Some of the winsock functions are outdate :(
 
 //Standard HEADER files
-#include <sdkddkver.h>
-#include <WinSock2.h>
-#include<Windows.h>
+#include <sdkddkver.h> //Google it
+#include <WinSock2.h> //Standard winsock lib
+#include<Windows.h> //Windows funciton
 #include<iostream>
 #include <string> //To use string functions
 #include <cstdlib> //To use exit(0) call.
