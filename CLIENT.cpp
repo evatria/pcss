@@ -17,6 +17,7 @@ char MESSAGE[200]; // this is a simpler string (a collection of characters). //M
 //Pre lobby user interaction
 string RESPONSE; // These a instances of the type string
 
+char WEAPONCHOICE;
 
 
 //LOBBY VARRIABLES
@@ -26,14 +27,8 @@ bool gameisCreated=false;
 bool showMenuText =false;
 
 
-
-
-
-
 //Functions declared here before main
-
-void createGame() {
-	
+void createGame(){
 	strcpy_s(MESSAGE, "Server Create me a Game");
 	SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 	gameisCreated = true;
@@ -41,8 +36,39 @@ void createGame() {
 	cout << "Game was created" << endl;
 }
 
-void joinGame() {
+void weaponChoice() { //Menu to choose weapon
+	cout << "Please choose your weapon!" << endl;
+	
+	do { //do while loop to make switch case run again if choice is not valid
+		cout << "\n\nYou choose by pressing a number, followed by ENTER:\n\nR: Rock\nP: Paper\nS: Scissor\n...";
 
+		cin >> WEAPONCHOICE; //Get input from user about what they want to do
+
+		switch (WEAPONCHOICE) {
+		case 'r':
+		case 'R':
+			cout << "You chose rock";
+			valid = false;
+			break;
+		case 'p':
+		case 'P':
+			cout << "You chose paper";
+			valid = false;
+			break;
+		case 's':
+		case 'S':
+			cout << "You chose scissor";
+			valid = false;
+			break;
+		default:
+			cout << "Please choose 'R', 'P' or 'S'";
+			valid = true;
+			break;
+		}
+	} while (valid);
+}
+
+void joinGame(){
 	if (gameisCreated) {
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
@@ -50,11 +76,40 @@ void joinGame() {
 	}
 }
 
+void menu() { //The Lobby
+	cout << "\n\tCLIENT:\n\nHello, welcome to this amazing game.";
+	do { //do while loop to make switch case run again if choice is not valid
+		cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
 
+		/*if (showMenuText == true){
+		cout << "2: Join game\n3 : Leave game\n...";
+		showMenuText = false;
+		}*/
 
+		cin >> LOBBYCHOICE; //Get input from user about what they want to do
 
-void main()
-{
+		switch (LOBBYCHOICE) {
+		case 1:
+			createGame();
+			valid = false;
+			break;
+		case 2:
+			joinGame();
+			valid = false;
+			break;
+		case 3:
+			cout << "Goodbye";
+			valid = false;
+			break;
+		default:
+			cout << "That not a valid answer";
+			valid = true;
+			break;
+		}
+	} while (valid);
+}
+
+void main(){
 	//These Parameters must be set before we can start the program, so they are run first:
 	DLLVersion = MAKEWORD(2, 1); //Sets the version of the winsock that we want to use, here it is 2, the second parameter is the location the parameter was created
 	SUCCESSFUL = WSAStartup(DLLVersion, &WinSockData); //WSAStartup tells the computer that we are going to use sockets
@@ -72,53 +127,18 @@ void main()
 
 	//Depending on the answer we have two options:
 	
-	if (RESPONSE == "n") //if no then just quit
-	{
+	if (RESPONSE == "n"){ //if no then just quit
 		cout << "\n\tOK. Quitting instead.";
 		exit(0);
 	}
 	
-	else if (RESPONSE == "y")
-	{
+	else if (RESPONSE == "y"){
 		connect(sock, (SOCKADDR*)&ADDRESS, sizeof(ADDRESS)); //This line connects us to the server. First parameter is our server socket, 2. parameter is the address information, 3. is the size of the 2. parameter. 
 		SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
 		CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
 		cout << '	' << CONVERTER;
+		menu();
 	}
-
-	//The Lobby
-
-	cout << "\n\tCLIENT:\n\nHello, welcome to this amazing game.";
-	cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
-	do { //do while loop to make switch case run again if choice is not valid
-		
-		if (showMenuText == true)
-		{
-			cout << "2: Join game\n3 : Leave game\n...";
-			showMenuText = false;
-		}
-
-		cin >> LOBBYCHOICE;
-
-		switch (LOBBYCHOICE) {
-		case 1:
-			createGame();
-			valid = true;
-			break;
-		case 2:
-			joinGame();
-			valid = true;
-			break;
-		case 3:
-			cout << "Goodbye";
-			valid = true;
-			break;
-		default:
-			cout << "That not a valid answer";
-			valid = false;
-			break;
-		}
-	} while (valid);
 
 	cout << "\n\n\t";
 	system("PAUSE");
