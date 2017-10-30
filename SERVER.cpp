@@ -75,38 +75,6 @@ void CompareWeapons() {
 		Game01.score_Player02++;
 	}
 
-	/* if (player_weapon01 = rock && player_weapon02 = paper) {
-		score_Player02++;
-		cout << "Player two wins!" << endl;
-	}
-	else if (player_weapon01 = paper && player_weapon02 = rock) {
-		score_Player01++;
-		cout << "Player one wins!" << endl;
-
-	}
-	else if (player_weapon01 = paper && player_weapon02 = scissor) {
-		score_Player02++;
-		cout << "Player two wins!" << endl;
-	}
-	else if (player_weapon01 = scissor && player_weapon02 = paper) {
-		score_Player01++;
-		cout << "Player one wins!" << endl;
-	}
-	else if (player_weapon01 = scissor && player_weapon02 = rock) {
-		score_Player02++;
-		cout << "player two wins!" << endl;
-	}
-	else if (player_weapon01 = rock && player_weapon02 = scissor) {
-		score_Player01++;
-		cout << "Player one wins!" << endl;
-	}
-	else {
-		rematch();
-		cout << "It's a draw! try again." << endl;
-	}
-	*/
-
-
 }
 
 
