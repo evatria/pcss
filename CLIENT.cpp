@@ -50,23 +50,38 @@ void weaponChoice() { //Menu to choose weapon
 		switch (WEAPONCHOICE) {
 		case 'r':
 		case 'R':
-			cout << "You chose rock";
+			cout << "You chose rock"<< endl;
 			strcpy_s(MESSAGE, "You chose rock");
 			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
+
+			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
+			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
+			cout << '	' << CONVERTER;
+
 			valid = false;
 			break;
 		case 'p':
 		case 'P':
-			cout << "You chose paper";
+			cout << "You chose paper"<< endl;
 			strcpy_s(MESSAGE, "You chose paper");
 			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
+
+			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
+			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
+			cout << '	' << CONVERTER;
+
 			valid = false;
 			break;
 		case 's':
 		case 'S':
-			cout << "You chose scissor";
+			cout << "You chose scissor"<< endl;
 			strcpy_s(MESSAGE, "You chose scissor");
 			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
+
+			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
+			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
+			cout << '	' << CONVERTER;
+
 			valid = false;
 			break;
 		default:
@@ -100,7 +115,7 @@ void menu() { //The Lobby
 		switch (LOBBYCHOICE) {
 		case 1:
 			createGame();
-			
+			weaponChoice();
 			valid = false;
 			break;
 		case 2:

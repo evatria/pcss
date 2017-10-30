@@ -21,6 +21,10 @@ std::string paperChosen("You chose paper");
 std::string scissorChosen("You chose scissor");
 std::string assignTask;
 
+//Variables for evaluating game creation
+
+
+
 
 //STRUCT for holding game information
 
@@ -30,35 +34,47 @@ struct games_01and02 {
 	int score_Player01;
 	int score_Player02;
 
-	bool game_01_created = false;
-};
+	int weapon_Player01;
+	int weapon_Player02;
 
-//Variables for holding scores... ?
-int player01;
-int player02;
-int player03;
-int player04;
+	bool game_01_created = false;
+} Game01, Game02;
+
 
 //Functions declared here before main
 
 
 void createGameonServer() {
 
-	games_01and02 Game01;
+	
 	Game01.title = "Game 01";
-	Game01.score_Player01 = 2;
+	Game01.score_Player01 = 0;
 	Game01.score_Player02 = 0;
+	
+	Game01.weapon_Player01 = 1;
 
 }
 
 void printGameData() {
 
-	cout << Game01.title << endl;
-	cout << Game01.score_Player01 << endl;
-	cout << Game01.score_Player02 << endl;
+cout << Game01.title << endl;
+cout << Game01.score_Player01 << endl;
+cout << Game01.score_Player02 << endl;
 }
 
 void CompareWeapons() {
+	if (Game01.weapon_Player01 == Game01.weapon_Player02) {
+		cout << "It's a draw" << endl;
+	}
+	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 2) {
+		cout << "Player 1 wins" << endl;
+		Game01.score_Player01++;
+	}
+	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 3) {
+		cout << "Player 2 wins" << endl;
+		Game01.score_Player02++;
+	}
+
 	/* if (player_weapon01 = rock && player_weapon02 = paper) {
 		score_Player02++;
 		cout << "Player two wins!" << endl;
@@ -105,8 +121,7 @@ void JoinSpecificGame() {
 
 void main()
 {
-	createGameonServer();
-	printGameData();
+	
 
 	DLLVERSION = MAKEWORD(2, 1); //macro to create WORD value by concatenating(Means link serveral object together) its arguments //Start Winsock DLL
 	SUCCESSFUL = WSAStartup(DLLVERSION, &WinSockData); //WSAStartup starts the winsock application interface
@@ -132,15 +147,24 @@ void main()
 
 	//If connection found:
 
-	for (;;) //Infinite foor loop will loop forever...
+	cout << "\n\tSERVER: Waiting for incoming connection...";
+
+	if (sock_CONNECTION = accept(sock_LISTEN, (SOCKADDR*)&ADDRESS, &AddressSize))
 	{
-		cout << "\n\tSERVER: Waiting for incoming connection...";
+		cout << "\n\tA connection was found!" << endl;
 
-		if (sock_CONNECTION = accept(sock_LISTEN, (SOCKADDR*)&ADDRESS, &AddressSize))
+		SUCCESSFUL = send(sock_CONNECTION, "Welcome! You have connected to the Server!", 46, NULL);
+	
+
+		for (;;) //Infinite foor loop will loop forever...
 		{
-			cout << "\n\tA connection was found!" << endl;
+			/*cout << "\n\tSERVER: Waiting for incoming connection...";
 
-			SUCCESSFUL = send(sock_CONNECTION, "Welcome! You have connected to the Server!", 46, NULL);
+			if (sock_CONNECTION = accept(sock_LISTEN, (SOCKADDR*)&ADDRESS, &AddressSize))
+			{
+				cout << "\n\tA connection was found!" << endl;
+
+				SUCCESSFUL = send(sock_CONNECTION, "Welcome! You have connected to the Server!", 46, NULL);*/
 
 
 			SUCCESSFUL = recv(sock_CONNECTION, MESSAGE, 46, NULL); //Create Game Request!
@@ -150,6 +174,7 @@ void main()
 			cout << assignTask << endl;
 
 			if (assignTask.compare(createGame) == 0) {
+				createGameonServer();
 				cout << "Correct input for CreateGame" << endl;
 				std::string assignTask = "";
 			}
@@ -159,14 +184,26 @@ void main()
 			}
 			else if (assignTask.compare(rockChosen) == 0) {
 				cout << "Correct input for rock chosen" << endl;
+				Game01.weapon_Player02 = 1;
+				CompareWeapons();
+				SUCCESSFUL = send(sock_CONNECTION, "It's a draw!", 46, NULL);
+				printGameData();
 				std::string assignTask = "";
 			}
 			else if (assignTask.compare(paperChosen) == 0) {
 				cout << "Correct input for paper chosen" << endl;
+				Game01.weapon_Player02 = 2;
+				CompareWeapons();
+				SUCCESSFUL = send(sock_CONNECTION, "Player 1 wins!", 46, NULL);
+				printGameData();
 				std::string assignTask = "";
 			}
 			else if (assignTask.compare(scissorChosen) == 0) {
 				cout << "Correct input for scissor chosen" << endl;
+				Game01.weapon_Player02 = 3;
+				CompareWeapons();
+				SUCCESSFUL = send(sock_CONNECTION, "Player 2 wins!", 46, NULL);
+				printGameData();
 				std::string assignTask = "";
 			}
 
@@ -174,7 +211,7 @@ void main()
 			//cout << CONVERTER;
 
 
-
 		}
+		//}
 	}
 }
