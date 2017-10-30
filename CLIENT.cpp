@@ -18,6 +18,9 @@ char MESSAGE[200]; // this is a simpler string (a collection of characters). //M
 string RESPONSE; // These a instances of the type string
 
 char WEAPONCHOICE;
+string rockChosen;
+string paperChosen;
+string scissorChosen;
 
 
 //LOBBY VARRIABLES
@@ -40,7 +43,7 @@ void weaponChoice() { //Menu to choose weapon
 	cout << "Please choose your weapon!" << endl;
 	
 	do { //do while loop to make switch case run again if choice is not valid
-		cout << "\n\nYou choose by pressing a number, followed by ENTER:\n\nR: Rock\nP: Paper\nS: Scissor\n...";
+		cout << "\n\nYou choose by pressing a character, followed by ENTER:\n\nR: Rock\nP: Paper\nS: Scissor\n...";
 
 		cin >> WEAPONCHOICE; //Get input from user about what they want to do
 
@@ -48,16 +51,22 @@ void weaponChoice() { //Menu to choose weapon
 		case 'r':
 		case 'R':
 			cout << "You chose rock";
+			strcpy_s(MESSAGE, "You chose rock");
+			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 			valid = false;
 			break;
 		case 'p':
 		case 'P':
 			cout << "You chose paper";
+			strcpy_s(MESSAGE, "You chose paper");
+			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 			valid = false;
 			break;
 		case 's':
 		case 'S':
 			cout << "You chose scissor";
+			strcpy_s(MESSAGE, "You chose scissor");
+			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 			valid = false;
 			break;
 		default:
@@ -91,6 +100,7 @@ void menu() { //The Lobby
 		switch (LOBBYCHOICE) {
 		case 1:
 			createGame();
+			
 			valid = false;
 			break;
 		case 2:
