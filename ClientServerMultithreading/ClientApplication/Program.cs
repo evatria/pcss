@@ -19,7 +19,7 @@ public class EchoClient
                 writer.WriteLine(s);
                 writer.Flush();
                 String server_string = reader.ReadLine();
-                Console.WriteLine(server_string);
+                Console.WriteLine("from server: " + server_string + "\n");
             }
             reader.Close();
             writer.Close();

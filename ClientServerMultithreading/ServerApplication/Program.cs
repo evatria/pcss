@@ -19,8 +19,8 @@ public class MultiThreadedEchoServer
                 Console.WriteLine("Client sends the following string: " + s);
                 int count = s.Split('a').Length - 1;
                 totalNumberOfAs = totalNumberOfAs + count;
-                Console.WriteLine("The accumulated number of a's found in all messages from all client threads so far: " + totalNumberOfAs);
-                writer.WriteLine("From server -> The letter 'a' was found " + count + " times in the string you sent the server.");
+                Console.WriteLine("The accumulated number of a's found in all messages from all client threads so far: " + totalNumberOfAs + "\n");
+                writer.WriteLine("The letter 'a' was found " + count + " times in the string you sent the server.");
                 writer.Flush();
             }
             reader.Close();
