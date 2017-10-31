@@ -11,30 +11,34 @@ public class EchoClient
         Console.Write("Please enter your screen name and press enter: \n");
         String screenName = Console.ReadLine();
         Console.Write("\nWelcome " + screenName + ". You are now connected to the server.");
+        Console.Write("\nWrite r and press enter when you are ready \n");
 
-        try {
         TcpClient client = new TcpClient("127.0.0.1", 10000);
         StreamReader reader = new StreamReader(client.GetStream());
         StreamWriter writer = new StreamWriter(client.GetStream());
 
-        /*String s = String.Empty;
-        s = Console.ReadLine();
-        Console.Write("\nEnter a string to send to the server: ");*/
+        String readyCheck = Console.ReadLine();
 
-        Console.Write("\nYou are connected to the server. Waiting for other players.");
-        
-        Console.WriteLine();
-        writer.WriteLine(screenName);
-        writer.Flush();
-        String server_string = reader.ReadLine();
-        Console.WriteLine(server_string);
+        while(readyCheck.Equals("r")) {
+            try {
+               
+                String s = String.Empty;
 
-        reader.Close();
-        writer.Close();
-        client.Close();
+                Console.Write("\nYou are connected to the server. Waiting for other players.");
+                Console.Write("\nEnter a string to send to the server: ");
+                s = Console.ReadLine();
+                Console.WriteLine();
+                writer.WriteLine(s);
+                writer.Flush();
+                String server_string = reader.ReadLine();
+                Console.WriteLine(server_string);
 
-        } catch (Exception e) {
-            Console.WriteLine(e);
+                reader.Close();
+                writer.Close();
+                client.Close();
+            } catch (Exception e) {
+                Console.WriteLine(e);
+            }
         }
     }
 }
