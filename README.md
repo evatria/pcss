@@ -8,7 +8,7 @@ Josef Adil Jensen
 
 Alexander Christian Larsen er sød
 
-Mathias Emil Kjeldsen
+Mathias Emil Kjeldsen er hjælpsom
 
 Bjørn Aagaard Skalkam
 
