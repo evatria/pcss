@@ -136,12 +136,12 @@ void menu() { //The Lobby
 
 void main(){
 	//These Parameters must be set before we can start the program, so they are run first:
-	DLLVersion = MAKEWORD(2, 1); //Sets the version of the winsock that we want to use, here it is 2, the second parameter is the location the parameter was created
+	DLLVersion = MAKEWORD(2, 2); //Sets the version of the winsock that we want to use, here it is 2, the second parameter is the location the parameter was created
 	SUCCESSFUL = WSAStartup(DLLVersion, &WinSockData); //WSAStartup tells the computer that we are going to use sockets
 	sock = socket(AF_INET, SOCK_STREAM, NULL); // Here we initialize the socket. First = to assign the socket to the varible sock. First Parameter= = AF_INET which is: the adress family specification, usually you use AF_INET for IPV4 format(type of IP), if you use IPv6 it is AF_INET6. Second parameter is the SOCK_STREAM(TCP Connection) There are many types for example SOCK_DGRAM, which dosent open connection between computers but sends data immediately (Called UDP). The last parameter is 0, and this is ''The possible options for the protocol parameter are specific to the address family and socket type specified.''
 	ADDRESS.sin_addr.s_addr = inet_addr("127.0.0.1"); //Local IP, the IP adress need to be converted into a format that can be used in Networking
 	ADDRESS.sin_family = AF_INET; // Tells the computer to use IP format IPv4 (Standard at the momemnt)
-	ADDRESS.sin_port = htons(444); // Have to use htons method to convert it to network style, and then specify port number 444 which is the port we use. 
+	ADDRESS.sin_port = htons(54000); // Have to use htons method to convert it to network style, and then specify port number 444 which is the port we use. 
 
 	
 	//Once we have set up some basic networking stuff we ask the USER:

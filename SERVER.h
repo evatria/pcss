@@ -1,7 +1,7 @@
 //TCP Server header file
 //Note: you need to add "Ws2_32.lib" to the LINKER setting. Like this:
 #pragma comment(lib,"Ws2_32.lib")
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
+
 
 //STD console header files
 #include <sdkddkver.h>
@@ -17,5 +17,6 @@
 #include <locale>
 #include <sstream>
 #include <string>
-
+#include <thread>
+#include <WS2tcpip.h> //A header files that includes many of the winsock headerfiles and functions
 #define SCK_VERSION2 0x0202

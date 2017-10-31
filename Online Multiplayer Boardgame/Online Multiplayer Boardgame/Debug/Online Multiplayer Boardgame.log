@@ -1,4 +1,4 @@
 ﻿  SERVER.cpp
-  LINK : C:\Users\Benjamin\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe not found or not built by the last incremental link; performing full link
-  Online Multiplayer Boardgame.vcxproj -> C:\Users\Benjamin\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
-  Online Multiplayer Boardgame.vcxproj -> C:\Users\Benjamin\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.pdb (Partial PDB)
+c:\users\junkers master pc\documents\github\pcss2017\server.cpp(178): warning C4018: '<': signed/unsigned mismatch
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.pdb (Partial PDB)
