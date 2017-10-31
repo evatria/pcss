@@ -6,7 +6,7 @@ Student names
 
 Josef Adil Jensen
 
-Alexander Christian Larsen
+Alexander Christian Larsen er sød
 
 Mathias Emil Kjeldsen
 
