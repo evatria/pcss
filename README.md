@@ -2,8 +2,8 @@
 
 Group Members:
 Josef Adil Jensen
-Alexander Christian Larsen er sød
-Mathias Emil Kjeldsen er hjælpsom
+Alexander Christian Larsen
+Mathias Emil Kjeldsen
 Bjørn Aagaard Skalkam
 Jens Hornshøj-Møller
 Simon Ravn
