@@ -23,18 +23,26 @@ public static void Main() {
     StreamReader reader = new StreamReader(client.GetStream());
     StreamWriter writer = new StreamWriter(client.GetStream());
     String s = String.Empty;
+            String x = "asd";
 
     while (!s.Equals("Exit")) {
+        
         if (!selectedId) {
-
         Console.Write("Connected to server! \n");
         Console.Write("Select a unique ID: ");
+        x = "xIDx_"+Console.ReadLine();
+
+        Console.WriteLine();
+        writer.WriteLine(x);
+        selectedId = true;
+                    } else {
+                 Console.Write("Press any button to update.");
         s = Console.ReadLine();
 
         Console.WriteLine();
         writer.WriteLine(s);
-        selectedId = true;
-        }
+                    }
+
         writer.Flush();
         String server_string = reader.ReadLine();
         Console.WriteLine("from server: " + server_string + "\n");

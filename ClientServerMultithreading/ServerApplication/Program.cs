@@ -6,11 +6,10 @@ using System.Threading;
 
 public class MultiThreadedEchoServer
 {
-    //static int totalNumberOfAs = 0;
     static String id1 = "noIdYet";
     static String id2 = "noIdYet";
     static String id3 = "noIdYet";
-    static Boolean threePlayersConnected = false;
+    static int amountOfPlayersConnected = 0;
 
     private static void ProcessClientRequests(object argument)
     {
@@ -22,57 +21,55 @@ public class MultiThreadedEchoServer
             StreamWriter writer = new StreamWriter(client.GetStream());
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
-                if (!threePlayersConnected) {
-                //Console.Write("input: " + s + "\n");
-                Console.Write("ID: " + s + "\n");
-                Console.Write("\n");
+
+                if (amountOfPlayersConnected < 3) {
+
+                    if (s != "") {
+
+
+                if (s[0] == 'x' && s[1] == 'I' && s[2] == 'D' && s[3] == 'x' && s[4] == '_' ) {
+                String[] splitString = s.Split('_');
+                Console.Write("ID: " + splitString[1] + "\n");
+
 
                 if (id1 == "noIdYet") {
-                    id1 = s;
+                    id1 = splitString[1];
                     Console.Write("player 1: " + id1 + "\n");
                         Console.WriteLine ("Waiting for more players. \n");
+                        amountOfPlayersConnected++;
                 } else if (id1 != "noIdYet" && id2 == "noIdYet") {
-                    id2 = s;
+                    id2 = splitString[1];
                     Console.Write("player 2: " + id2 + "\n");
                         Console.WriteLine ("Waiting for more players. \n");
+                        amountOfPlayersConnected++;
                 } else if (id2 != "noIdYet" && id3 == "noIdYet") {
-                    id3 = s;
+                    id3 = splitString[1];
                     Console.Write("player 3: " + id3 + "\n");
                         Console.WriteLine ("Found three players! \n");
+                        amountOfPlayersConnected++;
                 }
 
                 if (id1 != "noIdYet" && id2 != "noIdYet" && id3 != "noIdYet") {
-                    Console.Write("3 players connected!" + "\n");
-                    threePlayersConnected = true;
                     Console.Write("Player 1: " + id1 + "\n");
                     Console.Write("Player 2: " + id2 + "\n");
                     Console.Write("Player 3: " + id3 + "\n");
                 }
-                if (threePlayersConnected) {
-                    Console.WriteLine ("Starting Game!");
                 }
-                
-                writer.Flush();
                 }
-                
+                    }
+                if (amountOfPlayersConnected > 2) {
+                Console.WriteLine ("Ready to go! Enough players connected.");
+                        writer.WriteLine("Starting game! Highest number wins!");
+                    writer.Flush();
 
-                /*if (s[0] == '0') {
-                    Console.WriteLine("CREATING LOBBY 0");
-                    writer.WriteLine("CREATING LOBBY 0");
-                } else if (s[0] == '1') {
-                    Console.WriteLine("JOINING LOBBY 0");
-                    writer.WriteLine("JOINING LOBBY 0");
                 } else {
-                    Console.WriteLine("DID NOT RECOGNIZE COMMAND");
-                    writer.WriteLine("DID NOT RECOGNIZE COMMAND");
-                }*/
+                        writer.WriteLine("Waiting for more players... Amount of players connected: " + amountOfPlayersConnected);
+                    writer.Flush();
+                //Console.Write("input: " + s + "\n");
 
-                //Console.WriteLine("Client sends the following string: " + s);
-                //int count = s.Split('a').Length - 1;
+                 
+                }
 
-                //totalNumberOfAs = totalNumberOfAs + count;
-                //Console.WriteLine("The accumulated number of a's found in all messages from all client threads so far: " + totalNumberOfAs + "\n");
-                //writer.WriteLine("The letter 'a' was found " + count + " times in the string you sent the server.");
                 
             }
             reader.Close();
