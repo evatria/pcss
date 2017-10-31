@@ -12,10 +12,3 @@ C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
-C:\Users\Alexander\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
