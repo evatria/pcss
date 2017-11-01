@@ -29,11 +29,11 @@ public static void Main() {
         
         if (!selectedId) {
         Console.Write("Connected to server! \n");
-        Console.Write("Select a unique ID: ");
+        Console.Write("Select a unique name: ");
         x = "xIDx_"+Console.ReadLine();
 
-                    while (x.Length < 8 || x.Length > 11) {
-                        Console.Write("Name has to be more than 2 characters and less than 6 \n");
+                    while (x.Length < 8 || x.Length > 15) {
+                        Console.Write("Name has to be more than 2 characters and less than 10 \n");
                         Console.Write("Select a unique ID: ");
                         x = "xIDx_"+Console.ReadLine();
                         }
