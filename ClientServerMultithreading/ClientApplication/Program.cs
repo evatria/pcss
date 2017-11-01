@@ -32,8 +32,8 @@ public static void Main() {
         Console.Write("Select a unique ID: ");
         x = "xIDx_"+Console.ReadLine();
 
-                    while (x.Length < 8) {
-                        Console.Write("ID Needs to be more than 2 characters \n");
+                    while (x.Length < 8 || x.Length > 11) {
+                        Console.Write("Name has to be more than 2 characters and less than 6 \n");
                         Console.Write("Select a unique ID: ");
                         x = "xIDx_"+Console.ReadLine();
                         }
@@ -42,17 +42,22 @@ public static void Main() {
         writer.WriteLine(x);
         selectedId = true;
                     } else {
+              
                  Console.Write("Press enter to update the state of the lobby.");
+                    
         s = Console.ReadLine();
 
         Console.WriteLine();
         writer.WriteLine(s);
+                    Console.Clear();
                     }
 
         writer.Flush();
         String server_string = reader.ReadLine();
         Console.WriteLine("from server: " + server_string + "\n");
-         
+                if (server_string.Length > 80) {
+                    Console.WriteLine("Game Over!");
+                   }
         }
     
     reader.Close();
