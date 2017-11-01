@@ -9,9 +9,9 @@ public class MultiThreadedEchoServer
     static String id1 = "noIdYet";
     static String id2 = "noIdYet";
     static String id3 = "noIdYet";
-    static int id1score = 0;
-    static int id2score = 0;
-    static int id3score = 0;
+    static int id1number = 0;
+    static int id2number = 0;
+    static int id3number = 0;
     static int amountOfPlayersConnected = 0;
     static bool gameOver = false;
 
@@ -55,29 +55,29 @@ public class MultiThreadedEchoServer
                 if (amountOfPlayersConnected > 2) {
                         rndNumbers();
                     if (!gameOver) {
-                    Console.Write(id1 + " score: " + id1score + "\n");
-                    Console.Write(id2 + " score: " + id2score + "\n");
-                    Console.Write(id3 + " score: " + id3score + "\n");
+                    Console.Write(id1 + " number: " + id1number + "\n");
+                    Console.Write(id2 + " number: " + id2number + "\n");
+                    Console.Write(id3 + " number: " + id3number + "\n");
                         gameOver = true;
                      }
-                    if (id1score > id2score && id1score > id3score) {
+                    if (id1number > id2number && id1number > id3number) {
                         writer.WriteLine("Highest number wins!"+
-                            " | Player " + id1 + " score: " + id1score + 
-                            " | Player " + id2 + " score: " + id2score +
-                            " | Player " + id3 + " score: " + id3score + 
-                            " | " + id1 + " wins with a score of " + id1score);
-                     } else if (id2score > id1score && id2score > id3score) {
+                            " | Player " + id1 + " number: " + id1number + 
+                            " | Player " + id2 + " number: " + id2number +
+                            " | Player " + id3 + " number: " + id3number + 
+                            " | " + id1 + " wins with a number of " + id1number);
+                     } else if (id2number > id1number && id2number > id3number) {
                         writer.WriteLine("Highest number wins!" + 
-                            " | Player " + id1 + " score: " + id1score + 
-                            " | Player " + id2 + " score: " + id2score +
-                            " | Player " + id3 + " score: " + id3score + 
-                            " | " + id2 + " wins with a score of " + id2score);
-                        } else if (id3score > id1score && id3score > id2score) {
+                            " | Player " + id1 + " number: " + id1number + 
+                            " | Player " + id2 + " number: " + id2number +
+                            " | Player " + id3 + " number: " + id3number + 
+                            " | " + id2 + " wins with a number of " + id2number);
+                        } else if (id3number > id1number && id3number > id2number) {
                         writer.WriteLine("Highest number wins!" + 
-                            " | Player " + id1 + " score: " + id1score + 
-                            " | Player " + id2 + " score: " + id2score +
-                            " | Player " + id3 + " score: " + id3score + 
-                            " | " + id3 + " wins with a score of " + id3score);
+                            " | Player " + id1 + " number: " + id1number + 
+                            " | Player " + id2 + " number: " + id2number +
+                            " | Player " + id3 + " number: " + id3number + 
+                            " | " + id3 + " wins with a number of " + id3number);
                         }                 
                     writer.Flush();
                 } else {
@@ -122,10 +122,10 @@ public class MultiThreadedEchoServer
 
     public static void rndNumbers() {
         Random rnd = new Random();
-         while (id1score == id2score && id1score == id3score && id2score == id3score) {
-        id1score = rnd.Next(1,100);
-        id2score = rnd.Next(1,100);
-        id3score = rnd.Next(1,100);
+         while (id1number == id2number && id1number == id3number && id2number == id3number) {
+        id1number = rnd.Next(1,100);
+        id2number = rnd.Next(1,100);
+        id3number = rnd.Next(1,100);
             }
     }
 }
