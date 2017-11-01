@@ -6,18 +6,6 @@ using System.Net.Sockets;
 public class EchoClient {
     static Boolean selectedId = false;
 public static void Main() {
-
-/*Console.Write("Press 0 to create a server. Press any other button to see a list of servers to join.");
-    String x = Console.ReadLine();
-
-    if (x == "0") {
-            Console.Write("Creating server");
-            String j = Console.ReadLine();
-    } else {
-            Console.Write("List of servers: \n");
-            String j = Console.ReadLine();
-    }*/
-
     try {
     TcpClient client = new TcpClient("127.0.0.1", 10000);
     StreamReader reader = new StreamReader(client.GetStream());
