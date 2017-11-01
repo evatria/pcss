@@ -4,17 +4,40 @@ using System.Net;
 using System.Net.Sockets;
 
 public class EchoClient {
-    static Boolean selectedId = false;
+    static bool selectedId = false;
+    static bool selectedLobby = false;
 public static void Main() {
     try {
     TcpClient client = new TcpClient("127.0.0.1", 10000);
     StreamReader reader = new StreamReader(client.GetStream());
     StreamWriter writer = new StreamWriter(client.GetStream());
     String s = String.Empty;
-            String x = "asd";
+    String x = "asd";
 
     while (!s.Equals("Exit")) {
+                
+        if(!selectedLobby) {
+                    while (!selectedLobby) {
+                        //Console.Clear();
+        Console.WriteLine("Join/create a lobby.");
+        Console.WriteLine("Type lobby 1 to join lobby 1. If you type anything else you don't join a lobby.");
         
+        String k = "LOBB!"+Console.ReadLine();
+        writer.WriteLine(k);
+        String[] omfg = k.Split('!');
+
+                    if (omfg[1] == "1") {
+                        Console.WriteLine("Joined lobby " + omfg[1]);
+                        selectedLobby = true;
+                }
+        
+                    if (omfg[1] != "1") {
+                        Console.WriteLine("Could not find a lobby to join.");
+                        }
+                    }
+                    writer.Flush();
+        } else {
+
         if (!selectedId) {
         Console.Write("Connected to server! \n");
         Console.Write("Select a unique name: ");
@@ -27,24 +50,30 @@ public static void Main() {
         Console.WriteLine();
         writer.WriteLine(x);
         selectedId = true;
+        writer.Flush();
+                        
                     } else {
               
-                 Console.Write("Press enter to update the state of the lobby.");
+        Console.Write("Press enter to update the state of the lobby.");
                     
         s = Console.ReadLine();
 
         Console.WriteLine();
         writer.WriteLine(s);
-                    Console.Clear();
+                   // Console.Clear();
                     }
+        
+        }
 
         writer.Flush();
         String server_string = reader.ReadLine();
-        Console.WriteLine(server_string + "\n");
+        Console.WriteLine("From server: " + server_string + "\n");
                 if (server_string.Length > 80) {
                     Console.WriteLine("Game Over!");
                    }
-        }
+                }
+        
+        
     reader.Close();
     writer.Close();
     client.Close();
