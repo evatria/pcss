@@ -32,11 +32,17 @@ public static void Main() {
         Console.Write("Select a unique ID: ");
         x = "xIDx_"+Console.ReadLine();
 
+                    while (x.Length < 8) {
+                        Console.Write("ID Needs to be more than 2 characters \n");
+                        Console.Write("Select a unique ID: ");
+                        x = "xIDx_"+Console.ReadLine();
+                        }
+
         Console.WriteLine();
         writer.WriteLine(x);
         selectedId = true;
                     } else {
-                 Console.Write("Press any button to update.");
+                 Console.Write("Press enter to update the state of the lobby.");
         s = Console.ReadLine();
 
         Console.WriteLine();
