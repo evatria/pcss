@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-//Server
 public class MultiThreadedEchoServer
 {
     static String id1 = "noIdYet";
