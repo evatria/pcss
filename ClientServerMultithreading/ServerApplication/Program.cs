@@ -17,25 +17,17 @@ public class MultiThreadedEchoServer
 
     private static void ProcessClientRequests(object argument)
     {
-        
         TcpClient client = (TcpClient)argument;
         try {
-            
             StreamReader reader = new StreamReader(client.GetStream());
             StreamWriter writer = new StreamWriter(client.GetStream());
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
-
                 if (amountOfPlayersConnected < 3) {
-
                     if (s != "") {
-
-
                 if (s[0] == 'x' && s[1] == 'I' && s[2] == 'D' && s[3] == 'x' && s[4] == '_' ) {
                 String[] splitString = s.Split('_');
                 Console.Write("ID: " + splitString[1] + "\n");
-
-
                 if (id1 == "noIdYet") {
                     id1 = splitString[1];
                     Console.Write("player 1: " + id1 + "\n");
@@ -52,7 +44,6 @@ public class MultiThreadedEchoServer
                         Console.WriteLine ("Found three players! \n");
                         amountOfPlayersConnected++;
                 }
-
                 if (id1 != "noIdYet" && id2 != "noIdYet" && id3 != "noIdYet") {
                     Console.Write("Player 1: " + id1 + "\n");
                     Console.Write("Player 2: " + id2 + "\n");
@@ -62,8 +53,6 @@ public class MultiThreadedEchoServer
                 }
                     }
                 if (amountOfPlayersConnected > 2) {
-
-
                         rndNumbers();
                     if (!gameOver) {
                     Console.Write(id1 + " score: " + id1score + "\n");
@@ -71,7 +60,6 @@ public class MultiThreadedEchoServer
                     Console.Write(id3 + " score: " + id3score + "\n");
                         gameOver = true;
                      }
-                    
                     if (id1score > id2score && id1score > id3score) {
                         writer.WriteLine("Highest number wins!"+
                             " | Player " + id1 + " score: " + id1score + 
@@ -90,18 +78,12 @@ public class MultiThreadedEchoServer
                             " | Player " + id2 + " score: " + id2score +
                             " | Player " + id3 + " score: " + id3score + 
                             " | " + id3 + " wins with a score of " + id3score);
-                        }                    
-                    
-                    
-
-                        
+                        }                 
                     writer.Flush();
-                        
                 } else {
                     writer.WriteLine("Players connected: " + amountOfPlayersConnected + " out of 3");
                     writer.Flush();   
                 }
-                               
             }
             reader.Close();
             writer.Close();
