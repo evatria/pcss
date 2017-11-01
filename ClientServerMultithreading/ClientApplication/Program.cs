@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
+//Client
 public class EchoClient {
     static Boolean selectedId = false;
 public static void Main() {
