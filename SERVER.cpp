@@ -135,7 +135,6 @@ void main()
 
 	while (true)
 	{
-		cout << "The first client has connected through socket 1";
 		fd_set copy = master;
 
 		int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
@@ -154,9 +153,11 @@ void main()
 				// Send a welcome message to the connected client
 				string welcomeMsg = "Welcome to the server!\r\n";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
-				cout << "The first client has connected through socket 1" << master.fd_array[0] << endl;
-				cout << "The second client has connected through socket 1" << master.fd_array[1] << endl;
-				cout << "The third client has connected through socket 1" << master.fd_array[2] << endl;
+				cout << "The listening socket is: " << master.fd_array[0] << endl;
+				cout << "The first client has connected through socket " << master.fd_array[1] << endl;
+				cout << "The second client has connected through socket " << master.fd_array[2] << endl;
+				cout << "The third client has connected through socket " << master.fd_array[3] << endl;
+				cout << "The fourth client has connected through socket " << master.fd_array[3] << endl;
 			}
 			else
 			{
@@ -175,21 +176,10 @@ void main()
 				else
 				{
 					// Send message to other clients and definitely not the listening socket
-					for (int i = 0; i < master.fd_count; i++)
-					{
-						SOCKET outSock = master.fd_array[i];
-						if (outSock != sock_LISTEN && outSock != sock)
-						{
-							ostringstream ss;
-							ss << "SOCKET #" << sock << ": " << buf << "\r\n";
-							string strOut = ss.str();
-							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
-						}
-					}
 
 
 
-					/*for (int i = 0; i < master.fd_count; i++)
+					for (int i = 0; i < master.fd_count; i++) //A loop for sending a message to all players
 					{
 						SOCKET outSock = master.fd_array[i];
 						if (outSock != sock_LISTEN && outSock != sock)
@@ -198,13 +188,15 @@ void main()
 							ss << "Other Players are picking their weapon..." << "\n";
 							string strOut = ss.str();
 							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
-						} */
+						}
+
+
+					}
 				}
 			}
 		}
 	}
 }
-
 
 		/*
 

@@ -10,13 +10,13 @@
 #include <stdlib.h>
 
 //SOCKET header files
-#include<WinSock2.h>
+#include <WS2tcpip.h> //A header files that includes many of the winsock headerfiles and functions
 #include<Windows.h>
 #include<iostream>
 #include <iomanip>
 #include <locale>
 #include <sstream>
 #include <string>
-#include <thread>
-#include <WS2tcpip.h> //A header files that includes many of the winsock headerfiles and functions
-#define SCK_VERSION2 0x0202
+
+
+
