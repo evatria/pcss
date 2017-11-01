@@ -54,7 +54,7 @@ public static void Main() {
 
         writer.Flush();
         String server_string = reader.ReadLine();
-        Console.WriteLine("from server: " + server_string + "\n");
+        Console.WriteLine(server_string + "\n");
                 if (server_string.Length > 80) {
                     Console.WriteLine("Game Over!");
                    }
