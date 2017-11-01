@@ -23,11 +23,12 @@ public static void Main() {
         Console.WriteLine("Type lobby 1 to join lobby 1. If you type anything else you don't join a lobby.");
         
         String k = "LOBB!"+Console.ReadLine();
-        writer.WriteLine(k);
+        
         String[] omfg = k.Split('!');
 
                     if (omfg[1] == "1") {
                         Console.WriteLine("Joined lobby " + omfg[1]);
+                            writer.WriteLine(k);
                         selectedLobby = true;
                 }
         
@@ -53,7 +54,7 @@ public static void Main() {
         writer.Flush();
                         
                     } else {
-              
+              }
         Console.Write("Press enter to update the state of the lobby.");
                     
         s = Console.ReadLine();
@@ -61,7 +62,7 @@ public static void Main() {
         Console.WriteLine();
         writer.WriteLine(s);
                    // Console.Clear();
-                    }
+                    
         
         }
 
