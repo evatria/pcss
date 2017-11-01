@@ -8,11 +8,12 @@ using namespace std;
 int SUCCESSFUL;
 WSAData WinSockData;
 WORD DLLVERSION; //Word are objects of a data size that our processor naturally handles (16 or 32-bit)
-string CONVERTER;
-char MESSAGE[200];
-//Create Sockets
-SOCKET sock_LISTEN; //Listen for incomming connection
-SOCKET sock_CONNECTION;//activate if connection found
+SOCKADDR_IN ADDRESS; //Instantiate a SOCKADDR_IN object and name ADRESS
+int numberOfClients;
+
+char MESSAGE01[200];
+char MESSAGE02[200];
+
 
 					   
 //Strings for Assigning tasks using String Comparison:
@@ -21,11 +22,22 @@ std::string joinGame("Server join a game");
 std::string rockChosen("You chose rock");
 std::string paperChosen("You chose paper");
 std::string scissorChosen("You chose scissor");
-std::string assignTask;
+std::string assignTaskClient01;
+std::string assignTaskClient02;
+
+//SOCKETS
+SOCKET sock_LISTEN; //Listen for incomming connection
+SOCKET sock;
+SOCKET client;
+SOCKET outSock;
+
+//Client Sockets..
+SOCKET Client01;
+SOCKET Client02;
 
 //Variables for evaluating game creation
 
-
+bool hasGameBeenCreate = false;
 
 
 //STRUCT for holding game information
@@ -53,7 +65,8 @@ void createGameonServer() {
 	Game01.score_Player01 = 0;
 	Game01.score_Player02 = 0;
 	
-	Game01.weapon_Player01 = 1;
+	Game01.weapon_Player01 = 0;
+	Game01.weapon_Player02 = 1;
 
 }
 
@@ -104,11 +117,9 @@ void main()
 
 
 	//Create Socket Structure
-	SOCKADDR_IN ADDRESS; //Instantiate a SOCKADDR_IN object and name ADRESS
 	int AddressSize = sizeof(ADDRESS); //Store Adress size in an int 
 
 	sock_LISTEN = socket(AF_INET, SOCK_STREAM, NULL); //The server needs a socket to listen in on for incomming connections. 
-	sock_CONNECTION = socket(AF_INET, SOCK_STREAM, NULL); //socket Arguments: AF_INET = internet domain (not Unix doman), //SOCK_STREAM = connection oriented TCP (not SOCK_DGRAM(UDP))
 	ADDRESS.sin_family = AF_INET;
 	ADDRESS.sin_port = htons(54000); //port, htons method to convert the type to a network type
 	ADDRESS.sin_addr.s_addr = INADDR_ANY; //INADDR_ANY, means use the IP of the machine you are on, you can also specify it to Local //inet_addr("127.0.0.1"); //Set IP, this number must be converted
@@ -141,25 +152,25 @@ void main()
 
 		for (int i = 0; i < socketCount; i++)
 		{
-			SOCKET sock = copy.fd_array[i];
+			sock = copy.fd_array[i];
 			if (sock == sock_LISTEN)
 			{
 				// Accept a new connection
-				SOCKET client = accept(sock_LISTEN, nullptr, nullptr);
+				client = accept(sock_LISTEN, nullptr, nullptr);
 
 				// Add the new connection to the list of connected clients
 				FD_SET(client, &master);
-
+				numberOfClients++;
 				// Send a welcome message to the connected client
 				string welcomeMsg = "Welcome to the server!\r\n";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
+				cout << "Number of clients: " << numberOfClients << endl;
 				cout << "The listening socket is: " << master.fd_array[0] << endl;
-				cout << "The first client has connected through socket " << master.fd_array[1] << endl;
-				cout << "The second client has connected through socket " << master.fd_array[2] << endl;
-				cout << "The third client has connected through socket " << master.fd_array[3] << endl;
-				cout << "The fourth client has connected through socket " << master.fd_array[3] << endl;
+				cout << "The first client socket " << master.fd_array[1] << endl;
+				cout << "The second client socket " << master.fd_array[2] << endl;
+				
 			}
-			else
+			/*else
 			{
 				char buf[4096];
 				ZeroMemory(buf, 4096);
@@ -172,7 +183,7 @@ void main()
 					closesocket(sock);
 					FD_CLR(sock, &master);
 
-				}
+				} */
 				else
 				{
 					// Send message to other clients and definitely not the listening socket
@@ -181,7 +192,7 @@ void main()
 
 					for (int i = 0; i < master.fd_count; i++) //A loop for sending a message to all players
 					{
-						SOCKET outSock = master.fd_array[i];
+						outSock = master.fd_array[i];
 						if (outSock != sock_LISTEN && outSock != sock)
 						{
 							ostringstream ss;
@@ -190,74 +201,114 @@ void main()
 							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
 						}
 
+						if (numberOfClients = 1) { //If you are the first client to log on you are assigned to the socket in position 1 of the array the client 01 socket
+							Client01 = master.fd_array[1];
+							ostringstream ss01;
+							ss01 << "You are client 01" << "\n";
+							string strOut01 = ss01.str();
+							send(Client01, strOut01.c_str(), strOut01.size() + 1, 0);
+						}
+						
+						if (numberOfClients = 2) {
+							Client02 = master.fd_array[2];
+							ostringstream ss02;
+							ss02 << "You are client 02" << "\n";
+							string strOut02 = ss02.str();
+							send(Client02, strOut02.c_str(), strOut02.size() + 1, 0);
 
+							
+							//Here we receive from Client 01!
+							
+							SUCCESSFUL = recv(Client01, MESSAGE01, sizeof(MESSAGE01), NULL);
+
+							assignTaskClient01 = MESSAGE01;
+
+							if (assignTaskClient01.compare(createGame) == 0) {
+								if (hasGameBeenCreate = false) {
+									createGameonServer();
+									cout << "Correct input for CreateGame\n" << endl;
+									std::string assignTaskClient01 = "";
+									cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+								}
+								else
+									cout << "Game has already been created..." << endl;
+									SUCCESSFUL = send(Client01, "The game has already been created", 46, NULL);
+
+							}
+							else if (assignTaskClient01.compare(joinGame) == 0) {
+								cout << "Correct input for Joingame" << endl;
+								std::string assignTaskClient01 = "";
+							}
+							else if (assignTaskClient01.compare(rockChosen) == 0) {
+								cout << "Correct input for rock chosen" << endl;
+								Game01.weapon_Player02 = 1;
+								CompareWeapons();
+								SUCCESSFUL = send(Client01, "It's a draw!", 46, NULL);
+								std::string assignTaskClient01 = "";
+							}
+							else if (assignTaskClient01.compare(paperChosen) == 0) {
+								cout << "Correct input for paper chosen" << endl;
+								Game01.weapon_Player02 = 2;
+								CompareWeapons();
+								SUCCESSFUL = send(Client01, "Player 1 wins!", 46, NULL);
+							std::string assignTaskClient01 = "";
+							}
+							else if (assignTaskClient01.compare(scissorChosen) == 0) {
+								cout << "Correct input for scissor chosen" << endl;
+								Game01.weapon_Player02 = 3;
+								CompareWeapons();
+								SUCCESSFUL = send(Client01, "Player 2 wins!", 46, NULL);
+							std::string assignTaskClient01 = "";
+							
+
+							}
+
+							//Here we receive from Client 01!
+
+
+							SUCCESSFUL = recv(Client02, MESSAGE01, sizeof(MESSAGE02), NULL);
+
+							assignTaskClient02 = MESSAGE02;
+
+							if (assignTaskClient02.compare(createGame) == 0) {
+								createGameonServer();
+								cout << "Correct input for CreateGame\n" << endl;
+								std::string assignTaskClient02 = "";
+								cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+							}
+							else if (assignTaskClient02.compare(joinGame) == 0) {
+								cout << "Correct input for Joingame" << endl;
+								std::string assignTaskClient02 = "";
+							}
+							else if (assignTaskClient02.compare(rockChosen) == 0) {
+								cout << "Correct input for rock chosen" << endl;
+								Game01.weapon_Player02 = 1;
+								CompareWeapons();
+								SUCCESSFUL = send(Client02, "It's a draw!", 46, NULL);
+								std::string assignTaskClient02 = "";
+							}
+							else if (assignTaskClient02.compare(paperChosen) == 0) {
+								cout << "Correct input for paper chosen" << endl;
+								Game01.weapon_Player02 = 2;
+								CompareWeapons();
+								SUCCESSFUL = send(Client02, "Player 1 wins!", 46, NULL);
+								std::string assignTaskClient02 = "";
+							}
+							else if (assignTaskClient02.compare(scissorChosen) == 0) {
+								cout << "Correct input for scissor chosen" << endl;
+								Game01.weapon_Player02 = 3;
+								CompareWeapons();
+								SUCCESSFUL = send(Client02, "Player 2 wins!", 46, NULL);
+								std::string assignTaskClient02 = "";
+
+
+							}
+						}
 					}
 				}
 			}
 		}
 	}
-}
-
-		/*
-
-			for (;;) //Infinite foor loop will loop forever...
-			{
-				/*cout << "\n\tSERVER: Waiting for incoming connection...";
-
-				if (sock_CONNECTION = accept(sock_LISTEN, (SOCKADDR*)&ADDRESS, &AddressSize))
-				{
-					cout << "\n\tA connection was found!" << endl;
-
-					SUCCESSFUL = send(sock_CONNECTION, "Welcome! You have connected to the Server!", 46, NULL);*/
-
-					/*
-							SUCCESSFUL = recv(sock_CONNECTION, MESSAGE, 46, NULL); //Create Game Request!
-
-							assignTask = MESSAGE;
-
-							cout << assignTask << endl;
-
-							if (assignTask.compare(createGame) == 0) {
-								createGameonServer();
-								cout << "Correct input for CreateGame" << endl;
-								std::string assignTask = "";
-							}
-							else if (assignTask.compare(joinGame) == 0) {
-								cout << "Correct input for Joingame" << endl;
-								std::string assignTask = "";
-							}
-							else if (assignTask.compare(rockChosen) == 0) {
-								cout << "Correct input for rock chosen" << endl;
-								Game01.weapon_Player02 = 1;
-								CompareWeapons();
-								SUCCESSFUL = send(sock_CONNECTION, "It's a draw!", 46, NULL);
-								printGameData();
-								std::string assignTask = "";
-							}
-							else if (assignTask.compare(paperChosen) == 0) {
-								cout << "Correct input for paper chosen" << endl;
-								Game01.weapon_Player02 = 2;
-								CompareWeapons();
-								SUCCESSFUL = send(sock_CONNECTION, "Player 1 wins!", 46, NULL);
-								printGameData();
-								std::string assignTask = "";
-							}
-							else if (assignTask.compare(scissorChosen) == 0) {
-								cout << "Correct input for scissor chosen" << endl;
-								Game01.weapon_Player02 = 3;
-								CompareWeapons();
-								SUCCESSFUL = send(sock_CONNECTION, "Player 2 wins!", 46, NULL);
-								printGameData();
-								std::string assignTask = "";
-							}
 
 
-							//cout << CONVERTER;
-
-
-						}
-						//}
-					} */
-	
-
-	
+		

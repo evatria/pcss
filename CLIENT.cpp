@@ -97,6 +97,7 @@ void joinGame(){
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 		cout << "You have joined a game" << endl;
+		showMenuText = true;
 	}
 }
 
@@ -164,7 +165,7 @@ void main(){
 		cout << '	' << CONVERTER;
 		menu();
 	}
-
+	SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL);
 	cout << "\n\n\t";
 	system("PAUSE");
 	exit(1);
