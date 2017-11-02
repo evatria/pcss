@@ -268,11 +268,10 @@ void main()
 
 							}
 
-<<<<<<< HEAD
+
 							//Here we receive from Client 02 !
-=======
-							//Here we receive from Client 02!
->>>>>>> cb35e0013e56c5948eb5cb5aad77c09fef614147
+
+
 
 
 							SUCCESSFUL = recv(Client02, MESSAGE02, sizeof(MESSAGE02), NULL);

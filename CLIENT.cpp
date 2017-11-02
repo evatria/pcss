@@ -102,7 +102,7 @@ void joinGame() {
 
 
 void menu() { //The Lobby
-	while (true) {
+	//while (true) {
 		cout << "\n\tCLIENT:\n\nHello, welcome to ROCK-PAPER-SCISSOR.";
 		do { //do while loop to make switch case run again if choice is not valid
 			cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
@@ -129,7 +129,7 @@ void menu() { //The Lobby
 				break;
 			}
 		} while (valid);
-	}
+	//}
 }
 
 void main(){
