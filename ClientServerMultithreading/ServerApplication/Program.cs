@@ -59,10 +59,15 @@ public class MultiThreadedEchoServer {
                     Console.Write("Player 1: " + id1 + "\n");
                     Console.Write("Player 2: " + id2 + "\n");
                     Console.Write("Player 3: " + id3 + "\n");
-                                }
-                                        }
+                }
+                }
                 }
                     }
+
+
+
+
+
 
                 if (amountOfPlayersConnected > 2) {
                         rndNumbers();
@@ -78,21 +83,18 @@ public class MultiThreadedEchoServer {
                             " | Player " + id2 + " number: " + id2number +
                             " | Player " + id3 + " number: " + id3number + 
                             " | " + id1 + " wins with a number of " + id1number);
-                            Console.Write(id1 + "wins!");
                      } else if (id2number > id1number && id2number > id3number) {
                         writer.WriteLine("Highest number wins!" + 
                             " | Player " + id1 + " number: " + id1number + 
                             " | Player " + id2 + " number: " + id2number +
                             " | Player " + id3 + " number: " + id3number + 
                             " | " + id2 + " wins with a number of " + id2number);
-                            Console.Write(id2 + "wins!");
                         } else if (id3number > id1number && id3number > id2number) {
                         writer.WriteLine("Highest number wins!" + 
                             " | Player " + id1 + " number: " + id1number + 
                             " | Player " + id2 + " number: " + id2number +
                             " | Player " + id3 + " number: " + id3number + 
                             " | " + id3 + " wins with a number of " + id3number);
-                            Console.Write(id3 + " wins!");
                         }                 
                     writer.Flush();
                 }
