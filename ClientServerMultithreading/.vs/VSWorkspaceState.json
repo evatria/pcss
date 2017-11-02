@@ -4,6 +4,6 @@
     "\\ClientApplication",
     "\\ServerApplication"
   ],
-  "SelectedNode": "\\ServerApplication\\ServerApplication.csproj",
+  "SelectedNode": "\\ClientApplication\\ClientApplication.csproj",
   "PreviewInSolutionExplorer": false
 }
