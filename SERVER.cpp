@@ -82,25 +82,29 @@ void CompareWeapons() {
 		cout << "It's a draw" << endl;
 	}
 	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 2) {
-		cout << "Player 1 wins" << endl;
-		Game01.score_Player01++;
-	}
-	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 3) {
 		cout << "Player 2 wins" << endl;
 		Game01.score_Player02++;
 	}
-
-}
-
-
-void JoinSpecificGame() {
-
-
-
-
-}
-
-void connectionHandler() {
+	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 3) {
+		cout << "Player 1 wins" << endl;
+		Game01.score_Player01++;
+	}
+	else if (Game01.weapon_Player01 == 2 && Game01.weapon_Player02 == 1) {
+		cout << "Player 1 wins" << endl;
+		Game01.score_Player01++;
+	}
+	else if (Game01.weapon_Player01 == 2 && Game01.weapon_Player02 == 3) {
+		cout << "Player 2 wins" << endl;
+		Game01.score_Player02++;
+	}
+	else if (Game01.weapon_Player01 == 3 && Game01.weapon_Player02 == 1) {
+		cout << "Player 2 wins" << endl;
+		Game01.score_Player02++;
+	}
+	else if (Game01.weapon_Player01 == 3 && Game01.weapon_Player02 == 2) {
+		cout << "Player 1 wins" << endl;
+		Game01.score_Player01++;
+	}
 }
 
 void main()
@@ -263,7 +267,7 @@ void main()
 
 							}
 
-							//Here we receive from Client 01!
+							//Here we receive from Client 02 !
 
 
 							SUCCESSFUL = recv(Client02, MESSAGE01, sizeof(MESSAGE02), NULL);
