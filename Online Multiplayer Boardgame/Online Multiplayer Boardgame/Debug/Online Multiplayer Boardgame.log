@@ -1,4 +1,4 @@
 ﻿  SERVER.cpp
-c:\users\junkers master pc\documents\github\pcss2017\server.cpp(193): warning C4018: '<': signed/unsigned mismatch
-  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
-  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junkers Master PC\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.pdb (Partial PDB)
+c:\users\camil\onedrive\dokumenter\github\pcss2017\server.cpp(206): warning C4018: '<': signed/unsigned mismatch
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.exe
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\camil\OneDrive\Dokumenter\GitHub\PCSS2017\Online Multiplayer Boardgame\Debug\Server Side.pdb (Partial PDB)

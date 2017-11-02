@@ -13,7 +13,6 @@ SOCKADDR_IN ADDRESS; //This object contains information about the socket, for ex
 SOCKET sock; //This is the socket we use on this side... There is one at each side client and server, this side is called sock
 char MESSAGE[200]; // this is a simpler string (a collection of characters). //Must be large enough to accomedate the largest amount of data sent from the server
 
-
 //Pre lobby user interaction
 string RESPONSE; // These a instances of the type string
 
@@ -22,20 +21,16 @@ string rockChosen;
 string paperChosen;
 string scissorChosen;
 
-
 //LOBBY VARRIABLES
 int LOBBYCHOICE;
 bool valid; //to make switch case run again
-bool gameisCreated=false;
-bool showMenuText =false;
-
+bool gameisCreated=true;
 
 //Functions declared here before main
 void createGame(){
 	strcpy_s(MESSAGE, "Server Create me a Game");
 	SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 	gameisCreated = true;
-	showMenuText = true;
 	cout << "Game was created" << endl;
 }
 
@@ -92,47 +87,49 @@ void weaponChoice() { //Menu to choose weapon
 	} while (valid);
 }
 
-void joinGame(){
+void joinGame() {
 	if (gameisCreated) {
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 		cout << "You have joined a game" << endl;
-		showMenuText = true;
+		weaponChoice();
 	}
+	/*else {
+		cout << "No game has been created yet - a game will now be created for you" << endl;
+		createGame();
+	}*/
 }
 
+
 void menu() { //The Lobby
-	cout << "\n\tCLIENT:\n\nHello, welcome to this amazing game.";
-	do { //do while loop to make switch case run again if choice is not valid
-		cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
+	while (true) {
+		cout << "\n\tCLIENT:\n\nHello, welcome to ROCK-PAPER-SCISSOR.";
+		do { //do while loop to make switch case run again if choice is not valid
+			cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
 
-		/*if (showMenuText == true){
-		cout << "2: Join game\n3 : Leave game\n...";
-		showMenuText = false;
-		}*/
+			cin >> LOBBYCHOICE; //Get input from user about what they want to do
 
-		cin >> LOBBYCHOICE; //Get input from user about what they want to do
-
-		switch (LOBBYCHOICE) {
-		case 1:
-			createGame();
-			weaponChoice();
-			valid = false;
-			break;
-		case 2:
-			joinGame();
-			valid = false;
-			break;
-		case 3:
-			cout << "Goodbye";
-			valid = false;
-			break;
-		default:
-			cout << "That not a valid answer";
-			valid = true;
-			break;
-		}
-	} while (valid);
+			switch (LOBBYCHOICE) {
+			case 1:
+				createGame();
+				weaponChoice();
+				valid = false;
+				break;
+			case 2:
+				joinGame();
+				valid = false;
+				break;
+			case 3:
+				cout << "Goodbye";
+				valid = false;
+				break;
+			default:
+				cout << "That not a valid answer";
+				valid = true;
+				break;
+			}
+		} while (valid);
+	}
 }
 
 void main(){
@@ -144,15 +141,12 @@ void main(){
 	ADDRESS.sin_family = AF_INET; // Tells the computer to use IP format IPv4 (Standard at the momemnt)
 	ADDRESS.sin_port = htons(54000); // Have to use htons method to convert it to network style, and then specify port number 444 which is the port we use. 
 
-	
 	//Once we have set up some basic networking stuff we ask the USER:
 	cout << "\n\tCLIENT: Do you want to connect to this server? Press 'y' for yes or 'n' for no.";
 	cin >> RESPONSE; //Inputs their response into the string variable RESPONSE 
 	RESPONSE[0] = tolower(RESPONSE[0]); // Convert first letter to lower case and only this so if you type YES it takes Y = y
 
-
-	//Depending on the answer we have two options:
-	
+	//Depending on the answer we have two options:	
 	if (RESPONSE == "n"){ //if no then just quit
 		cout << "\n\tOK. Quitting instead.";
 		exit(0);
@@ -165,6 +159,7 @@ void main(){
 		cout << '	' << CONVERTER;
 		menu();
 	}
+
 	SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL);
 	cout << "\n\n\t";
 	system("PAUSE");
