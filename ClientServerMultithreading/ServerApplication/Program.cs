@@ -4,7 +4,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-public class MultiThreadedEchoServer {
+public class MultiThreadedEchoServer
+{
     static String id1 = "noIdYet";
     static String id2 = "noIdYet";
     static String id3 = "noIdYet";
@@ -13,30 +14,20 @@ public class MultiThreadedEchoServer {
     static int id3number = 0;
     static int amountOfPlayersConnected = 0;
     static bool gameOver = false;
-    static string[] lobbyarr = new string[]{"asd","qwe"};
 
-    private static void ProcessClientRequests(object argument) {
+    private static void ProcessClientRequests(object argument)
+    {
         TcpClient client = (TcpClient)argument;
         try {
             StreamReader reader = new StreamReader(client.GetStream());
             StreamWriter writer = new StreamWriter(client.GetStream());
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
-                 if (s != "") {
-                if (s[0] == 'L' && s[1] == 'O' && s[2] == 'B' && s[3] == 'B' && s[4] == '!') {
-                       String[] createLobby = s.Split('!');
-                       lobbyarr[1] = createLobby[1];
-                       Console.WriteLine("Entered lobby " + createLobby[1]);
-                    }
-                }
                 if (amountOfPlayersConnected < 3) {
                     if (s != "") {
                 if (s[0] == 'x' && s[1] == 'I' && s[2] == 'D' && s[3] == 'x' && s[4] == '_' ) {
                 String[] splitString = s.Split('_');
                 Console.Write("ID: " + splitString[1] + "\n");
-                Console.WriteLine(splitString[1] + " is in lobby " + lobbyarr[1]);
-
-                        if (lobbyarr[1] == "1") {
                 if (id1 == "noIdYet") {
                     id1 = splitString[1];
                     Console.Write("player 1: " + id1 + "\n");
@@ -61,12 +52,6 @@ public class MultiThreadedEchoServer {
                 }
                 }
                     }
-
-
-
-
-
-
                 if (amountOfPlayersConnected > 2) {
                         rndNumbers();
                     if (!gameOver) {
@@ -76,7 +61,7 @@ public class MultiThreadedEchoServer {
                         gameOver = true;
                      }
                     if (id1number > id2number && id1number > id3number) {
-                        writer.WriteLine("Highest number wins!" +
+                        writer.WriteLine("Highest number wins!"+
                             " | Player " + id1 + " number: " + id1number + 
                             " | Player " + id2 + " number: " + id2number +
                             " | Player " + id3 + " number: " + id3number + 
@@ -95,14 +80,10 @@ public class MultiThreadedEchoServer {
                             " | " + id3 + " wins with a number of " + id3number);
                         }                 
                     writer.Flush();
-                }
-                if (amountOfPlayersConnected < 3) {
+                } else {
                     writer.WriteLine("Players connected: " + amountOfPlayersConnected + " out of 3");
                     writer.Flush();   
-                        }
-                
                 }
-                
             }
             reader.Close();
             writer.Close();
