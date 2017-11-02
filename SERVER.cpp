@@ -228,13 +228,14 @@ void main()
 							assignTaskClient01 = MESSAGE01;
 
 							if (assignTaskClient01.compare(createGame) == 0) {
-								if (hasGameBeenCreate = false) {
+								if (hasGameBeenCreate == false) {
 									createGameonServer();
 									cout << "Correct input for CreateGame\n" << endl;
 									std::string assignTaskClient01 = "";
 									cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+									hasGameBeenCreate = true;
 								}
-								else
+								else if(hasGameBeenCreate == true)
 									cout << "Game has already been created..." << endl;
 									SUCCESSFUL = send(Client01, "The game has already been created", 46, NULL);
 
@@ -267,18 +268,31 @@ void main()
 
 							}
 
+<<<<<<< HEAD
 							//Here we receive from Client 02 !
+=======
+							//Here we receive from Client 02!
+>>>>>>> cb35e0013e56c5948eb5cb5aad77c09fef614147
 
 
-							SUCCESSFUL = recv(Client02, MESSAGE01, sizeof(MESSAGE02), NULL);
+							SUCCESSFUL = recv(Client02, MESSAGE02, sizeof(MESSAGE02), NULL);
 
 							assignTaskClient02 = MESSAGE02;
-
 							if (assignTaskClient02.compare(createGame) == 0) {
-								createGameonServer();
-								cout << "Correct input for CreateGame\n" << endl;
-								std::string assignTaskClient02 = "";
-								cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+								if (hasGameBeenCreate == false) {
+									createGameonServer();
+									cout << "Correct input for CreateGame\n" << endl;
+									std::string assignTaskClient02 = "";
+									cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+									hasGameBeenCreate = true;
+								}
+								else if(hasGameBeenCreate == true)
+									cout << "Game has already been created..." << endl;
+								SUCCESSFUL = send(Client02, "The game has already been created", 46, NULL);
+
+							
+
+
 							}
 							else if (assignTaskClient02.compare(joinGame) == 0) {
 								cout << "Correct input for Joingame" << endl;
