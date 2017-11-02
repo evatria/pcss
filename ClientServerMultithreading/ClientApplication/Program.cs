@@ -6,24 +6,18 @@ using System.Net.Sockets;
 //workfromhometest
 
 public class EchoClient {
-    static bool selectedId = false;
-    static bool selectedLobby = false;
+    static Boolean selectedId = false;
 public static void Main() {
     try {
     TcpClient client = new TcpClient("127.0.0.1", 10000);
     StreamReader reader = new StreamReader(client.GetStream());
     StreamWriter writer = new StreamWriter(client.GetStream());
     String s = String.Empty;
-    String x = "asd";
+            String x = "asd";
 
     while (!s.Equals("Exit")) {
-                
-        if(!selectedLobby) {
-                    while (!selectedLobby) {
-                        //Console.Clear();
-        Console.WriteLine("Join/create a lobby.");
-        Console.WriteLine("Type lobby 1 to join lobby 1. If you type anything else you don't join a lobby.");
         
+<<<<<<< HEAD
         String k = "LOBB!"+Console.ReadLine();
         
         String[] omfg = k.Split('!');
@@ -41,6 +35,8 @@ public static void Main() {
                     writer.Flush();
         } else {
 
+=======
+>>>>>>> parent of 178368f... DET MED HIGHEST NUMBER WINS FUNGERER IKKE. Kan ikke se om det er fordi serveren ikke sender, eller fordi clienten ikke printer...
         if (!selectedId) {
         Console.Write("Connected to server! \n");
         Console.Write("Select a unique name: ");
@@ -53,30 +49,36 @@ public static void Main() {
         Console.WriteLine();
         writer.WriteLine(x);
         selectedId = true;
-        writer.Flush();
-                        
                     } else {
+<<<<<<< HEAD
               }
         Console.Write("Press enter to update the state of the lobby.");
+=======
+              
+                 Console.Write("Press enter to update the state of the lobby.");
+>>>>>>> parent of 178368f... DET MED HIGHEST NUMBER WINS FUNGERER IKKE. Kan ikke se om det er fordi serveren ikke sender, eller fordi clienten ikke printer...
                     
         s = Console.ReadLine();
 
         Console.WriteLine();
         writer.WriteLine(s);
+<<<<<<< HEAD
                    // Console.Clear();
                     
         
         }
+=======
+                    Console.Clear();
+                    }
+>>>>>>> parent of 178368f... DET MED HIGHEST NUMBER WINS FUNGERER IKKE. Kan ikke se om det er fordi serveren ikke sender, eller fordi clienten ikke printer...
 
         writer.Flush();
         String server_string = reader.ReadLine();
-        Console.WriteLine("From server: " + server_string + "\n");
+        Console.WriteLine(server_string + "\n");
                 if (server_string.Length > 80) {
                     Console.WriteLine("Game Over!");
                    }
-                }
-        
-        
+        }
     reader.Close();
     writer.Close();
     client.Close();
