@@ -6,6 +6,8 @@ using System.Threading;
 
 public class MultiThreadedEchoServer {
 
+    //Max 3 clients supported.
+
     static bool selectedName = false;
     static String[] playerNames = {"", "", ""};
     static bool[] openLobbies = {false, false, false};
