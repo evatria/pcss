@@ -9,6 +9,7 @@ public class EchoClient {
     static bool joinedLobby = false;
     static int lobbyNumber = 0;
     static String clientName = "";
+    static bool startingGame = false;
 
     public static void Main() {
         try {
@@ -38,32 +39,54 @@ public class EchoClient {
                     Console.WriteLine("join 1-3: join lobby \n");
 
                     s = clientName+"_"+Console.ReadLine();
-                    if (s == "join 1" || s == "Join 1")  {
-                        lobbyNumber = 1;
-                        joinedLobby = true;
-                    } else if (s == "join 2" || s == "Join 2")  {
-                        lobbyNumber = 2;
-                        joinedLobby = true;
-                    } else if (s == "join 3" || s == "Join 3")  {
-                        lobbyNumber = 3;
-                        joinedLobby = true;
-                    }
+                    } 
 
-                    } else if (joinedLobby) {
+
+                    if (joinedLobby && !startingGame) {
                 Console.WriteLine("Waiting for game to start.");
                     Console.WriteLine("You are in lobby " + lobbyNumber);
                     Console.WriteLine("Type leave to leave the lobby.");
                     Console.WriteLine("Press Enter to update the state of the lobby. \n");
-                    s = clientName+Console.ReadLine();
+                    s = clientName+"_"+Console.ReadLine();
+                    }
 
-                }
+                    if (startingGame) {
+                    Console.WriteLine("Starting Game! You can no longer use any commands. \n \n");
+                    s = Console.ReadLine()+"xox9_";
+                    }
                 
                 Console.WriteLine();
                 writer.WriteLine(s);
                 writer.Flush();
                 String server_string = reader.ReadLine();
-                //Console.Clear();
                 Console.WriteLine("From Server: " + server_string + "\n");
+
+                if (server_string == "Joined lobby 1 (1)" || server_string == "Joined lobby 1 (2)") {
+                    joinedLobby = true;
+                    lobbyNumber = 1;
+                } else if (server_string == "Joined lobby 1 (3)" || server_string == "3 Players connected to lobby 1! Ready to start game!") {
+                    joinedLobby = true;
+                    lobbyNumber = 1;
+                    startingGame = true;
+                }
+
+                if (server_string == "Joined lobby 2 (1)" || server_string == "Joined lobby 2 (2)") {
+                    joinedLobby = true;
+                    lobbyNumber = 2;
+                } else if (server_string == "Joined lobby 2 (3)" || server_string == "3 Players connected to lobby 2! Ready to start game!") {                 
+                    joinedLobby = true;
+                    lobbyNumber = 2;
+                    startingGame = true;
+                }
+
+                if (server_string == "Joined lobby 3 (1)" || server_string == "Joined lobby 3 (2)") {
+                    joinedLobby = true;
+                    lobbyNumber = 3;
+                } else if (server_string == "Joined lobby 3 (3)" || server_string == "3 Players connected to lobby 3! Ready to start game!") {
+                    joinedLobby = true;
+                    lobbyNumber = 3;
+                    startingGame = true;
+                }
             }
             reader.Close();
             writer.Close();
