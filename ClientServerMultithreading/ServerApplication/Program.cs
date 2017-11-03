@@ -6,6 +6,8 @@ using System.Threading;
 
 public class MultiThreadedEchoServer {
 
+    // MAXIMUM 3 CLIENTS SUPPORTED
+
     static bool selectedName = false;
 
     static bool foundRandom = false;
@@ -20,6 +22,8 @@ public class MultiThreadedEchoServer {
     static bool[] playerinlobby = {false, false, false};
     static int[] tempLobby = {0, 0, 0};
     static bool[] clientsConnected = {false, false, false};
+
+    // Alt er sat ind i arrays her, så vi kan eventuelt lave koden 50% kortere med en masse for each loops. Orker bare ikke helt at gøre det zzz
     
     private static void ProcessClientRequests(object argument) {
 
