@@ -7,26 +7,12 @@ using System.Threading;
 public class MultiThreadedEchoServer {
 
     static bool selectedName = false;
-    static String firstPlayerName = "";
-    static String secondPlayerName = "";
-    static String thirdPlayerName = "";
-
-    static bool[] openLobbies = {false, false, false}; // Man burde lave alle de andre ting til arrays ligesom det her. Koden ville være meget pænere. Det er bare et lidt stort arbejde.
-    static int playersInLobby1 = 0;
-    static int playersInLobby2 = 0;
-    static int playersInLobby3 = 0;
-    
-    static bool firstPlayerInsideALobby = false;
-    static bool secondPlayerInsideALobby = false;
-    static bool thirdPlayerInsideALobby = false;
-
-    static int firstPlayerTempLobby = 0;
-    static int secondPlayerTempLobby = 0;
-    static int thirdPlayerTempLobby = 0;
-
-    static bool firstClientConnected = false;
-    static bool secondClientConnected = false;
-    static bool thirdClientConnected = false;
+    static String[] playerNames = {"", "", ""};
+    static bool[] openLobbies = {false, false, false};
+    static int[] playersinlobby = {0, 0, 0};
+    static bool[] playerinlobby = {false, false, false};
+    static int[] tempLobby = {0, 0, 0};
+    static bool[] clientsConnected = {false, false, false};
     
     private static void ProcessClientRequests(object argument) {
 
@@ -37,378 +23,378 @@ public class MultiThreadedEchoServer {
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
                 //Console.WriteLine("\nInput: " + s);
-                if (s[0] == '+' && s[1] == '+' && !firstClientConnected) {
-                    firstPlayerName = s;
-                    Console.WriteLine(firstPlayerName + " joined the server");
-                    writer.WriteLine("Name selected: " + firstPlayerName);
+                if (s[0] == '+' && s[1] == '+' && !clientsConnected[0]) {
+                    playerNames[0] = s;
+                    Console.WriteLine(playerNames[0] + " joined the server");
+                    writer.WriteLine("Name selected: " + playerNames[0]);
                     selectedName = true;
-                    firstClientConnected = true;
-                    Console.WriteLine("firstClientConnected: " + firstClientConnected + "\n");
-                 } else if (s[0] == '+' && s[1] == '+' && firstClientConnected && !secondClientConnected) {
-                    secondPlayerName = s;
-                    Console.WriteLine(secondPlayerName + " joined the server");
-                    writer.WriteLine("Name selected: " + secondPlayerName);
+                    clientsConnected[0] = true;
+                    Console.WriteLine("clientsConnected[0]: " + clientsConnected[0] + "\n");
+                 } else if (s[0] == '+' && s[1] == '+' && clientsConnected[0] && !clientsConnected[1]) {
+                    playerNames[1] = s;
+                    Console.WriteLine(playerNames[1] + " joined the server");
+                    writer.WriteLine("Name selected: " + playerNames[1]);
                     selectedName = true;
-                    secondClientConnected = true;
-                    Console.WriteLine("secondClientConnected: " + secondClientConnected + "\n");
-                 } else if (s[0] == '+' && s[1] == '+' && secondClientConnected) {
-                    thirdPlayerName = s;
-                    Console.WriteLine(thirdPlayerName + " joined the server");
-                    writer.WriteLine("Name selected: " + thirdPlayerName);
+                    clientsConnected[1] = true;
+                    Console.WriteLine("clientsConnected[1]: " + clientsConnected[1] + "\n");
+                 } else if (s[0] == '+' && s[1] == '+' && clientsConnected[1]) {
+                    playerNames[2] = s;
+                    Console.WriteLine(playerNames[2] + " joined the server");
+                    writer.WriteLine("Name selected: " + playerNames[2]);
                     selectedName = true;
-                    thirdClientConnected = true;
-                    Console.WriteLine("thirdClientConnected: " + thirdClientConnected + "\n");
+                    clientsConnected[2] = true;
+                    Console.WriteLine("clientsConnected[2]: " + clientsConnected[2] + "\n");
                  } else {
                     String j = string.Concat("++", s);
                     //Console.WriteLine(j);
-                if (j == (firstPlayerName+"_lobbylist")) {
-                        Console.WriteLine(firstPlayerName + " Requested to see the lobby list");
-                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersInLobby1 + ")":"Closed ") +
-                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersInLobby2 + ")":"Closed ") +
-                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersInLobby3 + ")":"Closed" ));
+                if (j == (playerNames[0]+"_lobbylist")) {
+                        Console.WriteLine(playerNames[0] + " Requested to see the lobby list");
+                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersinlobby[0] + ")":"Closed ") +
+                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersinlobby[1] + ")":"Closed ") +
+                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersinlobby[2] + ")":"Closed" ));
 
-                } else if (j == (secondPlayerName+"_lobbylist")) {
-                        Console.WriteLine(secondPlayerName + " Requested to see the lobby list");
-                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersInLobby1 + ")":"Closed ") +
-                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersInLobby2 + ")":"Closed ") +
-                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersInLobby3 + ")":"Closed" ));
+                } else if (j == (playerNames[1]+"_lobbylist")) {
+                        Console.WriteLine(playerNames[1] + " Requested to see the lobby list");
+                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersinlobby[0] + ")":"Closed ") +
+                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersinlobby[1] + ")":"Closed ") +
+                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersinlobby[2] + ")":"Closed" ));
 
-                } else if (j == (thirdPlayerName+"_lobbylist")) {
-                        Console.WriteLine(thirdPlayerName + " Requested to see the lobby list");
-                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersInLobby1 + ")":"Closed ") +
-                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersInLobby2 + ")":"Closed ") +
-                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersInLobby3 + ")":"Closed" ));
+                } else if (j == (playerNames[2]+"_lobbylist")) {
+                        Console.WriteLine(playerNames[2] + " Requested to see the lobby list");
+                    writer.WriteLine("Lobby 1: " + (openLobbies[0]?"Open " + "(" + playersinlobby[0] + ")":"Closed ") +
+                        " | Lobby 2: " + (openLobbies[1]?"Open " + "(" + playersinlobby[1] + ")":"Closed ") +
+                        " | Lobby 3: " + (openLobbies[2]?"Open " + "(" + playersinlobby[2] + ")":"Closed" ));
 
-                } else if (j == (firstPlayerName+"_Open 1") || j == (firstPlayerName+"_open 1")) {
+                } else if (j == (playerNames[0]+"_Open 1") || j == (playerNames[0]+"_open 1")) {
                         if (!openLobbies[0]) {
                         openLobbies[0] = true;
                     writer.WriteLine("Opened lobby 1");
-                        Console.WriteLine(firstPlayerName + " Opened lobby 1");
+                        Console.WriteLine(playerNames[0] + " Opened lobby 1");
                         } else {
                          writer.WriteLine("Tried to open lobby 1 but it was already open.");
-                        Console.WriteLine(firstPlayerName + " Tried to open lobby 1 but it was already open");
+                        Console.WriteLine(playerNames[0] + " Tried to open lobby 1 but it was already open");
                          }
-                } else if (j == (secondPlayerName+"_Open 1") || j == (secondPlayerName+"_open 1")) {
+                } else if (j == (playerNames[1]+"_Open 1") || j == (playerNames[1]+"_open 1")) {
                         if (!openLobbies[0]) {
                         openLobbies[0] = true;
                     writer.WriteLine("Opened lobby 1");
-                        Console.WriteLine(secondPlayerName + " Opened lobby 1");
+                        Console.WriteLine(playerNames[1] + " Opened lobby 1");
                         } else {
                          writer.WriteLine("Tried to open lobby 1 but it was already open.");
-                        Console.WriteLine(secondPlayerName + " Tried to open lobby 1 but it was already open");
+                        Console.WriteLine(playerNames[1] + " Tried to open lobby 1 but it was already open");
                          }
-                } else if (j == (thirdPlayerName+"_Open 1") || j == (thirdPlayerName+"_open 1")) {
+                } else if (j == (playerNames[2]+"_Open 1") || j == (playerNames[2]+"_open 1")) {
                         if (!openLobbies[0]) {
                         openLobbies[0] = true;
                     writer.WriteLine("Opened lobby 1");
-                        Console.WriteLine(thirdPlayerName + " Opened lobby 1");
+                        Console.WriteLine(playerNames[2] + " Opened lobby 1");
                         } else {
                          writer.WriteLine("Tried to open lobby 1 but it was already open.");
-                        Console.WriteLine(thirdPlayerName + " Tried to open lobby 1 but it was already open");
+                        Console.WriteLine(playerNames[2] + " Tried to open lobby 1 but it was already open");
                          }
-                } else if (j == (firstPlayerName+"_Open 2") || j == (firstPlayerName+"_open 2")) {
+                } else if (j == (playerNames[0]+"_Open 2") || j == (playerNames[0]+"_open 2")) {
                         if (!openLobbies[1]) {
                         openLobbies[1] = true;
                     writer.WriteLine("Opened lobby 2");
-                        Console.WriteLine(firstPlayerName + " Opened lobby 2");
+                        Console.WriteLine(playerNames[0] + " Opened lobby 2");
                         } else {
                          writer.WriteLine("Tried to open lobby 2 but it was already open.");
-                        Console.WriteLine(firstPlayerName + " Tried to open lobby 2 but it was already open");
+                        Console.WriteLine(playerNames[0] + " Tried to open lobby 2 but it was already open");
                          }
-                } else if (j == (secondPlayerName+"_Open 2") || j == (secondPlayerName+"_open 2")) {
+                } else if (j == (playerNames[1]+"_Open 2") || j == (playerNames[1]+"_open 2")) {
                         if (!openLobbies[1]) {
                         openLobbies[1] = true;
                     writer.WriteLine("Opened lobby 2");
-                        Console.WriteLine(secondPlayerName + " Opened lobby 2");
+                        Console.WriteLine(playerNames[1] + " Opened lobby 2");
                         } else {
                          writer.WriteLine("Tried to open lobby 2 but it was already open.");
-                        Console.WriteLine(secondPlayerName + " Tried to open lobby 2 but it was already open");
+                        Console.WriteLine(playerNames[1] + " Tried to open lobby 2 but it was already open");
                          }
-                } else if (j == (thirdPlayerName+"_Open 2") || j == (thirdPlayerName+"_open 2")) {
+                } else if (j == (playerNames[2]+"_Open 2") || j == (playerNames[2]+"_open 2")) {
                         if (!openLobbies[1]) {
                         openLobbies[1] = true;
                     writer.WriteLine("Opened lobby 2");
-                        Console.WriteLine(thirdPlayerName + " Opened lobby 2");
+                        Console.WriteLine(playerNames[2] + " Opened lobby 2");
                         } else {
                          writer.WriteLine("Tried to open lobby 2 but it was already open.");
-                        Console.WriteLine(thirdPlayerName + " Tried to open lobby 2 but it was already open");
+                        Console.WriteLine(playerNames[2] + " Tried to open lobby 2 but it was already open");
                         }
-                    } else if (j == (firstPlayerName+"_Open 3") || j == (firstPlayerName+"_open 3")) {
+                    } else if (j == (playerNames[0]+"_Open 3") || j == (playerNames[0]+"_open 3")) {
                         if (!openLobbies[2]) {
                         openLobbies[2] = true;
                     writer.WriteLine("Opened lobby 3");
-                        Console.WriteLine(firstPlayerName + " Opened lobby 3");
+                        Console.WriteLine(playerNames[0] + " Opened lobby 3");
                         } else {
                          writer.WriteLine("Tried to open lobby 3 but it was already open.");
-                        Console.WriteLine(firstPlayerName + " Tried to open lobby 3 but it was already open");
+                        Console.WriteLine(playerNames[0] + " Tried to open lobby 3 but it was already open");
                          }
-                } else if (j == (secondPlayerName+"_Open 3") || j == (secondPlayerName+"_open 3")) {
+                } else if (j == (playerNames[1]+"_Open 3") || j == (playerNames[1]+"_open 3")) {
                         if (!openLobbies[2]) {
                         openLobbies[2] = true;
                     writer.WriteLine("Opened lobby 3");
-                        Console.WriteLine(secondPlayerName + " Opened lobby 3");
+                        Console.WriteLine(playerNames[1] + " Opened lobby 3");
                         } else {
                          writer.WriteLine("Tried to open lobby 3 but it was already open.");
-                        Console.WriteLine(secondPlayerName + " Tried to open lobby 3 but it was already open");
+                        Console.WriteLine(playerNames[1] + " Tried to open lobby 3 but it was already open");
                          }
-                } else if (j == (thirdPlayerName+"_Open 3") || j == (thirdPlayerName+"_open 3")) {
+                } else if (j == (playerNames[2]+"_Open 3") || j == (playerNames[2]+"_open 3")) {
                         if (!openLobbies[2]) {
                         openLobbies[2] = true;
                     writer.WriteLine("Opened lobby 3");
-                        Console.WriteLine(thirdPlayerName + " Opened lobby 3");
+                        Console.WriteLine(playerNames[2] + " Opened lobby 3");
                         } else {
                          writer.WriteLine("Tried to open lobby 3 but it was already open.");
-                        Console.WriteLine(thirdPlayerName + " Tried to open lobby 3 but it was already open");
+                        Console.WriteLine(playerNames[2] + " Tried to open lobby 3 but it was already open");
                         }
-                    } else if (j == (firstPlayerName+"_Close 1") || j == (firstPlayerName+"_close 1")) {
+                    } else if (j == (playerNames[0]+"_Close 1") || j == (playerNames[0]+"_close 1")) {
                         if (openLobbies[0]) {
                         openLobbies[0] = false;
-                        playersInLobby1 = 0;
+                        playersinlobby[0] = 0;
                     writer.WriteLine("Closed lobby 1");
-                        Console.WriteLine(firstPlayerName + " Closed lobby 1");
+                        Console.WriteLine(playerNames[0] + " Closed lobby 1");
                         } else {
                          writer.WriteLine("Tried to close lobby 1 but it was already closed.");
-                        Console.WriteLine(firstPlayerName + " Tried to close lobby 1 but it was already closed");
+                        Console.WriteLine(playerNames[0] + " Tried to close lobby 1 but it was already closed");
                          }
-                } else if (j == (secondPlayerName+"_Close 1") || j == (secondPlayerName+"_close 1")) {
+                } else if (j == (playerNames[1]+"_Close 1") || j == (playerNames[1]+"_close 1")) {
                         if (openLobbies[0]) {
                         openLobbies[0] = false;
-                            playersInLobby1 = 0;
+                            playersinlobby[0] = 0;
                     writer.WriteLine("Closed lobby 1");
-                        Console.WriteLine(secondPlayerName + " Closed lobby 1");
+                        Console.WriteLine(playerNames[1] + " Closed lobby 1");
                         } else {
                          writer.WriteLine("Tried to close lobby 1 but it was already closed.");
-                        Console.WriteLine(secondPlayerName + " Tried to close lobby 1 but it was already closed");
+                        Console.WriteLine(playerNames[1] + " Tried to close lobby 1 but it was already closed");
                          }
-                } else if (j == (thirdPlayerName+"_Close 1") || j == (thirdPlayerName+"_close 1")) {
+                } else if (j == (playerNames[2]+"_Close 1") || j == (playerNames[2]+"_close 1")) {
                         if (openLobbies[0]) {
                         openLobbies[0] = false;
-                            playersInLobby1 = 0;
+                            playersinlobby[0] = 0;
                     writer.WriteLine("Closed lobby 1");
-                        Console.WriteLine(thirdPlayerName + " Closed lobby 1");
+                        Console.WriteLine(playerNames[2] + " Closed lobby 1");
                         } else {
                          writer.WriteLine("Tried to close lobby 1 but it was already closed.");
-                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 1 but it was already closed");
+                        Console.WriteLine(playerNames[2] + " Tried to close lobby 1 but it was already closed");
                         }
-                } else if (j == (firstPlayerName+"_Close 2") || j == (firstPlayerName+"_close 2")) {
+                } else if (j == (playerNames[0]+"_Close 2") || j == (playerNames[0]+"_close 2")) {
                         if (openLobbies[1]) {
                         openLobbies[1] = false;
-                            playersInLobby2 = 0;
+                            playersinlobby[1] = 0;
                     writer.WriteLine("Closed lobby 2");
-                        Console.WriteLine(firstPlayerName + " Closed lobby 2");
+                        Console.WriteLine(playerNames[0] + " Closed lobby 2");
                         } else {
                          writer.WriteLine("Tried to close lobby 2 but it was already closed.");
-                        Console.WriteLine(firstPlayerName + " Tried to close lobby 2 but it was already closed");
+                        Console.WriteLine(playerNames[0] + " Tried to close lobby 2 but it was already closed");
                          }
-                } else if (j == (secondPlayerName+"_Close 2") || j == (secondPlayerName+"_close 2")) {
-                        if (openLobbies[1]) {
-                        openLobbies[1] = false;
-                    writer.WriteLine("Closed lobby 2");
-                            playersInLobby2 = 0;
-                        Console.WriteLine(secondPlayerName + " Closed lobby 2");
-                        } else {
-                         writer.WriteLine("Tried to close lobby 2 but it was already closed.");
-                        Console.WriteLine(secondPlayerName + " Tried to close lobby 2 but it was already closed");
-                         }
-                } else if (j == (thirdPlayerName+"_Close 2") || j == (thirdPlayerName+"_close 2")) {
+                } else if (j == (playerNames[1]+"_Close 2") || j == (playerNames[1]+"_close 2")) {
                         if (openLobbies[1]) {
                         openLobbies[1] = false;
                     writer.WriteLine("Closed lobby 2");
-                            playersInLobby2 = 0;
-                        Console.WriteLine(thirdPlayerName + " Closed lobby 2");
+                            playersinlobby[1] = 0;
+                        Console.WriteLine(playerNames[1] + " Closed lobby 2");
                         } else {
                          writer.WriteLine("Tried to close lobby 2 but it was already closed.");
-                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 2 but it was already closed");
+                        Console.WriteLine(playerNames[1] + " Tried to close lobby 2 but it was already closed");
+                         }
+                } else if (j == (playerNames[2]+"_Close 2") || j == (playerNames[2]+"_close 2")) {
+                        if (openLobbies[1]) {
+                        openLobbies[1] = false;
+                    writer.WriteLine("Closed lobby 2");
+                            playersinlobby[1] = 0;
+                        Console.WriteLine(playerNames[2] + " Closed lobby 2");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 2 but it was already closed.");
+                        Console.WriteLine(playerNames[2] + " Tried to close lobby 2 but it was already closed");
                         }
-                } else if (j == (firstPlayerName+"_Close 3") || j == (firstPlayerName+"_close 3")) {
+                } else if (j == (playerNames[0]+"_Close 3") || j == (playerNames[0]+"_close 3")) {
                         if (openLobbies[2]) {
                         openLobbies[2] = false;
-                            playersInLobby3 = 0;
+                            playersinlobby[2] = 0;
                     writer.WriteLine("Closed lobby 3");
-                        Console.WriteLine(firstPlayerName + " Closed lobby 3");
+                        Console.WriteLine(playerNames[0] + " Closed lobby 3");
                         } else {
                          writer.WriteLine("Tried to close lobby 3 but it was already closed.");
-                        Console.WriteLine(firstPlayerName + " Tried to close lobby 3 but it was already closed");
+                        Console.WriteLine(playerNames[0] + " Tried to close lobby 3 but it was already closed");
                          }
-                } else if (j == (secondPlayerName+"_Close 3") || j == (secondPlayerName+"_close 3")) {
+                } else if (j == (playerNames[1]+"_Close 3") || j == (playerNames[1]+"_close 3")) {
                         if (openLobbies[2]) {
                         openLobbies[2] = false;
-                            playersInLobby3 = 0;
+                            playersinlobby[2] = 0;
                     writer.WriteLine("Closed lobby 3");
-                        Console.WriteLine(secondPlayerName + " Closed lobby 3");
+                        Console.WriteLine(playerNames[1] + " Closed lobby 3");
                         } else {
                          writer.WriteLine("Tried to close lobby 3 but it was already closed.");
-                        Console.WriteLine(secondPlayerName + " Tried to close lobby 3 but it was already closed");
+                        Console.WriteLine(playerNames[1] + " Tried to close lobby 3 but it was already closed");
                          }
-                } else if (j == (thirdPlayerName+"_Close 3") || j == (thirdPlayerName+"_close 3")) {
+                } else if (j == (playerNames[2]+"_Close 3") || j == (playerNames[2]+"_close 3")) {
                         if (openLobbies[2]) {
                         openLobbies[2] = false;
-                            playersInLobby3 = 0;
+                            playersinlobby[2] = 0;
                     writer.WriteLine("Closed lobby 3");
-                        Console.WriteLine(thirdPlayerName + " Closed lobby 3");
+                        Console.WriteLine(playerNames[2] + " Closed lobby 3");
                         } else {
                          writer.WriteLine("Tried to close lobby 3 but it was already closed.");
-                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 3 but it was already closed");
+                        Console.WriteLine(playerNames[2] + " Tried to close lobby 3 but it was already closed");
                         }
 
-                } else if (j == (firstPlayerName+"_join 1") || j == (firstPlayerName+"_Join 1")) {
-                        if (openLobbies[0] && !firstPlayerInsideALobby) {
-                        playersInLobby1++;
-                        firstPlayerInsideALobby = true;
-                        firstPlayerTempLobby = 1;
-                        writer.WriteLine("Joined lobby 1 (" + playersInLobby1 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 1 (" + playersInLobby1 + ")");
+                } else if (j == (playerNames[0]+"_join 1") || j == (playerNames[0]+"_Join 1")) {
+                        if (openLobbies[0] && !playerinlobby[0]) {
+                        playersinlobby[0]++;
+                        playerinlobby[0] = true;
+                        tempLobby[0] = 1;
+                        writer.WriteLine("Joined lobby 1 (" + playersinlobby[0] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 1 (" + playersinlobby[0] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 1 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (secondPlayerName+"_join 1") || j == (secondPlayerName+"_Join 1")) {
-                        if (openLobbies[0] && !secondPlayerInsideALobby) {
-                        playersInLobby1++;
-                        secondPlayerInsideALobby = true;
-                        secondPlayerTempLobby = 1;
-                 writer.WriteLine("Joined lobby 1 (" + playersInLobby1 + ")");
-                            Console.WriteLine(secondPlayerName + " Joined lobby 1 (" + playersInLobby1 + ")");
+                } else if (j == (playerNames[1]+"_join 1") || j == (playerNames[1]+"_Join 1")) {
+                        if (openLobbies[0] && !playerinlobby[1]) {
+                        playersinlobby[0]++;
+                        playerinlobby[1] = true;
+                        tempLobby[1] = 1;
+                 writer.WriteLine("Joined lobby 1 (" + playersinlobby[0] + ")");
+                            Console.WriteLine(playerNames[1] + " Joined lobby 1 (" + playersinlobby[0] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 1 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(secondPlayerName + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[1] + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (thirdPlayerName+"_join 1") || j == (thirdPlayerName+"_Join 1")) {
-                        if (openLobbies[0] && !thirdPlayerInsideALobby) {
-                        playersInLobby1++;
-                        thirdPlayerInsideALobby = true;
-                        thirdPlayerTempLobby = 1;
-                 writer.WriteLine("Joined lobby 1 (" + playersInLobby1 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 1 (" + playersInLobby1 + ")");
+                } else if (j == (playerNames[2]+"_join 1") || j == (playerNames[2]+"_Join 1")) {
+                        if (openLobbies[0] && !playerinlobby[2]) {
+                        playersinlobby[0]++;
+                        playerinlobby[2] = true;
+                        tempLobby[2] = 1;
+                 writer.WriteLine("Joined lobby 1 (" + playersinlobby[0] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 1 (" + playersinlobby[0] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 1 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 1 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (firstPlayerName+"_join 2") || j == (firstPlayerName+"_Join 2")) {
-                        if (openLobbies[1] && !firstPlayerInsideALobby) {
-                        playersInLobby2++;
-                        firstPlayerInsideALobby = true;
-                        firstPlayerTempLobby = 2;
-                 writer.WriteLine("Joined lobby 2 (" + playersInLobby2 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 2 (" + playersInLobby2 + ")");
+                } else if (j == (playerNames[0]+"_join 2") || j == (playerNames[0]+"_Join 2")) {
+                        if (openLobbies[1] && !playerinlobby[0]) {
+                        playersinlobby[1]++;
+                        playerinlobby[0] = true;
+                        tempLobby[0] = 2;
+                 writer.WriteLine("Joined lobby 2 (" + playersinlobby[1] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 2 (" + playersinlobby[1] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 2 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (secondPlayerName+"_join 2") || j == (secondPlayerName+"_Join 2")) {
-                        if (openLobbies[1] && !secondPlayerInsideALobby) {
-                        playersInLobby2++;
-                        secondPlayerInsideALobby = true;
-                        secondPlayerTempLobby = 2;
-                 writer.WriteLine("Joined lobby 2 (" + playersInLobby2 + ")");
-                            Console.WriteLine(secondPlayerName + " Joined lobby 2 (" + playersInLobby2 + ")");
+                } else if (j == (playerNames[1]+"_join 2") || j == (playerNames[1]+"_Join 2")) {
+                        if (openLobbies[1] && !playerinlobby[1]) {
+                        playersinlobby[1]++;
+                        playerinlobby[1] = true;
+                        tempLobby[1] = 2;
+                 writer.WriteLine("Joined lobby 2 (" + playersinlobby[1] + ")");
+                            Console.WriteLine(playerNames[1] + " Joined lobby 2 (" + playersinlobby[1] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 2 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(secondPlayerName + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[1] + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (thirdPlayerName+"_join 2") || j == (thirdPlayerName+"_Join 2")) {
-                        if (openLobbies[1] && !thirdPlayerInsideALobby) {
-                        playersInLobby2++;
-                        thirdPlayerInsideALobby = true;
-                        thirdPlayerTempLobby = 2;
-                 writer.WriteLine("Joined lobby 2 (" + playersInLobby2 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 2 (" + playersInLobby2 + ")");
+                } else if (j == (playerNames[2]+"_join 2") || j == (playerNames[2]+"_Join 2")) {
+                        if (openLobbies[1] && !playerinlobby[2]) {
+                        playersinlobby[1]++;
+                        playerinlobby[2] = true;
+                        tempLobby[2] = 2;
+                 writer.WriteLine("Joined lobby 2 (" + playersinlobby[1] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 2 (" + playersinlobby[1] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 2 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 2 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (firstPlayerName+"_join 3") || j == (firstPlayerName+"_Join 3")) {
-                        if (openLobbies[2] && !firstPlayerInsideALobby) {
-                        playersInLobby3++;
-                        firstPlayerInsideALobby = true;
-                        firstPlayerTempLobby = 3;
-                 writer.WriteLine("Joined lobby 3 (" + playersInLobby3 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 3 (" + playersInLobby3 + ")");
+                } else if (j == (playerNames[0]+"_join 3") || j == (playerNames[0]+"_Join 3")) {
+                        if (openLobbies[2] && !playerinlobby[0]) {
+                        playersinlobby[2]++;
+                        playerinlobby[0] = true;
+                        tempLobby[0] = 3;
+                 writer.WriteLine("Joined lobby 3 (" + playersinlobby[2] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 3 (" + playersinlobby[2] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 3 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (secondPlayerName+"_join 3") || j == (secondPlayerName+"_Join 3")) {
-                        if (openLobbies[2] && !secondPlayerInsideALobby) {
-                        playersInLobby3++;
-                        secondPlayerInsideALobby = true;
-                        secondPlayerTempLobby = 3;
-                 writer.WriteLine("Joined lobby 3 (" + playersInLobby3 + ")");
-                            Console.WriteLine(secondPlayerName + " Joined lobby 3 (" + playersInLobby3 + ")");
+                } else if (j == (playerNames[1]+"_join 3") || j == (playerNames[1]+"_Join 3")) {
+                        if (openLobbies[2] && !playerinlobby[1]) {
+                        playersinlobby[2]++;
+                        playerinlobby[1] = true;
+                        tempLobby[1] = 3;
+                 writer.WriteLine("Joined lobby 3 (" + playersinlobby[2] + ")");
+                            Console.WriteLine(playerNames[1] + " Joined lobby 3 (" + playersinlobby[2] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 3 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(secondPlayerName + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[1] + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (thirdPlayerName+"_join 3") || j == (thirdPlayerName+"_Join 3")) {
-                        if (openLobbies[2] && !thirdPlayerInsideALobby) {
-                        playersInLobby3++;
-                        thirdPlayerInsideALobby = true;
-                        thirdPlayerTempLobby = 3;
-                 writer.WriteLine("Joined lobby 3 (" + playersInLobby3 + ")");
-                            Console.WriteLine(firstPlayerName + " Joined lobby 3 (" + playersInLobby3 + ")");
+                } else if (j == (playerNames[2]+"_join 3") || j == (playerNames[2]+"_Join 3")) {
+                        if (openLobbies[2] && !playerinlobby[2]) {
+                        playersinlobby[2]++;
+                        playerinlobby[2] = true;
+                        tempLobby[2] = 3;
+                 writer.WriteLine("Joined lobby 3 (" + playersinlobby[2] + ")");
+                            Console.WriteLine(playerNames[0] + " Joined lobby 3 (" + playersinlobby[2] + ")");
                         } else {
                  writer.WriteLine("Sorry! Lobby 3 is currently closed or you are already in a lobby.");
-                            Console.WriteLine(firstPlayerName + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to join lobby 3 but it was closed or he is already in a lobby.");
                  }
-                } else if (j == (firstPlayerName+"_leave")) {
-                        if (firstPlayerInsideALobby) {
+                } else if (j == (playerNames[0]+"_leave")) {
+                        if (playerinlobby[0]) {
                     writer.WriteLine("Left lobby");
-                            if (firstPlayerTempLobby == 1) {
-                            playersInLobby1--;
-                            firstPlayerInsideALobby = false;
+                            if (tempLobby[0] == 1) {
+                            playersinlobby[0]--;
+                            playerinlobby[0] = false;
                                 }
-                            if (firstPlayerTempLobby == 2) {
-                            playersInLobby2--;
-                            firstPlayerInsideALobby = false;
+                            if (tempLobby[0] == 2) {
+                            playersinlobby[1]--;
+                            playerinlobby[0] = false;
                                 }
-                            if (firstPlayerTempLobby == 3) {
-                            playersInLobby3--;
-                            firstPlayerInsideALobby = false;
+                            if (tempLobby[0] == 3) {
+                            playersinlobby[2]--;
+                            playerinlobby[0] = false;
                                 }
-                            Console.WriteLine(firstPlayerName + " Left lobby " + firstPlayerTempLobby);
+                            Console.WriteLine(playerNames[0] + " Left lobby " + tempLobby[0]);
                     } else {
                     writer.WriteLine("Sorry. You are not in a lobby, so you can't leave it.");
-                            Console.WriteLine(firstPlayerName + " Tried to leave lobby but was not in a lobby.");
+                            Console.WriteLine(playerNames[0] + " Tried to leave lobby but was not in a lobby.");
                     }
-                    } else if (j == (secondPlayerName+"_leave")) {
-                        if (secondPlayerInsideALobby) {
+                    } else if (j == (playerNames[1]+"_leave")) {
+                        if (playerinlobby[1]) {
                     writer.WriteLine("Left lobby");
-                            if (secondPlayerTempLobby == 1) {
-                            playersInLobby1--;
-                            secondPlayerInsideALobby = false;
+                            if (tempLobby[1] == 1) {
+                            playersinlobby[0]--;
+                            playerinlobby[1] = false;
                                 }
-                            if (secondPlayerTempLobby == 2) {
-                            playersInLobby2--;
-                            secondPlayerInsideALobby = false;
+                            if (tempLobby[1] == 2) {
+                            playersinlobby[1]--;
+                            playerinlobby[1] = false;
                                 }
-                            if (secondPlayerTempLobby == 3) {
-                            playersInLobby3--;
-                            secondPlayerInsideALobby = false;
+                            if (tempLobby[1] == 3) {
+                            playersinlobby[2]--;
+                            playerinlobby[1] = false;
                                 }
-                            Console.WriteLine(secondPlayerName + " Left lobby " + secondPlayerTempLobby);
+                            Console.WriteLine(playerNames[1] + " Left lobby " + tempLobby[1]);
                     } else {
                     writer.WriteLine("Sorry. You are not in a lobby, so you can't leave it.");
-                            Console.WriteLine(secondPlayerName + " Tried to leave lobby but was not in a lobby.");
+                            Console.WriteLine(playerNames[1] + " Tried to leave lobby but was not in a lobby.");
                     }
-                    } else if (j == (thirdPlayerName+"_leave")) {
-                        if (thirdPlayerInsideALobby) {
+                    } else if (j == (playerNames[2]+"_leave")) {
+                        if (playerinlobby[2]) {
                     writer.WriteLine("Left lobby");
-                            if (thirdPlayerTempLobby == 1) {
-                            playersInLobby1--;
-                            thirdPlayerInsideALobby = false;
+                            if (tempLobby[2] == 1) {
+                            playersinlobby[0]--;
+                            playerinlobby[2] = false;
                                 }
-                            if (thirdPlayerTempLobby == 2) {
-                            playersInLobby2--;
-                            thirdPlayerInsideALobby = false;
+                            if (tempLobby[2] == 2) {
+                            playersinlobby[1]--;
+                            playerinlobby[2] = false;
                                 }
-                            if (thirdPlayerTempLobby == 3) {
-                            playersInLobby3--;
-                            thirdPlayerInsideALobby = false;
+                            if (tempLobby[2] == 3) {
+                            playersinlobby[2]--;
+                            playerinlobby[2] = false;
                                 }
-                            Console.WriteLine(thirdPlayerName + " Left lobby " + thirdPlayerTempLobby);
+                            Console.WriteLine(playerNames[2] + " Left lobby " + tempLobby[2]);
                     } else {
                     writer.WriteLine("Sorry. You are not in a lobby, so you can't leave it.");
-                            Console.WriteLine(thirdPlayerName + " Tried to leave lobby but was not in a lobby.");
+                            Console.WriteLine(playerNames[2] + " Tried to leave lobby but was not in a lobby.");
                     }
                     
                 } else if (s[s.Length-1] == '_' && s[s.Length-2] == '9' && s[s.Length-3] == 'x' && s[s.Length-4] == 'o' && s[s.Length-5] == 'x') {
@@ -423,30 +409,30 @@ public class MultiThreadedEchoServer {
                             z = rnd.Next(1,100);
                             }
                         if (x > y && x > z) {
-                        writer.WriteLine(" Highest number wins! " + firstPlayerName + " rolled " + x + ". " + secondPlayerName + " rolled " + y + ". " + thirdPlayerName + " rolled " + z + ". " + firstPlayerName + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
+                        writer.WriteLine(" Highest number wins! " + playerNames[0] + " rolled " + x + ". " + playerNames[1] + " rolled " + y + ". " + playerNames[2] + " rolled " + z + ". " + playerNames[0] + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }
                         else if (x > y && x > z) {
-                        writer.WriteLine(" Highest number wins! " + firstPlayerName + " rolled " + x + ". " + secondPlayerName + " rolled " + y + ". " + thirdPlayerName + " rolled " + z + ". " + firstPlayerName + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
+                        writer.WriteLine(" Highest number wins! " + playerNames[0] + " rolled " + x + ". " + playerNames[1] + " rolled " + y + ". " + playerNames[2] + " rolled " + z + ". " + playerNames[0] + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }
                         else if (x > y && x > z) {
-                        writer.WriteLine(" Highest number wins! " + firstPlayerName + " rolled " + x + ". " + secondPlayerName + " rolled " + y + ". " + thirdPlayerName + " rolled " + z + ". " + firstPlayerName + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
+                        writer.WriteLine(" Highest number wins! " + playerNames[0] + " rolled " + x + ". " + playerNames[1] + " rolled " + y + ". " + playerNames[2] + " rolled " + z + ". " + playerNames[0] + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }
                     } else {
                     writer.WriteLine(""); //Opdater folket
                     }
                 }
 
-                if (playersInLobby1 == 3) {
+                if (playersinlobby[0] == 3) {
                     Console.WriteLine("3 Players connected to lobby 1! Ready to start game!");
                     writer.Write("3 Players connected to lobby 1! Ready to start game!");
                 }
                 
-                if (playersInLobby2 == 3) {
+                if (playersinlobby[1] == 3) {
                     Console.WriteLine("3 Players connected to lobby 2! Ready to start game!");
                     writer.Write("3 Players connected to lobby 2! Ready to start game!");
                 }
                 
-                if (playersInLobby3 == 3) {
+                if (playersinlobby[2] == 3) {
                     Console.WriteLine("3 Players connected to lobby 3! Ready to start game!");
                     writer.Write("3 Players connected to lobby 3! Ready to start game!");
                 }
