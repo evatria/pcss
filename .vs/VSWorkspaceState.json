@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ClientServerMultithreading",
+    "\\ClientServerMultithreading\\ClientApplication",
+    "\\ClientServerMultithreading\\ServerApplication"
+  ],
+  "SelectedNode": "\\ClientServerMultithreading\\ClientApplication\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}
