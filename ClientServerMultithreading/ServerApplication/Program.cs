@@ -7,41 +7,19 @@ using System.Threading;
 public class MultiThreadedEchoServer {
 
     static bool selectedName = false;
-<<<<<<< HEAD
-    static String firstPlayerName = "";
-    static String secondPlayerName = "";
-    static String thirdPlayerName = "";
-
-    static bool[] openLobbies = {false, false, false}; // Man burde lave alle de andre ting til arrays ligesom det her. Koden ville være meget pænere. Det er bare et lidt stort arbejde.
-    static int playersInLobby1 = 0;
-    static int playersInLobby2 = 0;
-    static int playersInLobby3 = 0;
-    
-    static bool firstPlayerInsideALobby = false;
-    static bool secondPlayerInsideALobby = false;
-    static bool thirdPlayerInsideALobby = false;
-
-    static int firstPlayerTempLobby = 0;
-    static int secondPlayerTempLobby = 0;
-    static int thirdPlayerTempLobby = 0;
-
-    static bool firstClientConnected = false;
-    static bool secondClientConnected = false;
-    static bool thirdClientConnected = false;
 
     static bool foundRandom = false;
 
     static int x = 0;
     static int y = 0;
     static int z = 0;
-=======
+
     static String[] playerNames = {"", "", ""};
     static bool[] openLobbies = {false, false, false};
     static int[] playersinlobby = {0, 0, 0};
     static bool[] playerinlobby = {false, false, false};
     static int[] tempLobby = {0, 0, 0};
     static bool[] clientsConnected = {false, false, false};
->>>>>>> parent of d80b747... Revert "streamlined everything in arrays in the server"
     
     private static void ProcessClientRequests(object argument) {
 
