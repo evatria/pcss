@@ -33,21 +33,21 @@ public class MultiThreadedEchoServer {
                     writer.WriteLine("Name selected: " + playerNames[0]);
                     selectedName = true;
                     clientsConnected[0] = true;
-                    Console.WriteLine("First player registered: " + clientsConnected[0] + "\n");
+                    Console.WriteLine("clientsConnected[0]: " + clientsConnected[0] + "\n");
                  } else if (s[0] == '+' && s[1] == '+' && clientsConnected[0] && !clientsConnected[1]) {
                     playerNames[1] = s;
                     Console.WriteLine(playerNames[1] + " joined the server");
                     writer.WriteLine("Name selected: " + playerNames[1]);
                     selectedName = true;
                     clientsConnected[1] = true;
-                    Console.WriteLine("Second player registered: " + clientsConnected[1] + "\n");
+                    Console.WriteLine("clientsConnected[1]: " + clientsConnected[1] + "\n");
                  } else if (s[0] == '+' && s[1] == '+' && clientsConnected[1]) {
                     playerNames[2] = s;
                     Console.WriteLine(playerNames[2] + " joined the server");
                     writer.WriteLine("Name selected: " + playerNames[2]);
                     selectedName = true;
                     clientsConnected[2] = true;
-                    Console.WriteLine("Third player registered: " + clientsConnected[2] + "\n");
+                    Console.WriteLine("clientsConnected[2]: " + clientsConnected[2] + "\n");
                  } else {
                     String j = string.Concat("++", s);
                     //Console.WriteLine(j);
