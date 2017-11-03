@@ -407,7 +407,7 @@ public class MultiThreadedEchoServer {
                         int x = rnd.Next(1,100);
                         int y = rnd.Next(1,100);
                         int z = rnd.Next(1,100);
-                        while (x == z && x == y && y == z) {
+                        while (x == z || x == y || y == z) {
                             x = rnd.Next(1,100);
                             y = rnd.Next(1,100);
                             z = rnd.Next(1,100);
