@@ -27,6 +27,12 @@ public class MultiThreadedEchoServer {
     static bool firstClientConnected = false;
     static bool secondClientConnected = false;
     static bool thirdClientConnected = false;
+
+    static bool foundRandom = false;
+
+    static int x = 0;
+    static int y = 0;
+    static int z = 0;
     
     private static void ProcessClientRequests(object argument) {
 
@@ -412,16 +418,22 @@ public class MultiThreadedEchoServer {
                     }
                     
                 } else if (s[s.Length-1] == '_' && s[s.Length-2] == '9' && s[s.Length-3] == 'x' && s[s.Length-4] == 'o' && s[s.Length-5] == 'x') {
-                        Console.WriteLine("Starting game!");
+                        //Console.WriteLine("Received this input: " + s);
+                        //Console.WriteLine("game");
                         Random rnd = new Random();
-                        int x = rnd.Next(1,100);
-                        int y = rnd.Next(1,100);
-                        int z = rnd.Next(1,100);
+
+                        if (!foundRandom) {
+                        x = rnd.Next(1,100);
+                        y = rnd.Next(1,100);
+                        z = rnd.Next(1,100);
                         while (x == z && x == y && y == z) {
                             x = rnd.Next(1,100);
                             y = rnd.Next(1,100);
                             z = rnd.Next(1,100);
                             }
+                        foundRandom = true;
+                        }
+
                         if (x > y && x > z) {
                         writer.WriteLine(" Highest number wins! " + firstPlayerName + " rolled " + x + ". " + secondPlayerName + " rolled " + y + ". " + thirdPlayerName + " rolled " + z + ". " + firstPlayerName + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }

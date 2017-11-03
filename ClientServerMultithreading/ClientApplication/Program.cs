@@ -31,7 +31,7 @@ public class EchoClient {
                     clientName = Console.ReadLine();
                     s = "++"+clientName;
                 }
-                } else if (selectedName && !joinedLobby) {
+                } else if (selectedName && !joinedLobby && !startingGame) {
                     Console.WriteLine("Here are your options: \n");
                     Console.WriteLine("lobbylist: View list of lobbies");
                     Console.WriteLine("open 1-3: create new lobby");
@@ -50,14 +50,17 @@ public class EchoClient {
                     s = clientName+"_"+Console.ReadLine();
                     }
 
+
                     if (startingGame) {
-                    Console.WriteLine("Starting Game! You can no longer use any commands. \n \n");
+                    Console.WriteLine("Starting Game! Press enter to see who won! \n \n");
                     s = Console.ReadLine()+"xox9_";
+                    Console.WriteLine("Sending this input: " + s);
                     }
                 
                 Console.WriteLine();
                 writer.WriteLine(s);
                 writer.Flush();
+
                 String server_string = reader.ReadLine();
                 Console.WriteLine("From Server: " + server_string + "\n");
 
