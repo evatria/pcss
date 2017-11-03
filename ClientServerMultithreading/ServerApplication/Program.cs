@@ -15,8 +15,6 @@ public class MultiThreadedEchoServer {
     static bool[] playerinlobby = {false, false, false};
     static int[] tempLobby = {0, 0, 0};
     static bool[] clientsConnected = {false, false, false};
-
-    //Jeg har smidt alt ind i arrays, så vi kan lave koden meget kortere med en masse for each loops.
     
     private static void ProcessClientRequests(object argument) {
 
