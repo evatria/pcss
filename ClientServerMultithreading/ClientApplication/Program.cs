@@ -5,7 +5,7 @@ using System.Net.Sockets;
 
 public class EchoClient {
 
-    //Max 3 clients.
+    //Max 3 clients supported.
 
     static bool selectedName = false;
     static bool joinedLobby = false;
