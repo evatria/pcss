@@ -11,7 +11,7 @@ public class MultiThreadedEchoServer {
     static String secondPlayerName = "";
     static String thirdPlayerName = "";
 
-    static bool[] openLobbies = {false, false, false};
+    static bool[] openLobbies = {false, false, false}; // Man burde lave alle de andre ting til arrays ligesom det her. Koden ville være meget pænere. Det er bare et lidt stort arbejde.
     static int playersInLobby1 = 0;
     static int playersInLobby2 = 0;
     static int playersInLobby3 = 0;
