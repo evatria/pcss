@@ -141,7 +141,7 @@ public class MultiThreadedEchoServer {
                         if (!openLobbies[2]) {
                         openLobbies[2] = true;
                     writer.WriteLine("Opened lobby 3");
-                        Console.WriteLine(secondPlayerName + " Opened lobby 2");
+                        Console.WriteLine(secondPlayerName + " Opened lobby 3");
                         } else {
                          writer.WriteLine("Tried to open lobby 3 but it was already open.");
                         Console.WriteLine(secondPlayerName + " Tried to open lobby 3 but it was already open");
@@ -155,33 +155,87 @@ public class MultiThreadedEchoServer {
                          writer.WriteLine("Tried to open lobby 3 but it was already open.");
                         Console.WriteLine(thirdPlayerName + " Tried to open lobby 3 but it was already open");
                         }
-                    } else if ( s == "close 1" || s == "Close 1") {
+                    } else if (j == (firstPlayerName+"_Close 1") || j == (firstPlayerName+"_close 1")) {
                         if (openLobbies[0]) {
                         openLobbies[0] = false;
-                        writer.WriteLine("Closed lobby 1");
+                    writer.WriteLine("Closed lobby 1");
                         Console.WriteLine(firstPlayerName + " Closed lobby 1");
                         } else {
                          writer.WriteLine("Tried to close lobby 1 but it was already closed.");
                         Console.WriteLine(firstPlayerName + " Tried to close lobby 1 but it was already closed");
                          }
-                } else if ( s == "close 2" || s == "Close 2") {
+                } else if (j == (secondPlayerName+"_Close 1") || j == (secondPlayerName+"_close 1")) {
+                        if (openLobbies[0]) {
+                        openLobbies[0] = false;
+                    writer.WriteLine("Closed lobby 1");
+                        Console.WriteLine(secondPlayerName + " Closed lobby 1");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 1 but it was already closed.");
+                        Console.WriteLine(secondPlayerName + " Tried to close lobby 1 but it was already closed");
+                         }
+                } else if (j == (thirdPlayerName+"_Close 1") || j == (thirdPlayerName+"_close 1")) {
+                        if (openLobbies[0]) {
+                        openLobbies[0] = false;
+                    writer.WriteLine("Closed lobby 1");
+                        Console.WriteLine(thirdPlayerName + " Closed lobby 1");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 1 but it was already closed.");
+                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 1 but it was already closed");
+                        }
+                } else if (j == (firstPlayerName+"_Close 2") || j == (firstPlayerName+"_close 2")) {
                         if (openLobbies[1]) {
                         openLobbies[1] = false;
-                        writer.WriteLine("Closed lobby 2");
+                    writer.WriteLine("Closed lobby 2");
                         Console.WriteLine(firstPlayerName + " Closed lobby 2");
                         } else {
                          writer.WriteLine("Tried to close lobby 2 but it was already closed.");
                         Console.WriteLine(firstPlayerName + " Tried to close lobby 2 but it was already closed");
                          }
-                } else if ( s == "close 3" || s == "Close 3") {
+                } else if (j == (secondPlayerName+"_Close 2") || j == (secondPlayerName+"_close 2")) {
+                        if (openLobbies[1]) {
+                        openLobbies[1] = false;
+                    writer.WriteLine("Closed lobby 2");
+                        Console.WriteLine(secondPlayerName + " Closed lobby 2");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 2 but it was already closed.");
+                        Console.WriteLine(secondPlayerName + " Tried to close lobby 2 but it was already closed");
+                         }
+                } else if (j == (thirdPlayerName+"_Close 2") || j == (thirdPlayerName+"_close 2")) {
+                        if (openLobbies[1]) {
+                        openLobbies[1] = false;
+                    writer.WriteLine("Closed lobby 2");
+                        Console.WriteLine(thirdPlayerName + " Closed lobby 2");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 2 but it was already closed.");
+                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 2 but it was already closed");
+                        }
+                } else if (j == (firstPlayerName+"_Close 3") || j == (firstPlayerName+"_close 3")) {
                         if (openLobbies[2]) {
                         openLobbies[2] = false;
-                        writer.WriteLine("Closed lobby 3");
+                    writer.WriteLine("Closed lobby 3");
                         Console.WriteLine(firstPlayerName + " Closed lobby 3");
                         } else {
                          writer.WriteLine("Tried to close lobby 3 but it was already closed.");
                         Console.WriteLine(firstPlayerName + " Tried to close lobby 3 but it was already closed");
                          }
+                } else if (j == (secondPlayerName+"_Close 3") || j == (secondPlayerName+"_close 3")) {
+                        if (openLobbies[2]) {
+                        openLobbies[2] = false;
+                    writer.WriteLine("Closed lobby 3");
+                        Console.WriteLine(secondPlayerName + " Closed lobby 3");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 3 but it was already closed.");
+                        Console.WriteLine(secondPlayerName + " Tried to close lobby 3 but it was already closed");
+                         }
+                } else if (j == (thirdPlayerName+"_Close 3") || j == (thirdPlayerName+"_close 3")) {
+                        if (openLobbies[2]) {
+                        openLobbies[2] = false;
+                    writer.WriteLine("Closed lobby 3");
+                        Console.WriteLine(thirdPlayerName + " Closed lobby 3");
+                        } else {
+                         writer.WriteLine("Tried to close lobby 3 but it was already closed.");
+                        Console.WriteLine(thirdPlayerName + " Tried to close lobby 3 but it was already closed");
+                        }
                 } else if ( s == "join 1" || s == "Join 1") {
                         if (openLobbies[0] && !insideALobby) {
                         playersInLobby1++;

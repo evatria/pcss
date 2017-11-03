@@ -19,14 +19,14 @@ public class EchoClient {
             while (!s.Equals("Exit")) {
                 if (!selectedName) {
                 Console.WriteLine("Connected to server! \n");
-                Console.Write("Hello There! Please select a unique screen name: (DONT USE _ )  ");
+                Console.Write("Hello There! Please select a unique screen name:  ");
                     clientName = Console.ReadLine();
                     s = "++"+clientName;
                     
                     selectedName = true;
                     while (clientName.Length < 2) {
                     Console.WriteLine("Your unique screen name needs to be longer. \n");
-                    Console.Write("Hello There! Please select a unique screen name: (DONT USE _ )  ");
+                    Console.Write("Hello There! Please select a unique screen name:  ");
                     clientName = Console.ReadLine();
                     s = "++"+clientName;
                 }
