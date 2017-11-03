@@ -19,3 +19,10 @@ C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\De
 C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
 C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
 C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
