@@ -12,10 +12,10 @@ C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.pdb
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ClientApplication\bin\Debug\NetworkCommsDotNetComplete.dll
 C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.exe.config
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.exe
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.pdb
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.csproj.CoreCompileInputs.cache
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.exe
-C:\Github\pcss_group10\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.pdb
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.exe.config
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.exe
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\bin\Debug\ClientApplication.pdb
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.csproj.CoreCompileInputs.cache
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.exe
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ClientApplication\obj\Debug\ClientApplication.pdb
