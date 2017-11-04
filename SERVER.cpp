@@ -10,10 +10,11 @@ WSAData WinSockData;
 WORD DLLVERSION; //Word are objects of a data size that our processor naturally handles (16 or 32-bit)
 SOCKADDR_IN ADDRESS; //Instantiate a SOCKADDR_IN object and name ADRESS
 int numberOfClients;
-
 char MESSAGE01[200];
 char MESSAGE02[200];
 
+//FD SET
+fd_set master;
 
 					   
 //Strings for Assigning tasks using String Comparison:
@@ -24,6 +25,8 @@ std::string paperChosen("You chose paper");
 std::string scissorChosen("You chose scissor");
 std::string assignTaskClient01;
 std::string assignTaskClient02;
+std::string assignTaskClient03;
+std::string assignTaskClient04;
 
 //SOCKETS
 SOCKET sock_LISTEN; //Listen for incomming connection
@@ -34,10 +37,20 @@ SOCKET outSock;
 //Client Sockets..
 SOCKET Client01;
 SOCKET Client02;
+SOCKET Client03;
+SOCKET Client04;
+
 
 //Variables for evaluating game creation
 
 bool hasGameBeenCreate = false;
+int WeaponsChosenGame01 = 0;
+int WeaponsChosenGame02 = 0;
+bool sendClientNumber01;
+bool sendClientNumber02;
+bool sendClientNumber03;
+bool sendClientNumber04;
+int numberOfGamesCreated;
 
 
 //STRUCT for holding game information
@@ -60,50 +73,88 @@ struct games_01and02 {
 
 void createGameonServer() {
 
-	
-	Game01.title = "Game 01";
-	Game01.score_Player01 = 0;
-	Game01.score_Player02 = 0;
-	
-	Game01.weapon_Player01 = 0;
-	Game01.weapon_Player02 = 1;
+	if (numberOfGamesCreated == 0) {
+		Game01.title = "Game 01";
+		Game01.score_Player01 = 0;
+		Game01.score_Player02 = 0;
+
+		Game01.weapon_Player01 = 0;
+		Game01.weapon_Player02 = 1;
+		}
+	else if (numberOfGamesCreated == 1) {
+		Game02.title = "Game 01";
+		Game02.score_Player01 = 0;
+		Game02.score_Player02 = 0;
+
+		Game02.weapon_Player01 = 0;
+		Game02.weapon_Player02 = 1;
+	}
+
 
 }
 
-void printGameData() {
 
-cout << Game01.title << endl;
-cout << Game01.score_Player01 << endl;
-cout << Game01.score_Player02 << endl;
-}
 
 void CompareWeapons() {
+
+	cout << "Player 01: " << Game01.weapon_Player01 << endl;
+	cout << "Player 02: " <<Game01.weapon_Player02 << endl;
 	if (Game01.weapon_Player01 == Game01.weapon_Player02) {
 		cout << "It's a draw" << endl;
+		SUCCESSFUL = send(Client01, "It's a draw!", 46, NULL);
+		std::string assignTaskClient01 = "";
+		SUCCESSFUL = send(Client02, "It's a draw!", 46, NULL);
+		std::string assignTaskClient02 = "";
 	}
 	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 2) {
 		cout << "Player 2 wins" << endl;
 		Game01.score_Player02++;
+		SUCCESSFUL = send(Client01, "Player 2 Wins", 46, NULL);
+		std::string assignTaskClient01 = "";
+		SUCCESSFUL = send(Client02, "Player 2 Wins", 46, NULL);
+		std::string assignTaskClient02 = "";
 	}
 	else if (Game01.weapon_Player01 == 1 && Game01.weapon_Player02 == 3) {
 		cout << "Player 1 wins" << endl;
 		Game01.score_Player01++;
+		SUCCESSFUL = send(Client01, "Player 1 Wins", 46, NULL);
+		std::string assignTaskClient01 = "";
+		SUCCESSFUL = send(Client02, "Player 1 Wins!", 46, NULL);
+		std::string assignTaskClient02 = "";
+
 	}
 	else if (Game01.weapon_Player01 == 2 && Game01.weapon_Player02 == 1) {
 		cout << "Player 1 wins" << endl;
 		Game01.score_Player01++;
+		SUCCESSFUL = send(Client02, "Player 1 Wins", 46, NULL);
+		std::string assignTaskClient02 = "";
+		SUCCESSFUL = send(Client01, "Player 1 Wins", 46, NULL);
+		std::string assignTaskClient01 = "";
+
 	}
 	else if (Game01.weapon_Player01 == 2 && Game01.weapon_Player02 == 3) {
 		cout << "Player 2 wins" << endl;
 		Game01.score_Player02++;
+		SUCCESSFUL = send(Client02, "Player 2 Wins", 46, NULL);
+		std::string assignTaskClient02 = "";
+		SUCCESSFUL = send(Client01, "Player 2 Wins", 46, NULL);
+		std::string assignTaskClient01 = "";
 	}
 	else if (Game01.weapon_Player01 == 3 && Game01.weapon_Player02 == 1) {
 		cout << "Player 2 wins" << endl;
 		Game01.score_Player02++;
+		SUCCESSFUL = send(Client02, "Player 1 wins!", 46, NULL);
+		std::string assignTaskClient02 = "";
+		SUCCESSFUL = send(Client01, "Player 1 wins!", 46, NULL);
+		std::string assignTaskClient01 = "";
 	}
 	else if (Game01.weapon_Player01 == 3 && Game01.weapon_Player02 == 2) {
 		cout << "Player 1 wins" << endl;
 		Game01.score_Player01++;
+		SUCCESSFUL = send(Client02, "Player 2 wins!", 46, NULL);
+		std::string assignTaskClient02 = "";
+		SUCCESSFUL = send(Client01, "Player 2 wins!", 46, NULL);
+		std::string assignTaskClient01 = "";
 	}
 }
 
@@ -143,13 +194,14 @@ void main()
 
 	//SETUP fd_set
 
-	fd_set master;
+
 	FD_ZERO(&master); //Zeroed the set
 
 	FD_SET(sock_LISTEN, &master);
 
 	while (true)
 	{
+
 		fd_set copy = master;
 
 		int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
@@ -172,160 +224,203 @@ void main()
 				cout << "The listening socket is: " << master.fd_array[0] << endl;
 				cout << "The first client socket " << master.fd_array[1] << endl;
 				cout << "The second client socket " << master.fd_array[2] << endl;
-				
+				cout << "The third client socket " << master.fd_array[3] << endl;
+				cout << "The fourth client socket " << master.fd_array[4] << endl;
+
 			}
-			/*else
+
+			else
 			{
-				char buf[4096];
-				ZeroMemory(buf, 4096);
 
-				//receive message
-				int bytesIn = recv(sock, buf, 4096, 0);
-				if (bytesIn <= 0)
+
+
+				// Send message to other clients and definitely not the listening socket
+
+
+				for (int i = 0; i < master.fd_count; i++) //A loop for sending a message to all players
 				{
-					//drop client
-					closesocket(sock);
-					FD_CLR(sock, &master);
-
-				} */
-				else
-				{
-					// Send message to other clients and definitely not the listening socket
-
-
-
-					for (int i = 0; i < master.fd_count; i++) //A loop for sending a message to all players
+					outSock = master.fd_array[i];
+					if (outSock != sock_LISTEN && outSock != sock)
 					{
-						outSock = master.fd_array[i];
-						if (outSock != sock_LISTEN && outSock != sock)
-						{
-							ostringstream ss;
-							ss << "Other Players are picking their weapon..." << "\n";
-							string strOut = ss.str();
+						ostringstream ss;
+						ss << "Other Players are picking their weapon...\n";
+						string strOut = ss.str();
+						if (WeaponsChosenGame01 == 1) {
 							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
 						}
-
-						if (numberOfClients = 1) { //If you are the first client to log on you are assigned to the socket in position 1 of the array the client 01 socket
-							Client01 = master.fd_array[1];
-							ostringstream ss01;
-							ss01 << "You are client 01" << "\n";
-							string strOut01 = ss01.str();
-							send(Client01, strOut01.c_str(), strOut01.size() + 1, 0);
+						else if (WeaponsChosenGame01 == 2) {
+							CompareWeapons();
 						}
-						
-						if (numberOfClients = 2) {
-							Client02 = master.fd_array[2];
-							ostringstream ss02;
-							ss02 << "You are client 02" << "\n";
-							string strOut02 = ss02.str();
+						if (WeaponsChosenGame02 == 1) {
+							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
+						}
+						else if (WeaponsChosenGame02 == 2) {
+							CompareWeapons();
+						}
+
+
+
+					}
+
+					if (numberOfClients = 1) { //If you are the first client to log on you are assigned to the socket in position 1 of the array the client 01 socket
+						Client01 = master.fd_array[1];
+						ostringstream ss01;
+						ss01 << "You are connected as client 01\n";
+						string strOut01 = ss01.str();
+						if (sendClientNumber01 == false) {
+							send(Client01, strOut01.c_str(), strOut01.size() + 1, 0);
+							sendClientNumber01 = true;
+						}
+					}
+
+					if (numberOfClients = 2) {
+						Client02 = master.fd_array[2];
+						ostringstream ss02;
+						ss02 << "You are connected as client 02\n";
+						string strOut02 = ss02.str();
+						if (sendClientNumber02 == false) {
 							send(Client02, strOut02.c_str(), strOut02.size() + 1, 0);
+							sendClientNumber02 = true;
+						}
 
-							
-							//Here we receive from Client 01!
-							
-							SUCCESSFUL = recv(Client01, MESSAGE01, sizeof(MESSAGE01), NULL);
+						if (numberOfClients = 3) {
+							Client02 = master.fd_array[3];
+							ostringstream ss03;
+							ss03 << "You are connected as client 03\n";
+							string strOut03 = ss03.str();
+							if (sendClientNumber03 == false) {
+								send(Client03, strOut03.c_str(), strOut03.size() + 1, 0);
+								sendClientNumber03 = true;
+							}
 
-							assignTaskClient01 = MESSAGE01;
 
-							if (assignTaskClient01.compare(createGame) == 0) {
-								if (hasGameBeenCreate == false) {
-									createGameonServer();
-									cout << "Correct input for CreateGame\n" << endl;
+							if (numberOfClients = 4) {
+								Client04 = master.fd_array[4];
+								ostringstream ss04;
+								ss04 << "You are connected as client 04\n";
+								string strOut04 = ss04.str();
+								if (sendClientNumber04 == false) {
+									send(Client04, strOut04.c_str(), strOut04.size() + 1, 0);
+									sendClientNumber04 = true;
+								}
+
+
+								//Here we receive from Client 01!
+
+								SUCCESSFUL = recv(Client01, MESSAGE01, sizeof(MESSAGE01), NULL);
+
+								assignTaskClient01 = MESSAGE01;
+
+								if (assignTaskClient01.compare(createGame) == 0) {
+									if (hasGameBeenCreate == false) {
+										createGameonServer();
+										cout << "Correct input for CreateGame\n" << endl;
+										std::string assignTaskClient01 = "";
+										cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+										hasGameBeenCreate = true;
+									}
+
+
+								}
+								else if (assignTaskClient01.compare(joinGame) == 0) {
+									cout << "Correct input for Joingame" << endl;
 									std::string assignTaskClient01 = "";
-									cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
-									hasGameBeenCreate = true;
 								}
-								else if(hasGameBeenCreate == true)
-									cout << "Game has already been created..." << endl;
-									SUCCESSFUL = send(Client01, "The game has already been created", 46, NULL);
-
-							}
-							else if (assignTaskClient01.compare(joinGame) == 0) {
-								cout << "Correct input for Joingame" << endl;
-								std::string assignTaskClient01 = "";
-							}
-							else if (assignTaskClient01.compare(rockChosen) == 0) {
-								cout << "Correct input for rock chosen" << endl;
-								Game01.weapon_Player02 = 1;
-								CompareWeapons();
-								SUCCESSFUL = send(Client01, "It's a draw!", 46, NULL);
-								std::string assignTaskClient01 = "";
-							}
-							else if (assignTaskClient01.compare(paperChosen) == 0) {
-								cout << "Correct input for paper chosen" << endl;
-								Game01.weapon_Player02 = 2;
-								CompareWeapons();
-								SUCCESSFUL = send(Client01, "Player 1 wins!", 46, NULL);
-							std::string assignTaskClient01 = "";
-							}
-							else if (assignTaskClient01.compare(scissorChosen) == 0) {
-								cout << "Correct input for scissor chosen" << endl;
-								Game01.weapon_Player02 = 3;
-								CompareWeapons();
-								SUCCESSFUL = send(Client01, "Player 2 wins!", 46, NULL);
-							std::string assignTaskClient01 = "";
-							
-
-							}
 
 
-							//Here we receive from Client 02 !
+								else if (assignTaskClient01.compare(rockChosen) == 0) {
+									cout << "Correct input for rock chosen" << endl;
+									Game01.weapon_Player01 = 1;
+									WeaponsChosenGame01++;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
+									}
+								}
+
+								else if (assignTaskClient01.compare(paperChosen) == 0) {
+									cout << "Correct input for paper chosen" << endl;
+									Game01.weapon_Player01 = 2;
+									WeaponsChosenGame01++;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
+									}
+								}
+								else if (assignTaskClient01.compare(scissorChosen) == 0) {
+									cout << "Correct input for scissor chosen" << endl;
+									cout << "Here" << endl;
+									Game01.weapon_Player01 = 3;
+									WeaponsChosenGame01++;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
+									}
+								}
 
 
+								//Here we receive from Client 02 !
+
+								SUCCESSFUL = recv(Client02, MESSAGE02, sizeof(MESSAGE02), NULL);
+								cout << WeaponsChosenGame01 << endl;
+								assignTaskClient02 = MESSAGE02;
 
 
-							SUCCESSFUL = recv(Client02, MESSAGE02, sizeof(MESSAGE02), NULL);
+								if (assignTaskClient02.compare(createGame) == 0) {
 
-							assignTaskClient02 = MESSAGE02;
-							if (assignTaskClient02.compare(createGame) == 0) {
-								if (hasGameBeenCreate == false) {
-									createGameonServer();
-									cout << "Correct input for CreateGame\n" << endl;
+									if (hasGameBeenCreate == false) {
+										createGameonServer();
+										cout << "Correct input for CreateGame\n" << endl;
+										std::string assignTaskClient02 = "";
+										cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
+										hasGameBeenCreate = true;
+									}
+
+								}
+
+
+								if (assignTaskClient02.compare(joinGame) == 0) {
+									cout << "Correct input for Joingame" << endl;
 									std::string assignTaskClient02 = "";
-									cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
-									hasGameBeenCreate = true;
 								}
-								else if(hasGameBeenCreate == true)
-									cout << "Game has already been created..." << endl;
-								SUCCESSFUL = send(Client02, "The game has already been created", 46, NULL);
-
-							
 
 
-							}
-							else if (assignTaskClient02.compare(joinGame) == 0) {
-								cout << "Correct input for Joingame" << endl;
-								std::string assignTaskClient02 = "";
-							}
-							else if (assignTaskClient02.compare(rockChosen) == 0) {
-								cout << "Correct input for rock chosen" << endl;
-								Game01.weapon_Player02 = 1;
-								CompareWeapons();
-								SUCCESSFUL = send(Client02, "It's a draw!", 46, NULL);
-								std::string assignTaskClient02 = "";
-							}
-							else if (assignTaskClient02.compare(paperChosen) == 0) {
-								cout << "Correct input for paper chosen" << endl;
-								Game01.weapon_Player02 = 2;
-								CompareWeapons();
-								SUCCESSFUL = send(Client02, "Player 1 wins!", 46, NULL);
-								std::string assignTaskClient02 = "";
-							}
-							else if (assignTaskClient02.compare(scissorChosen) == 0) {
-								cout << "Correct input for scissor chosen" << endl;
-								Game01.weapon_Player02 = 3;
-								CompareWeapons();
-								SUCCESSFUL = send(Client02, "Player 2 wins!", 46, NULL);
-								std::string assignTaskClient02 = "";
+
+								else if (assignTaskClient02.compare(rockChosen) == 0) {
+									cout << "Correct input for rock chosen" << endl;
+									Game01.weapon_Player02 = 1;
+									WeaponsChosenGame01++;
+									cout << WeaponsChosenGame01 << endl;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
+
+									}
+								}
+								else if (assignTaskClient02.compare(paperChosen) == 0) {
+									cout << "Correct input for paper chosen" << endl;
+									Game01.weapon_Player02 = 2;
+									WeaponsChosenGame01++;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
+
+									}
+								}
+
+								else if (assignTaskClient02.compare(scissorChosen) == 0) {
+									cout << "Correct input for scissor chosen" << endl;
+									Game01.weapon_Player02 = 3;
+									WeaponsChosenGame01++;
+									if (WeaponsChosenGame01 == 2) {
+										CompareWeapons();
 
 
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+
 	}
 
-
+}
 		

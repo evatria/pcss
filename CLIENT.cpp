@@ -12,7 +12,9 @@ string CONVERTER; // in C++ you have to do a lot of convertions with strings bec
 SOCKADDR_IN ADDRESS; //This object contains information about the socket, for example and ipadress or a port number
 SOCKET sock; //This is the socket we use on this side... There is one at each side client and server, this side is called sock
 char MESSAGE[200]; // this is a simpler string (a collection of characters). //Must be large enough to accomedate the largest amount of data sent from the server
-
+char MessageFromServer01[800];
+char MessageFromServer02[200];
+char MessageFromServer03[200];
 //Pre lobby user interaction
 string RESPONSE; // These a instances of the type string
 
@@ -21,17 +23,40 @@ string rockChosen;
 string paperChosen;
 string scissorChosen;
 
+
+//Strings to know if game was already created
+std::string GamewasCreatedonServer("Game created on server");
+std::string Client01connect("You are connected as client 01\n");
+
+std::string assignTaskServer;
+std::string MESSAGEFROMSERVER;
+
 //LOBBY VARRIABLES
 int LOBBYCHOICE;
 bool valid; //to make switch case run again
-bool gameisCreated=true;
+bool gameisCreated=false;
 
 //Functions declared here before main
 void createGame(){
+	
+
+	//if()
 	strcpy_s(MESSAGE, "Server Create me a Game");
 	SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 	gameisCreated = true;
-	cout << "Game was created" << endl;
+	
+	
+	SUCCESSFUL = recv(sock, MessageFromServer01, sizeof(MessageFromServer01), NULL); //Receives Client #
+	cout << MessageFromServer01 << endl;
+	//GamewasCreatedonServer = MessageFromServer01;
+	assignTaskServer = MessageFromServer01;
+	if (assignTaskServer.compare(Client01connect) == 0) {
+		cout << "Game was created" << endl;
+	} else
+	cout << "Game must be created by client 01!, Joining instead..." << endl;
+
+
+	
 }
 
 void weaponChoice() { //Menu to choose weapon
@@ -49,9 +74,9 @@ void weaponChoice() { //Menu to choose weapon
 			strcpy_s(MESSAGE, "You chose rock");
 			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 
-			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
-			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
-			cout << '	' << CONVERTER;
+			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); 
+			CONVERTER = MESSAGE; 
+			cout << CONVERTER;
 
 			valid = false;
 			break;
@@ -61,9 +86,9 @@ void weaponChoice() { //Menu to choose weapon
 			strcpy_s(MESSAGE, "You chose paper");
 			SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 
-			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
-			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
-			cout << '	' << CONVERTER;
+			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL);
+			CONVERTER = MESSAGE;
+			cout << CONVERTER;
 
 			valid = false;
 			break;
@@ -75,7 +100,7 @@ void weaponChoice() { //Menu to choose weapon
 
 			SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL); //WE assign the received data into the variable Successfull. In this case the server sends us information if it is connected correctly. First parameter is the server socket, second is the data (A char array), third is the size of the data send and last is a flag a way you send this data, usually set to 0.
 			CONVERTER = MESSAGE; //The overloaded assignment operator allows us to convert Message (the simple string) into CONVERTER a more complex string.
-			cout << '	' << CONVERTER;
+			cout << CONVERTER;
 
 			valid = false;
 			break;
@@ -88,23 +113,33 @@ void weaponChoice() { //Menu to choose weapon
 }
 
 void joinGame() {
-	if (gameisCreated) {
+	if (gameisCreated==true) {
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 		cout << "You have joined a game" << endl;
 		weaponChoice();
 	}
-	/*else {
+	else if(gameisCreated==false) {
 		cout << "No game has been created yet - a game will now be created for you" << endl;
 		createGame();
-	}*/
+		strcpy_s(MESSAGE, "Server join a game");
+		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
+		weaponChoice();
+	}
 }
 
 
 void menu() { //The Lobby
 	//while (true) {
-		cout << "\n\tCLIENT:\n\nHello, welcome to ROCK-PAPER-SCISSOR.";
+		
+	cout << "\n\tCLIENT:\n\nHello, welcome to ROCK-PAPER-SCISSOR.";
+	
+
+		
 		do { //do while loop to make switch case run again if choice is not valid
+			
+		
+			
 			cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
 
 			cin >> LOBBYCHOICE; //Get input from user about what they want to do
@@ -130,6 +165,7 @@ void menu() { //The Lobby
 			}
 		} while (valid);
 	//}
+
 }
 
 void main(){
@@ -159,8 +195,12 @@ void main(){
 		cout << '	' << CONVERTER;
 		menu();
 	}
+	
+	SUCCESSFUL = recv(sock, MESSAGE, sizeof(MessageFromServer01), NULL);
+	
+	cout << MESSAGE << endl;
 
-	SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL);
+
 	cout << "\n\n\t";
 	system("PAUSE");
 	exit(1);
