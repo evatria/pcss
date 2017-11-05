@@ -113,19 +113,26 @@ void weaponChoice() { //Menu to choose weapon
 }
 
 void joinGame() {
+	
+	
+	
+	
+	
 	if (gameisCreated==true) {
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
+		SUCCESSFUL = recv(sock, MESSAGE, sizeof(MESSAGE), NULL);
+		
 		cout << "You have joined a game" << endl;
 		weaponChoice();
 	}
-	else if(gameisCreated==false) {
+	/*else if(gameisCreated==false) {
 		cout << "No game has been created yet - a game will now be created for you" << endl;
 		createGame();
 		strcpy_s(MESSAGE, "Server join a game");
 		SUCCESSFUL = send(sock, MESSAGE, sizeof(MESSAGE), NULL);
 		weaponChoice();
-	}
+	} */
 }
 
 
@@ -140,7 +147,7 @@ void menu() { //The Lobby
 			
 		
 			
-			cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game\n2: Join game\n3: Leave game\n...";
+			cout << "\n\nThis is the lobby. Choose what you want to do(You choose by pressing a number, followed by ENTER):\n\n1: Create new game(Only First Client)\n2: Join game\n3: Leave game\n...";
 
 			cin >> LOBBYCHOICE; //Get input from user about what they want to do
 
@@ -151,7 +158,11 @@ void menu() { //The Lobby
 				valid = false;
 				break;
 			case 2:
-				joinGame();
+				/*
+				joinGame(); //Same as choice 1 for now
+				*/
+				createGame();
+				weaponChoice();
 				valid = false;
 				break;
 			case 3:
