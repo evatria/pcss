@@ -12,6 +12,8 @@ SOCKADDR_IN ADDRESS; //Instantiate a SOCKADDR_IN object and name ADRESS
 int numberOfClients;
 char MESSAGE01[200];
 char MESSAGE02[200];
+char MESSAGE03[200];
+char MESSAGE04[200];
 
 //FD SET
 fd_set master;
@@ -43,14 +45,15 @@ SOCKET Client04;
 
 //Variables for evaluating game creation
 
-bool hasGameBeenCreate = false;
+bool hasGameBeenCreate01 = false;
+bool hasGameBeenCreate02 = false;
 int WeaponsChosenGame01 = 0;
 int WeaponsChosenGame02 = 0;
 bool sendClientNumber01;
 bool sendClientNumber02;
 bool sendClientNumber03;
 bool sendClientNumber04;
-int numberOfGamesCreated;
+int Game01Created;
 
 
 //STRUCT for holding game information
@@ -73,23 +76,24 @@ struct games_01and02 {
 
 void createGameonServer() {
 
-	if (numberOfGamesCreated == 0) {
+	if (Game01Created == false) {
 		Game01.title = "Game 01";
 		Game01.score_Player01 = 0;
 		Game01.score_Player02 = 0;
 
 		Game01.weapon_Player01 = 0;
-		Game01.weapon_Player02 = 1;
+		Game01.weapon_Player02 = 0;
+		Game01Created=true;
 		}
-	else if (numberOfGamesCreated == 1) {
-		Game02.title = "Game 01";
+	else if (Game01Created == true) {
+		Game02.title = "Game 02";
 		Game02.score_Player01 = 0;
 		Game02.score_Player02 = 0;
 
 		Game02.weapon_Player01 = 0;
-		Game02.weapon_Player02 = 1;
+		Game02.weapon_Player02 = 0;
 	}
-
+	 
 
 }
 
@@ -97,8 +101,10 @@ void createGameonServer() {
 
 void CompareWeapons() {
 
-	cout << "Player 01: " << Game01.weapon_Player01 << endl;
-	cout << "Player 02: " <<Game01.weapon_Player02 << endl;
+	cout << "Player 01 Weapon: " << Game01.weapon_Player01 << endl;
+	cout << "Player 02 Weapon: " <<Game01.weapon_Player02 << endl;
+	cout << "Player 03 Weapon: " << Game02.weapon_Player01 << endl;
+	cout << "Player 04 Weapon: " << Game02.weapon_Player02 << endl;
 	if (Game01.weapon_Player01 == Game01.weapon_Player02) {
 		cout << "It's a draw" << endl;
 		SUCCESSFUL = send(Client01, "It's a draw!", 46, NULL);
@@ -246,6 +252,7 @@ void main()
 						ss << "Other Players are picking their weapon...\n";
 						string strOut = ss.str();
 						if (WeaponsChosenGame01 == 1) {
+			
 							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
 						}
 						else if (WeaponsChosenGame01 == 2) {
@@ -284,7 +291,7 @@ void main()
 						}
 
 						if (numberOfClients = 3) {
-							Client02 = master.fd_array[3];
+							Client03 = master.fd_array[3];
 							ostringstream ss03;
 							ss03 << "You are connected as client 03\n";
 							string strOut03 = ss03.str();
@@ -312,12 +319,12 @@ void main()
 								assignTaskClient01 = MESSAGE01;
 
 								if (assignTaskClient01.compare(createGame) == 0) {
-									if (hasGameBeenCreate == false) {
+									if (hasGameBeenCreate01 == false) {
 										createGameonServer();
 										cout << "Correct input for CreateGame\n" << endl;
 										std::string assignTaskClient01 = "";
 										cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
-										hasGameBeenCreate = true;
+										hasGameBeenCreate01 = true;
 									}
 
 
@@ -325,6 +332,7 @@ void main()
 								else if (assignTaskClient01.compare(joinGame) == 0) {
 									cout << "Correct input for Joingame" << endl;
 									std::string assignTaskClient01 = "";
+									//Client 1 is automatically assigned to game01 when the game is created, if client two try to join it is already assigned to game01 from client 01
 								}
 
 
@@ -347,7 +355,6 @@ void main()
 								}
 								else if (assignTaskClient01.compare(scissorChosen) == 0) {
 									cout << "Correct input for scissor chosen" << endl;
-									cout << "Here" << endl;
 									Game01.weapon_Player01 = 3;
 									WeaponsChosenGame01++;
 									if (WeaponsChosenGame01 == 2) {
@@ -357,20 +364,21 @@ void main()
 
 
 								//Here we receive from Client 02 !
-
+							
 								SUCCESSFUL = recv(Client02, MESSAGE02, sizeof(MESSAGE02), NULL);
+							
 								cout << WeaponsChosenGame01 << endl;
 								assignTaskClient02 = MESSAGE02;
 
 
 								if (assignTaskClient02.compare(createGame) == 0) {
 
-									if (hasGameBeenCreate == false) {
+									if (hasGameBeenCreate01 == false) {
 										createGameonServer();
 										cout << "Correct input for CreateGame\n" << endl;
 										std::string assignTaskClient02 = "";
 										cout << Game01.title << " has been created!\n\n" << "Player 01 Score: " << Game01.score_Player01 << '\t' << "Player 02 Score: " << Game01.score_Player02 << endl;
-										hasGameBeenCreate = true;
+										hasGameBeenCreate01 = true;
 									}
 
 								}
@@ -413,6 +421,124 @@ void main()
 
 									}
 								}
+
+								
+								//Here we receive from Client 03 !
+
+								SUCCESSFUL = recv(Client03, MESSAGE03, sizeof(MESSAGE03), NULL);
+								//cout << WeaponsChosenGame02 << endl;
+								assignTaskClient03 = MESSAGE03;
+
+
+								if (assignTaskClient03.compare(createGame) == 0) {
+
+									if (hasGameBeenCreate02 == false) {
+										createGameonServer();
+										cout << "Correct input for CreateGame\n" << endl;
+										std::string assignTaskClient03 = "";
+										cout << Game02.title << " has been created!\n\n" << "Player 01 Score: " << Game02.score_Player01 << '\t' << "Player 02 Score: " << Game02.score_Player02 << endl;
+										hasGameBeenCreate02 = true;
+									}
+
+								}
+
+
+								if (assignTaskClient03.compare(joinGame) == 0) {
+									cout << "Correct input for Joingame" << endl;
+									std::string assignTaskClient03 = "";
+								}
+
+
+
+								else if (assignTaskClient03.compare(rockChosen) == 0) {
+									cout << "Correct input for rock chosen" << endl;
+									Game02.weapon_Player02 = 1;
+									WeaponsChosenGame02++;
+									//cout << WeaponsChosenGame02 << endl;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+									}
+								}
+								else if (assignTaskClient03.compare(paperChosen) == 0) {
+									cout << "Correct input for paper chosen" << endl;
+									Game02.weapon_Player02 = 2;
+									WeaponsChosenGame02++;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+									}
+								}
+
+								else if (assignTaskClient03.compare(scissorChosen) == 0) {
+									cout << "Correct input for scissor chosen" << endl;
+									Game02.weapon_Player02 = 3;
+									WeaponsChosenGame02++;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+
+									}
+								}
+
+								//Here we receive from Client 04 !
+
+								SUCCESSFUL = recv(Client04, MESSAGE04, sizeof(MESSAGE04), NULL);
+								//cout << WeaponsChosenGame02 << endl;
+								assignTaskClient04 = MESSAGE04;
+
+
+								if (assignTaskClient04.compare(createGame) == 0) {
+
+									if (hasGameBeenCreate02 == false) {
+										createGameonServer();
+										cout << "Correct input for CreateGame\n" << endl;
+										std::string assignTaskClient04 = "";
+										cout << Game02.title << " has been created!\n\n" << "Player 01 Score: " << Game02.score_Player01 << '\t' << "Player 02 Score: " << Game02.score_Player02 << endl;
+										hasGameBeenCreate02 = true;
+									}
+
+								}
+
+
+								if (assignTaskClient04.compare(joinGame) == 0) {
+									cout << "Correct input for Joingame" << endl;
+									std::string assignTaskClient04 = "";
+								}
+
+
+
+								else if (assignTaskClient04.compare(rockChosen) == 0) {
+									cout << "Correct input for rock chosen" << endl;
+									Game02.weapon_Player02 = 1;
+									WeaponsChosenGame02++;
+								//	cout << WeaponsChosenGame02 << endl;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+									}
+								}
+								else if (assignTaskClient04.compare(paperChosen) == 0) {
+									cout << "Correct input for paper chosen" << endl;
+									Game02.weapon_Player02 = 2;
+									WeaponsChosenGame02++;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+									}
+								}
+
+								else if (assignTaskClient04.compare(scissorChosen) == 0) {
+									cout << "Correct input for scissor chosen" << endl;
+									Game02.weapon_Player02 = 3;
+									WeaponsChosenGame02++;
+									if (WeaponsChosenGame02 == 2) {
+										CompareWeapons();
+
+
+									}
+								}
+								 
 							}
 						}
 					}
