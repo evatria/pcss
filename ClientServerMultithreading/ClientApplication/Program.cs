@@ -56,7 +56,7 @@ public class EchoClient {
                     if (startingGame) {
                     Console.WriteLine("Starting Game! Press enter to see who won! \n \n");
                     s = Console.ReadLine()+"xox9_";
-                    Console.WriteLine("Sending this input: " + s);
+                    //Console.WriteLine("Sending this input: " + s);
                     }
                 
                 Console.WriteLine();
