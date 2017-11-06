@@ -20,14 +20,15 @@ public class MultiThreadedEchoServer {
     static int y = 0;
     static int z = 0;
 
+
+    // array variables for storing various information about players and lobbies
     static String[] playerNames = {"", "", ""};
     static bool[] openLobbies = {false, false, false};
     static int[] playersinlobby = {0, 0, 0};
     static bool[] playerinlobby = {false, false, false};
     static int[] tempLobby = {0, 0, 0};
     static bool[] clientsConnected = {false, false, false};
-
-    // Alt er sat ind i arrays her, så vi kan eventuelt lave koden 50% kortere med en masse for each loops. Orker bare ikke helt at gøre det zzz
+    
     
     private static void ProcessClientRequests(object argument) {
 
