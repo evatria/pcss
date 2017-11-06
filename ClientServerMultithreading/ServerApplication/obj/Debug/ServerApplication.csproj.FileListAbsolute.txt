@@ -26,3 +26,10 @@ C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\Se
 C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
 C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
 C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
