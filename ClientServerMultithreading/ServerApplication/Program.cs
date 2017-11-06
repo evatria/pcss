@@ -37,7 +37,6 @@ public class MultiThreadedEchoServer {
         /*
          * The Following Code Is Data/Information That Will Be Send To The Client
          * To Make It Possible For The Client To Create/Join Lobbies.
-         * 
         */
         
         TcpClient client = (TcpClient)argument; // Creating Tcp Object "client" From The class "TcpClient"
@@ -428,16 +427,16 @@ public class MultiThreadedEchoServer {
 
                         Random rnd = new Random(); // "rnd" Random Object Created To Generate A Random Rolled Dice Number For Each Player
 
-                        if (!foundRandom) {
+                        if (!foundRandom) { // If A Random Number Hasn't Been Found, Create One?
                         x = rnd.Next(1,100);
                         y = rnd.Next(1,100);
                         z = rnd.Next(1,100);
-                        while (x == z && x == y && y == z) {
+                        while (x == z && x == y && y == z) { // If All Players Have The Same Number, Generate A New For Each Player
                             x = rnd.Next(1,100);
                             y = rnd.Next(1,100);
                             z = rnd.Next(1,100);
                             }
-                        foundRandom = true;
+                        foundRandom = true; // Set The Boolean To True After A Number Has Been Generated For Each Player
                         }
 
                         // If Statements Used To Write The Winner In The Output
@@ -451,7 +450,7 @@ public class MultiThreadedEchoServer {
                         writer.WriteLine(" Highest number wins! " + playerNames[0] + " rolled " + x + ". " + playerNames[1] + " rolled " + y + ". " + playerNames[2] + " rolled " + z + ". " + playerNames[0] + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }
                     } else {
-                    writer.WriteLine(""); //Opdater folket
+                    writer.WriteLine(""); // Update Players
                     }
                 }
                 // Displays How Many Players That Are Currently In The Lobby - Updates Everytime A New Player Joins
@@ -470,7 +469,7 @@ public class MultiThreadedEchoServer {
                     Console.WriteLine("3 Players connected to lobby 3! Ready to start game!");
                     writer.Write("3 Players connected to lobby 3! Ready to start game!");
                 }
-                writer.Flush();
+                writer.Flush(); // Flush The Writer
             }
             reader.Close(); // Called To Close Reader After 3 Players Have Joined
             writer.Close(); // Called To Close Writer After 3 Players Have Joined
@@ -478,7 +477,7 @@ public class MultiThreadedEchoServer {
             Console.WriteLine("Closing client connection");
         } catch (IOException) {
             Console.WriteLine("There was a problem. Exiting"); // Write If A Problem/Exception Has Been Found
-        } finally {
+        } finally { // Closes The Client After An Exception Is Caught
             if (client != null) {
                 client.Close();
             }
