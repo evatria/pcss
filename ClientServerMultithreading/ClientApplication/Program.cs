@@ -19,26 +19,26 @@ public class EchoClient {
 
 
     public static void Main() {
-        try {
-            TcpClient client = new TcpClient("127.0.0.1", 10000); // client IP and port, 127.0.0.1 is localhost
-            StreamReader reader = new StreamReader(client.GetStream()); // for reading data from the server
-            StreamWriter writer = new StreamWriter(client.GetStream()); // for writing data to the server
-            String s = String.Empty; // String s is used to temporarily store what is input into the console
+        try { // try-catch Tries To Catch Exceptions And Prints It Out If Something Goes Wrong In The Program
+            TcpClient client = new TcpClient("127.0.0.1", 10000); // Client IP and port, 127.0.0.1 is localhost
+            StreamReader reader = new StreamReader(client.GetStream()); // For Reading Data From The Server
+            StreamWriter writer = new StreamWriter(client.GetStream()); // For Writing Data To The Server
+            String s = String.Empty; // String s Is Used To Temporarily Store What Is Input Into The Console
             while (!s.Equals("Exit")) {
                 if (!selectedName) {
-                Console.WriteLine("Connected to server! \n");
-                Console.Write("Hello There! Please select a unique screen name:  "); // outputs message to console
-                    clientName = Console.ReadLine(); // write the screen name you want
-                    s = "++"+clientName; // store it in the string
-                    
+                Console.WriteLine("Connected to server! \n"); // Outputs Message To Console
+                Console.Write("Hello There! Please select a unique screen name:  "); // Outputs Message To Console
+                    clientName = Console.ReadLine(); // Write The Screen Name You Want
+                    s = "++"+clientName; // Store It In The String
+
                     selectedName = true; 
-                    while (clientName.Length < 2) { // string length needs to be larger than 2 
+                    while (clientName.Length < 2) { // String Length Need To Be Larger Than 2
                     Console.WriteLine("Your unique screen name needs to be longer. \n");
                     Console.Write("Hello There! Please select a unique screen name:  ");
                     clientName = Console.ReadLine();
                     s = "++"+clientName;
                 }
-                } else if (selectedName && !joinedLobby && !startingGame) { // if you selected a name but did not join and/or start a game yet
+                } else if (selectedName && !joinedLobby && !startingGame) { // If You Selected A Name But Did Not Join And/Or Start A Game Yet
                     Console.WriteLine("Here are your options: \n");
                     Console.WriteLine("lobbylist: View list of lobbies");
                     Console.WriteLine("open 1-3: create new lobby");
@@ -49,7 +49,7 @@ public class EchoClient {
                     } 
 
 
-                    if (joinedLobby && !startingGame) { // if you joined a lobby but did not start the game yet
+                    if (joinedLobby && !startingGame) { // If You Joined A Lobby But Did Not Start The Game Yet
                 Console.WriteLine("Waiting for game to start.");
                     Console.WriteLine("You are in lobby " + lobbyNumber);
                     Console.WriteLine("Type leave to leave the lobby.");
@@ -58,22 +58,25 @@ public class EchoClient {
                     }
 
 
-                    if (startingGame) {
+                    if (startingGame) { // If A Game Has Started
                     Console.WriteLine("Starting Game! Press enter to see who won! \n \n");
                     s = Console.ReadLine()+"xox9_";
                     //Console.WriteLine("Sending this input: " + s);
                     }
                 
                 Console.WriteLine();
-                writer.WriteLine(s); // sends input to the server
-                writer.Flush(); //flushes the streamreader
+                writer.WriteLine(s); // Sends Input To The Server
+                writer.Flush(); // Flushes The Streamreader
 
-                String server_string = reader.ReadLine(); // streamreader to receive data/information from the server
+                String server_string = reader.ReadLine(); // Streamreader To Receive Data/Information From The Server
                 Console.WriteLine("From Server: " + server_string + "\n");
 
-                // below code checks which lobby the player is connected to, how many other players are connected and if the game is ready to start
-                // it receives strings from the server according to which other players joined the game etc. 
-                // this happens via the String server_string streamreader
+                /* 
+                   Below Code Checks Which Lobby The Player Is Connected To, 
+                   How Many Other Players Are Connected And If The Game Is Ready To Start
+                   It Receives Strings From The Server According To Which Other Players Joined The Game etc. 
+                   This Happens via The String server_string streamreader
+                */
 
 
                 if (server_string == "Joined lobby 1 (1)" || server_string == "Joined lobby 1 (2)") {
@@ -106,8 +109,8 @@ public class EchoClient {
             reader.Close();
             writer.Close();
             client.Close();
-        } catch (Exception e) { // if there are any errors ... 
-            Console.WriteLine(e); // output them to the console
+        } catch (Exception e) { // If There Are Any Errors ...
+            Console.WriteLine(e); // Output Them To The Console
         }
     }
 }
