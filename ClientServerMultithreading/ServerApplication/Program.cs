@@ -1,13 +1,17 @@
-﻿using System;
+﻿
+// Using Directive List
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
+// Creating The public class "MultiThreadedEchoServer
 public class MultiThreadedEchoServer {
 
     // MAXIMUM 3 CLIENTS SUPPORTED
 
+    // Calling static variables
     static bool selectedName = false;
 
     static bool foundRandom = false;
@@ -27,8 +31,12 @@ public class MultiThreadedEchoServer {
     
     private static void ProcessClientRequests(object argument) {
 
+        // Creating Tcp Object "client" From The class "TcpClient"
         TcpClient client = (TcpClient)argument;
         try {
+
+            // StreamReader Takes Input From Text File
+            // StreamWriter Creates Output From To Text File
             StreamReader reader = new StreamReader(client.GetStream());
             StreamWriter writer = new StreamWriter(client.GetStream());
             string s = String.Empty;
@@ -411,6 +419,8 @@ public class MultiThreadedEchoServer {
                 } else if (s[s.Length-1] == '_' && s[s.Length-2] == '9' && s[s.Length-3] == 'x' && s[s.Length-4] == 'o' && s[s.Length-5] == 'x') {
                         //Console.WriteLine("Received this input: " + s);
                         //Console.WriteLine("game");
+
+                        // Random Object Created To Generate A Random Rolled Dice Number For Each Player
                         Random rnd = new Random();
 
                         if (!foundRandom) {
@@ -438,6 +448,7 @@ public class MultiThreadedEchoServer {
                     writer.WriteLine(""); //Opdater folket
                     }
                 }
+                // Displays How Many Players That Are Currently In The Lobby - Updates Everytime A New Player Joins
 
                 if (playersinlobby[0] == 3) {
                     Console.WriteLine("3 Players connected to lobby 1! Ready to start game!");
@@ -455,6 +466,7 @@ public class MultiThreadedEchoServer {
                 }
                 writer.Flush();
             }
+            // Called To Close The Writer And Reader After 3 Players Have Joined
             reader.Close();
             writer.Close();
             client.Close();
@@ -469,11 +481,16 @@ public class MultiThreadedEchoServer {
     }
 
     public static void Main() {
+
+        // Object Is Created From The Class TcpListener To Try And "Catch" A Client That Is Looking For The Server
         TcpListener listener = null;
         try {
+            // The Object Is Given An IPAdress: "127.0.0.1", And The Port: "10000"
             listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 10000);
             listener.Start();
             Console.WriteLine("MultiThreadedEchoServer started...");
+
+            // The Server Will Wait For Incoming Clients While Open
             while (true) {
                 Console.WriteLine("Waiting for client...");
                 TcpClient client = listener.AcceptTcpClient();

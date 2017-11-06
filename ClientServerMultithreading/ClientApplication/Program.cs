@@ -1,17 +1,22 @@
-﻿using System;
+﻿
+// Using Directive List
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
+// Creating The public class "EchoClient"
 public class EchoClient {
 
     // MAXIMUM 3 CLIENTS SUPPORTED
 
+    // Calling static variables
     static bool selectedName = false;
     static bool joinedLobby = false;
     static int lobbyNumber = 0;
     static String clientName = "";
     static bool startingGame = false;
+
 
     public static void Main() {
         try {
