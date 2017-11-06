@@ -42,8 +42,8 @@ public class MultiThreadedEchoServer {
         TcpClient client = (TcpClient)argument; // Creating Tcp Object "client" From The class "TcpClient"
         try { // try-catch Is Called To Catch Exceptions If Something Goes Wrong
 
-            StreamReader reader = new StreamReader(client.GetStream()); // StreamReader Takes Input From Text File
-            StreamWriter writer = new StreamWriter(client.GetStream()); // StreamWriter Creates Output From To Text File
+            StreamReader reader = new StreamReader(client.GetStream()); // StreamReader Takes Input From Client
+            StreamWriter writer = new StreamWriter(client.GetStream()); // StreamWriter Sends Output To Client
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
                 //Console.WriteLine("\nInput: " + s);
@@ -504,7 +504,7 @@ public class MultiThreadedEchoServer {
             }
         } catch (Exception e) {
             Console.WriteLine(e);
-        } finally {
+        } finally { // Called To Stop The Listener From Looking For Clients If An Exception Is Called
             if (listener != null) {
                 listener.Stop();
             }

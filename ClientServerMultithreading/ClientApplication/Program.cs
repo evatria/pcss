@@ -106,9 +106,9 @@ public class EchoClient {
                     startingGame = true;
                 }
             }
-            reader.Close();
-            writer.Close();
-            client.Close();
+            reader.Close(); // Called To Close Reader After The Game Has Ended
+            writer.Close(); // Called To Close Writer After The Game Has Ended
+            client.Close(); // Called To Close The Client After The Game Has Ended
         } catch (Exception e) { // If There Are Any Errors ...
             Console.WriteLine(e); // Output Them To The Console
         }
