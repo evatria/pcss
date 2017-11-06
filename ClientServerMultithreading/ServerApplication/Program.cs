@@ -13,7 +13,6 @@ public class MultiThreadedEchoServer {
     // MAXIMUM 3 CLIENTS SUPPORTED
 
     // Calling static variables
-    static bool selectedName = false;
 
     static bool foundRandom = false;
 
@@ -45,27 +44,24 @@ public class MultiThreadedEchoServer {
             StreamReader reader = new StreamReader(client.GetStream()); // StreamReader Takes Input From Client
             StreamWriter writer = new StreamWriter(client.GetStream()); // StreamWriter Sends Output To Client
             string s = String.Empty;
-            while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
-                //Console.WriteLine("\nInput: " + s);
-                if (s[0] == '+' && s[1] == '+' && !clientsConnected[0]) {
-                    playerNames[0] = s;
+            while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) { //if there is a message and it's not Exit, do everything in this while loop.
+                
+                if (s[0] == '+' && s[1] == '+' && !clientsConnected[0]) { // if 0 clients connected
+                    playerNames[0] = s; //player array entry 0 is set to the input
                     Console.WriteLine(playerNames[0] + " joined the server");
                     writer.WriteLine("Name selected: " + playerNames[0]);
-                    selectedName = true;
                     clientsConnected[0] = true;
                     Console.WriteLine("clientsConnected[0]: " + clientsConnected[0] + "\n");
-                 } else if (s[0] == '+' && s[1] == '+' && clientsConnected[0] && !clientsConnected[1]) {
-                    playerNames[1] = s;
+                 } else if (s[0] == '+' && s [1] == '+' && clientsConnected[0] && !clientsConnected[1]) { // if 1 client connected
+                    playerNames[1] = s; //player array entry 2 is set to the input
                     Console.WriteLine(playerNames[1] + " joined the server");
                     writer.WriteLine("Name selected: " + playerNames[1]);
-                    selectedName = true;
                     clientsConnected[1] = true;
                     Console.WriteLine("clientsConnected[1]: " + clientsConnected[1] + "\n");
-                 } else if (s[0] == '+' && s[1] == '+' && clientsConnected[1]) {
-                    playerNames[2] = s;
-                    Console.WriteLine(playerNames[2] + " joined the server");
+                 } else if (s[0] == '+' && s[1] == '+' && clientsConnected[1]) { // if 2 clients connected
+                    playerNames[2] = s; //player array entry 3 is set to the input
+                    Console.WriteLine(playerNames[2] + " joined the server"); 
                     writer.WriteLine("Name selected: " + playerNames[2]);
-                    selectedName = true;
                     clientsConnected[2] = true;
                     Console.WriteLine("clientsConnected[2]: " + clientsConnected[2] + "\n");
                  } else {
