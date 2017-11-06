@@ -16,12 +16,13 @@ public class MultiThreadedEchoServer {
 
     static bool foundRandom = false;
 
+    // 3 Integers Created To Give Space For 3 Players Later In The Code
     static int x = 0;
     static int y = 0;
     static int z = 0;
 
 
-    // array variables for storing various information about players and lobbies
+    // Array Variables For Storing Various Information About Players And Lobbies
     static String[] playerNames = {"", "", ""};
     static bool[] openLobbies = {false, false, false};
     static int[] playersinlobby = {0, 0, 0};
@@ -32,14 +33,12 @@ public class MultiThreadedEchoServer {
     
     private static void ProcessClientRequests(object argument) {
 
-        // Creating Tcp Object "client" From The class "TcpClient"
-        TcpClient client = (TcpClient)argument;
-        try {
+        
+        TcpClient client = (TcpClient)argument; // Creating Tcp Object "client" From The class "TcpClient"
+        try { // try-catch Is Called To Catch Exceptions If Something Goes Wrong
 
-            // StreamReader Takes Input From Text File
-            // StreamWriter Creates Output From To Text File
-            StreamReader reader = new StreamReader(client.GetStream());
-            StreamWriter writer = new StreamWriter(client.GetStream());
+            StreamReader reader = new StreamReader(client.GetStream()); // StreamReader Takes Input From Text File
+            StreamWriter writer = new StreamWriter(client.GetStream()); // StreamWriter Creates Output From To Text File
             string s = String.Empty;
             while (!(s = reader.ReadLine()).Equals("Exit") || (s == null)) {
                 //Console.WriteLine("\nInput: " + s);
@@ -421,8 +420,7 @@ public class MultiThreadedEchoServer {
                         //Console.WriteLine("Received this input: " + s);
                         //Console.WriteLine("game");
 
-                        // Random Object Created To Generate A Random Rolled Dice Number For Each Player
-                        Random rnd = new Random();
+                        Random rnd = new Random(); // "rnd" Random Object Created To Generate A Random Rolled Dice Number For Each Player
 
                         if (!foundRandom) {
                         x = rnd.Next(1,100);
@@ -436,6 +434,7 @@ public class MultiThreadedEchoServer {
                         foundRandom = true;
                         }
 
+                        // If Statements Used To Write The Winner In The Output
                         if (x > y && x > z) {
                         writer.WriteLine(" Highest number wins! " + playerNames[0] + " rolled " + x + ". " + playerNames[1] + " rolled " + y + ". " + playerNames[2] + " rolled " + z + ". " + playerNames[0] + " Wins!! GAME OVER! RESTART SERVER AND CLIENTS TO PLAY AGAIN");
                             }
@@ -470,10 +469,10 @@ public class MultiThreadedEchoServer {
             // Called To Close The Writer And Reader After 3 Players Have Joined
             reader.Close();
             writer.Close();
-            client.Close();
+            client.Close(); // The Client Closes Automatically After A Winner Has Been Found
             Console.WriteLine("Closing client connection");
         } catch (IOException) {
-            Console.WriteLine("There was a problem. Exiting");
+            Console.WriteLine("There was a problem. Exiting"); // Write If A Problem/Exception Has Been Found
         } finally {
             if (client != null) {
                 client.Close();
