@@ -1,0 +1,7 @@
+﻿  SERVER.cpp
+..\..\..\..\GitHub\PCSS2017\SERVER.cpp(88): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+..\..\..\..\GitHub\PCSS2017\SERVER.cpp(304): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  All 135 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Online Multiplayer Boardgame.vcxproj -> C:\Users\Junker\Documents\GitHub\PCSS2017\Online Multiplayer Boardgame\Release\Server Side.exe

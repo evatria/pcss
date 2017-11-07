@@ -1,0 +1,70 @@
+Hello and Welcome to our Program!
+
+"Online Multiplayer Boardgame" is a project which was developed by a group of students at AAU Copenhagen.
+While developing this game we had 3 goals in mind:
+1. Learn how to use Git and Github.
+2. Learn how to create a larger program in C++
+3. Acheive a basic understanding of network programming.
+
+The project had some requirments:
+1. Must support atleast 3 clients.
+1. Must contain a Server side and a Client side.
+1. Must be developed utilizing Git and Github to evaluate work distribution.
+
+All goals were acheived.
+
+HOW DOES IT WORK:
+
+The program is developed using Microsoft Visual Studios. Therefore the two programs(Server side and Client side) is packed in a solution.
+This solution contains the client, the server and each header file associated with it. There is also a map called ''Debug'' containing the latest build of the program.
+
+We decided as a team not to utilize threads as we wanted a real challenge. And as so, each program runs with only 1 thread. Instead of threads we are using event-driven programming.
+Each change in the program is regulated signals either going from client to server or from server to client. 
+This is acheived using the SELECT function in C++, and then storing the information of each socket in an FD_SET.
+The Select function pauses and waits for incomming signals in the stored sockets, if a signal is received the data in it is read. If there are more than one signal they are stored in a que and the played in the correct order.
+
+This proved to be a challenge! Some sections of the code had to be coded in way that makes it difficult to quickly reproduce. More on that in the comments. In the end we achieved a somewhat stable program, that executes the orders in the correct order.
+
+
+WHAT TO DO:
+
+1. Launch Server
+2. Launch either 2 or 4 clients
+3. Press 'Y' to acheive connection on all the clients
+4. Client 01 and Client 03 can create a game, Client 02 and Client 04 is automatically set to join those games.
+5. If there is 4 clients all clients must choose their weapons before you get the result! If there is 2, the first client will wait for the 2.
+6. Score is recorded in the Game01 and Game02 struct, but not printed yet!
+
+WORK DISTRIBUTION:
+
+We had some people who were unable to work from their own computer so we decided to split in two teams and code on one machine 3 people at a time. This was the most efficient way to ensure that everyone could understand the code and bring their own ideas.
+
+ANDREAS: Set up the server/client structure.
+
+CAMILLA: Created most of the user interface.
+
+BRYNJAR: Coded the FD_SET.
+
+BENJAMIN: Set up the game structs.
+
+SYLVERSTER: Game Logic functions on client and server.
+
+AMALIE: the Join game function and ensuring that each client were assigned the prober socket.
+
+
+
+
+DISCLAIMER:
+
+The program is not entirely done, there are some things which still need implementing:
+
+1. Rounds so that score makes sense. Creating atleast 2 rounds so that the winnner from game01 and the winner from game02 can challenge eachother.
+2. Restart function (Creating a while loop with a Boolean, that goes off if the score is acheive would do this!) 
+
+
+AFTER THOUGHTS:
+
+In the end we managed to acheive our goals, the code could have been way more efficient, but given some time pressure we did not get to rewrite it.
+We all feel that we have acheived the goals we set at the begginning.
+
+
