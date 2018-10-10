@@ -15,13 +15,33 @@ public class Client {
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 			DataInputStream input = new DataInputStream(socket.getInputStream());
 
-			System.out.print("write your user name: ");
-			output.writeUTF(scan.nextLine());
 
-			while (true) {
-				String temp = input.readUTF();
-				System.out.println(temp);
-			}
+			System.out.println("Successfully joined the server");
+			System.out.print("Type your user name: ");
+
+			output.writeUTF(scan.nextLine());
+			output.flush();
+
+			new Thread(() -> {
+				while (true) {
+					try {
+						output.writeUTF(scan.nextLine());
+						output.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+
+			new Thread(() -> {
+				while (true) {
+					try {
+						System.out.println(input.readUTF());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
 
 		} catch (IOException ex) {
 			System.out.println(ex.toString() + '\n');

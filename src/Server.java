@@ -8,7 +8,7 @@ import java.util.Date;
 public class Server {
 	private int port;
 	private ArrayList<UserThread> users;
-	
+
 	public Server(int port) {
 		this.port = port;
 		users = new ArrayList<>();
@@ -18,32 +18,37 @@ public class Server {
 		Server server = new Server(69);
 		server.initiateServer();
 	}
-	
+
 	public void initiateServer() {
 		try {
 			ServerSocket serverSocket = new ServerSocket(port);
 			System.out.println("Server started at " + new Date());
-			
-			while(true) {
+
+			while (true) {
 				Socket socket = serverSocket.accept();
 				UserThread newUser = new UserThread(this, socket);
-                users.add(newUser);
-                newUser.start();
+				users.add(newUser);
+				newUser.start();
 			}
-			
+
 		} catch (IOException e) {
 			System.out.println("Unable to start server IOException");
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ArrayList<UserThread> getUsers() {
 		return users;
 	}
-	
-	public void sendToAll(String message) {
+
+	public void removeUser(UserThread ut) {
+		users.remove(ut);
+	}
+
+	public void sendToAll(String message, UserThread ut) {
 		for (UserThread userThread : users) {
-			userThread.sendMessage(message);
+			if (userThread != ut)
+				userThread.sendMessage(message);
 		}
 	}
 

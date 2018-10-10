@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class UserThread extends Thread {
-	private String userName;
 	private Server server;
 	private Socket socket;
+	private String userName;
 	private DataOutputStream output;
 	private DataInputStream input;
 
@@ -20,28 +20,26 @@ public class UserThread extends Thread {
 		try {
 			input = new DataInputStream(socket.getInputStream());
 			output = new DataOutputStream(socket.getOutputStream());
-			
+
 			userName = input.readUTF();
-			System.out.println(userName);
-			
-			for (UserThread users : server.getUsers()) {
-				server.sendToAll(users.userName);
+			System.out.println(userName + " joined the server");
+			server.sendToAll(userName + " joined the server.", this);
+
+			while (true) {
+				String clientMessage = input.readUTF();
+				server.sendToAll(userName + ": " + clientMessage, this);
 			}
-			
-			while(true) {
-				
-			}
-			
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void sendMessage(String message) {
 		try {
 			output.writeUTF(message);
+			output.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
