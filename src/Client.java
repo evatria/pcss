@@ -15,7 +15,7 @@ public class Client {
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 			DataInputStream input = new DataInputStream(socket.getInputStream());
 
-			System.out.print("write your user name");
+			System.out.print("write your user name: ");
 			output.writeUTF(scan.nextLine());
 
 			while (true) {
