@@ -25,9 +25,17 @@ public class UserThread extends Thread {
 			System.out.println(userName + " joined the server");
 			server.sendToAll(userName + " joined the server.", this);
 
-			while (true) {
+			boolean connect = true;
+			while (connect) {
 				String clientMessage = input.readUTF();
 				server.sendToAll(userName + ": " + clientMessage, this);
+				if(clientMessage.equalsIgnoreCase("quit")) {
+					server.sendToAll(userName + " disconnected from the server", this);
+					server.removeUser(this, userName);
+					socket.close();
+					connect = false;
+					
+				}
 			}
 
 		} catch (IOException e) {

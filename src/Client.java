@@ -10,11 +10,10 @@ public class Client {
 		Scanner scan = new Scanner(System.in);
 
 		try {
-			Socket socket = new Socket("localhost", 69);
+			Socket socket = new Socket("localhost", 6969);
 
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 			DataInputStream input = new DataInputStream(socket.getInputStream());
-
 
 			System.out.println("Successfully joined the server");
 			System.out.print("Type your user name: ");
@@ -22,11 +21,20 @@ public class Client {
 			output.writeUTF(scan.nextLine());
 			output.flush();
 
+			
 			new Thread(() -> {
-				while (true) {
+				boolean connect = true;
+				while (connect) {
 					try {
-						output.writeUTF(scan.nextLine());
+						String message = scan.nextLine();
+						output.writeUTF(message);
 						output.flush();
+						
+						if(message.equalsIgnoreCase("quit")) {
+							socket.close();
+							connect = false;
+						}
+						
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -38,7 +46,8 @@ public class Client {
 					try {
 						System.out.println(input.readUTF());
 					} catch (IOException e) {
-						e.printStackTrace();
+						System.out.println(e + " SocketException expected, do not worry");
+						break;
 					}
 				}
 			}).start();
@@ -46,6 +55,6 @@ public class Client {
 		} catch (IOException ex) {
 			System.out.println(ex.toString() + '\n');
 		}
-	}
 
+	}
 }
