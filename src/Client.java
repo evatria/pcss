@@ -8,6 +8,7 @@ public class Client {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+		boolean chat = true;
 
 		try {
 			Socket socket = new Socket("localhost", 6969);
@@ -21,40 +22,76 @@ public class Client {
 			output.writeUTF(scan.nextLine());
 			output.flush();
 
-			
-			new Thread(() -> {
+			Thread write = new Thread(() -> {
 				boolean connect = true;
 				while (connect) {
 					try {
 						String message = scan.nextLine();
 						output.writeUTF(message);
 						output.flush();
-						
-						if(message.equalsIgnoreCase("quit")) {
+
+						if (message.equalsIgnoreCase("quit")) {
 							socket.close();
 							connect = false;
 						}
-						
+
+						if (message.equalsIgnoreCase("ready")) {
+							connect = false;
+						}
+
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
-			}).start();
 
-			new Thread(() -> {
-				while (true) {
+			});
+			write.start();
+
+			Thread read = new Thread(() -> {
+				boolean connect = true;
+				while (connect) {
 					try {
-						System.out.println(input.readUTF());
+						String message = input.readUTF();
+						System.out.println(message);
+						if (message.equalsIgnoreCase("Game started")) {
+							connect = false;
+						}
 					} catch (IOException e) {
 						System.out.println(e + " SocketException expected, do not worry");
 						break;
 					}
 				}
-			}).start();
+
+				boolean actingTurn = false;
+				Scanner scan1 = new Scanner(System.in);
+				while (true) {
+					try {
+						actingTurn = input.readBoolean();
+						if (actingTurn) {
+							System.out.println(input.readUTF());
+							String command = "default";
+
+							command = scan1.nextLine();
+
+							output.writeUTF(command);
+							output.flush();
+							System.out.println(input.readUTF());
+						} else {
+							System.out.println(input.readUTF());
+							System.out.println(input.readUTF());
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+			read.start();
 
 		} catch (IOException ex) {
 			System.out.println(ex.toString() + '\n');
 		}
 
 	}
+
 }

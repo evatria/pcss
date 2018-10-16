@@ -52,5 +52,21 @@ public class Server {
 				userThread.sendMessage(message);
 		}
 	}
+	
+	public void startGame() {
+		boolean start = true;
+		for (UserThread userThread : users) {
+			if (userThread.isReadyCheck() == true) {
+				start = false;
+			}
+		}
+		
+		if(start) {
+		for (UserThread userThread : users) {
+				userThread.sendMessage("Game started");
+		}
+		new Thread(new HandleASession(this)).start();
+		}
+	}
 
 }
