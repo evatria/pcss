@@ -1,6 +1,6 @@
 
 public enum Suit {
-	Hearts("H"), Spades("S"), Diamonds("D"), Clubs("C");
+	Hearts("Hearts"), Spades("Spades"), Diamonds("Dimonds"), Clubs("Clubs");
 
     
     private final String suitText;

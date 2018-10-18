@@ -33,10 +33,10 @@ public class HandleASession implements Runnable {
 					+ server.getUsers().get(playersTurn).getBettingCash() + '\n';
 			if (actingPlayer.getMyBet() == currentHighestBet) {
 				message = message.concat("You match the current highest bet: " + currentHighestBet + '\n'
-						+ "Use these commands: /Check /Raise /Fold");
+						+ "Use these commands: check raise fold");
 			} else {
 				message = message.concat("The current highest bet is: " + currentHighestBet + '\n'
-						+ "Use these commands: /Call /Raise /Fold");
+						+ "Use these commands: call raise fold");
 			}
 
 			actingPlayer.sendMessage(message);
@@ -44,24 +44,24 @@ public class HandleASession implements Runnable {
 			String command = actingPlayer.readString();
 			switch (command) {
 
-			case "/check":
+			case "check":
 				actingPlayer.sendMessage("You checked this turn");
 				server.sendToAll(actingPlayer.getUserName() + " decided to check", actingPlayer);
 				break;
 
-			case "/raise":
+			case "raise":
 				//raising command
 				actingPlayer.sendMessage("You raised by: ");
 				server.sendToAll(actingPlayer.getUserName() + " decided to raise by: ", actingPlayer);
 				break;
 
-			case "/fold":
+			case "fold":
 				//folding command
 				actingPlayer.sendMessage("You folded your hand");
 				server.sendToAll(actingPlayer.getUserName() + " decided to fold his hand", actingPlayer);
 				break;
 
-			case "/call":
+			case "call":
 				//calling command
 				actingPlayer.sendMessage("You called to: " + currentHighestBet);
 				server.sendToAll(actingPlayer.getUserName() + " decided to call highest bet: ", actingPlayer);

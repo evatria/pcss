@@ -6,7 +6,7 @@ public class Card {
 	private Value value;
     
 	// Constructor
-    public Card(Suit suit, Value value) {
+    public Card(Value value,Suit suit) {
         
         this.suit = suit;
         this.value = value;
@@ -26,14 +26,4 @@ public class Card {
 		
 		return value + " of " + suit;
 	}
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		
-
-	}
-
 }
