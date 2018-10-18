@@ -1,0 +1,35 @@
+Mini-project hand-in Assignment
+General
+
+In order to get access to the written exam, you need to develop a client-server software divided in groups of 6 people.
+
+Within each group, 3 people have to develop the client and the other 3 have to program the server.
+
+The project should be hosted on GitHub, you will need to create two repositories one for the server and one for the client, the name of each repository should be: whateveryouwant-server and whateveryouwant-client (I advice you to use lowercase).
+
+You will need to use GitHub as a platform for project documentation (wiki), project management (tickets) and source code versioning (git).
+
+For each group, two repositories should be created and this can be done by any member of the group. That member should afterwards invite the other members to contribute to the repository (click on Settings and then to Collaborators).
+
+The software can be written in any OOP language (e.g. Java, C++ or C#); however, in class and during the final examination, C++ is used as the teaching and examination language. You are strongly discouraged to develop your project in Unity because of technical limitations.
+
+Evaluation and final submission
+
+In order to be evaluated positively in the project you will have to contribute to its development by a share proportional to the number of people in the group (e.g. 33% for groups for 3 people). GitHub keeps track of each user's activity, so remember to work from your own computer.
+
+At the time of the submission the project's page on github should contain all the necessary documentation of both the client and the server.
+
+The documentation should contain all information necessary for another developer to extend the projects (e.g. UML class and sequence diagrams) and the instructions to download and run the game. The definition of the communication protocol between the server and the client should also be included.
+
+Furthermore, the GitHub ticketing systems should be used to create a plan of the development and the tickets should be distributed evenly between the group members.
+
+For the final submission, you will need to create a release of your projects and each member of the group should submit a link to both the client and server repositories. 
+
+Project characteristics
+
+On-line multiplayer board game or another client-server application
+Has a lobby where games can be organised (eg. created, closed, joined and started)
+Client-server architecture that supports at least 3 clients
+Before you get to the networking bit of the program, it would be a good idea to start developing the client.
+
+Deadline: 06 November 2017, 23:55

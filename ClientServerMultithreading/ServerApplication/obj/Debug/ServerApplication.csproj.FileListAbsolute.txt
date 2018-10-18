@@ -1,0 +1,35 @@
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\bin\Debug\ServerApplication.exe.config
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\bin\Debug\ServerApplication.exe
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\bin\Debug\ServerApplication.pdb
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\bin\Debug\NetworkCommsDotNetComplete.dll
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\obj\Debug\ServerApplication.exe
+c:\users\alexa\documents\visual studio 2015\Projects\ClientServerApplication\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\bin\Debug\NetworkCommsDotNetComplete.dll
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\alexa\Documents\visual studio 2015\Projects\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Github\pcss_group10\EXTRA\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Github\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.csproj.CoreCompileInputs.cache
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\gta4w\Documents\GitHub\pcss_group10\ClientServerMultithreading\ServerApplication\obj\Debug\ServerApplication.pdb
