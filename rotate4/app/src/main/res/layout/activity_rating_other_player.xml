@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/qbg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp">
+
+
+        <EditText
+            android:id="@+id/txtTo"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:hint="Your partner's email"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ1"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="Time spent on discussion:"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA1"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Answer"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ2"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="Usefulnes of information provided by the other player:"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA2"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Give an answer from 1 to 5. 1 being the least, 5 being the most"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ3"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="Clarity of instructions provided by the other player:"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA3"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Give an answer from 1 to 5. 1 being the least, 5 being the most"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+
+        <TextView
+            android:id="@+id/txtQ4"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="Has the communication been equal or one sided?"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA4"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Equal or one sided"
+            android:textSize="14sp" />
+
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ5"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="Were you satisfied with the level of co-operation with the other player?:"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA5"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Yes or No"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ6"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="If applicable, please provide some comments about your co-op experience:"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtA6"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Answer"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="1sp"
+            android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/txtQ7"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:gravity="top"
+            android:text="How would you describe the other player's communication style?"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/txtA7"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:gravity="top"
+            android:hint="Answer"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Send" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="results"
+            android:text="@string/finish" />
+
+    </LinearLayout>
+
+</ScrollView>

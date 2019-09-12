@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.rotate4">
+
+    <application
+        android:name=".AcievementData"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <service
+            android:name=".MusicService"
+            android:enabled="true" />
+
+        <activity android:name=".SomethingCode"></activity>
+        <activity android:name=".NothingCode" />
+        <activity android:name=".RatingOtherPlayer" />
+        <activity android:name=".Something" />
+        <activity android:name=".Nothing" />
+        <activity android:name=".Choice" />
+        <activity android:name=".Desktop2" />
+        <activity android:name=".Activation" />
+        <activity android:name=".Desktop" />
+        <activity android:name=".Introduction" />
+        <activity android:name=".Bombe" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
