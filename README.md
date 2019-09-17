@@ -1,6 +1,7 @@
 # Programming of Complex Software Systems - Group MED305 2019 AAU Copenhagen
-Team members
-Christian Tsalidis
-Balazs Andras Ivanyi
-Marcus Dyrholm
-Marco Franck
+Team members:
+Christian Tsalidis,
+Balazs Andras Ivanyi,
+Marcus Dyrholm,
+Marco Franck,
+Lilla Julia Toth
