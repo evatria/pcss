@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Bombe extends AppCompatActivity {
-    HomeWatcher mHomeWatcher;
 
     private ImageView bombetro;
 
@@ -63,33 +62,6 @@ public class Bombe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bombe);
 
-        //BIND music service
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
-
-        mHomeWatcher = new HomeWatcher(this);
-        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
-            @Override
-            public void onHomePressed() {
-                if (mServ != null) {
-                    mServ.pauseMusic();
-                }
-            }
-            @Override
-            public void onHomeLongPressed() {
-                if (mServ != null) {
-                    mServ.pauseMusic();
-                }
-            }
-        });
-        mHomeWatcher.startWatch();
-
-        TextView textview3=findViewById(R.id.textView3);
-        MyTimer mTimer= new MyTimer();
-        //mTimer.getTime();
-        textview3.setText(mTimer.getTime() + "");
 
 
         pic1 = findViewById(R.id.pic1);
@@ -230,76 +202,7 @@ public class Bombe extends AppCompatActivity {
 
     }
 
-    //for playing music
-    private boolean mIsBound = false;
-    private MusicService mServ;
-    private ServiceConnection Scon =new ServiceConnection(){
 
-        public void onServiceConnected(ComponentName name, IBinder
-                binder) {
-            mServ = ((MusicService.ServiceBinder)binder).getService();
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            mServ = null;
-        }
-    };
-
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon, Context.BIND_AUTO_CREATE);
-        mIsBound = true;
-    }
-
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
-            unbindService(Scon);
-            mIsBound = false;
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (mServ != null) {
-            mServ.resumeMusic();
-        }
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        PowerManager pm = (PowerManager)
-                getSystemService(Context.POWER_SERVICE);
-        boolean isScreenOn = false;
-        if (pm != null) {
-            isScreenOn = pm.isScreenOn();
-        }
-
-        if (!isScreenOn) {
-            if (mServ != null) {
-                mServ.pauseMusic();
-            }
-        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        //UNBIND music service
-        doUnbindService();
-        Intent music = new Intent();
-        music.setClass(this,MusicService.class);
-        stopService(music);
-
-    }
 
 
     public void nextPage(View view) {
@@ -308,10 +211,6 @@ public class Bombe extends AppCompatActivity {
         bombetro = findViewById(R.id.bombetro);
 
         if (pic1true == true && pic2true==true && pic3true==true && pic4true==true && pic5true==true  && pic6true==true && pic7true==true&& pic8true==true) {
-
-
-            final AcievementData acievement1 = (AcievementData) getApplicationContext();
-            acievement1.setEarned1(1);
 
             bombetro.animate().alpha(1f).setDuration(1500);
             bombetro.postDelayed(new Runnable() {
@@ -323,9 +222,7 @@ public class Bombe extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            if(mServ!=null){
-                                mServ.stopMusic();
-                            }
+
                             nextPage1();
                         }
                     }, 2000);
@@ -337,7 +234,7 @@ public class Bombe extends AppCompatActivity {
     }
 
     public void nextPage1(){
-        Intent intent = new Intent(this, Activation.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }

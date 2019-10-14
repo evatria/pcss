@@ -18,8 +18,6 @@ import android.widget.TextView;
 
 public class Desktop extends AppCompatActivity {
     int hintCounter=0;
-    HomeWatcher mHomeWatcher;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,107 +29,9 @@ public class Desktop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desktop);
 
-        //BIND music service
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
-
-        TextView textview2=findViewById(R.id.textView2);
-        MyTimer mTimer= new MyTimer();
-        //mTimer.getTime();
-        //mTimer.countdown();
-        textview2.setText(mTimer.getTime()+ "");
-
-        mHomeWatcher = new HomeWatcher(this);
-        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
-            @Override
-            public void onHomePressed() {
-                if (mServ != null) {
-                    mServ.pauseMusic();
-                }
-            }
-            @Override
-            public void onHomeLongPressed() {
-                if (mServ != null) {
-                    mServ.pauseMusic();
-                }
-            }
-        });
-        mHomeWatcher.startWatch();
-
     }
 
-    //for playing music
-    private boolean mIsBound = false;
-    private MusicService mServ;
-    private ServiceConnection Scon =new ServiceConnection(){
 
-        public void onServiceConnected(ComponentName name, IBinder
-                binder) {
-            mServ = ((MusicService.ServiceBinder)binder).getService();
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            mServ = null;
-        }
-    };
-
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon, Context.BIND_AUTO_CREATE);
-        mIsBound = true;
-    }
-
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
-            unbindService(Scon);
-            mIsBound = false;
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (mServ != null) {
-            mServ.resumeMusic();
-        }
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        PowerManager pm = (PowerManager)
-                getSystemService(Context.POWER_SERVICE);
-        boolean isScreenOn = false;
-        if (pm != null) {
-            isScreenOn = pm.isScreenOn();
-        }
-
-        if (!isScreenOn) {
-            if (mServ != null) {
-                mServ.pauseMusic();
-            }
-        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        //UNBIND music service
-        doUnbindService();
-        Intent music = new Intent();
-        music.setClass(this,MusicService.class);
-        stopService(music);
-
-    }
 
 // opens the bombe class
     public void bombeMachine(View view){
@@ -152,29 +52,11 @@ public class Desktop extends AppCompatActivity {
 
         if (hintCounter == 2) {
             hint.setVisibility(View.VISIBLE);
-            hint.setImageResource(R.drawable.hinttwo);
-            VisibleInvisible();
-        }
-
-        if (hintCounter == 3) {
-            hint.setVisibility(View.VISIBLE);
             hint.setImageResource(R.drawable.hintthree);
             VisibleInvisible();
         }
 
-        if (hintCounter == 4) {
-            hint.setVisibility(View.VISIBLE);
-            hint.setImageResource(R.drawable.hintfour);
-            VisibleInvisible();
-        }
-
-        if (hintCounter == 5) {
-            hint.setVisibility(View.VISIBLE);
-            hint.setImageResource(R.drawable.hintfive);
-            VisibleInvisible();
-        }
-
-        if (hintCounter > 5) {
+        if (hintCounter > 2) {
             hint.setVisibility(View.VISIBLE);
             hint.setImageResource(R.drawable.hintlast);
             VisibleInvisible();

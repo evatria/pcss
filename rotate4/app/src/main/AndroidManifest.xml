@@ -4,7 +4,6 @@
     package="com.example.rotate4">
 
     <application
-        android:name=".AcievementData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,21 +12,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <service
-            android:name=".MusicService"
-            android:enabled="true" />
-
-        <activity android:name=".SomethingCode"></activity>
-        <activity android:name=".NothingCode" />
-        <activity android:name=".RatingOtherPlayer" />
-        <activity android:name=".Something" />
-        <activity android:name=".Nothing" />
-        <activity android:name=".Choice" />
-        <activity android:name=".Desktop2" />
-        <activity android:name=".Activation" />
         <activity android:name=".Desktop" />
-        <activity android:name=".Introduction" />
         <activity android:name=".Bombe" />
+        <activity android:name=".Selection"/>
+        <activity android:name=".DesktopWar"/>
+        <activity android:name=".Puzzle"/>
+        <activity android:name=".EndScreen"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
