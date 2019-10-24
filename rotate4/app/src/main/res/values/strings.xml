@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">rotate4</string>
+    <string name="title_activity_something2">something2</string>
+    <string name="gameName">Codename: Ultra</string>
+    <string name="startGame">Start Game</string>
+    <string name="check">Check</string>
+    <string name="click_here">Click to proceed</string>
+    <string name="title_activity_desktop2">Desktop2</string>
+    <string name="results">Results</string>
+    <string name="finish">Finish</string>
+    <string name="alan_turing">Alan Mathison Turing</string>
+</resources>

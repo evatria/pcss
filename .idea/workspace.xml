@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b4631bf5-e29d-4a20-80b6-89129610e1fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/rotate4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/AcievementData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Activation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Bombe.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Bombe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Choice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Desktop.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Desktop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Desktop2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/HomeWatcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Introduction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/MusicService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/MyTimer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Nothing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/NothingCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/RatingOtherPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/Something.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/java/com/example/rotate4/SomethingCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/activationcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/bombe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/charpic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/checkbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/desktop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/desktopcode.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/desktoptwotwo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/discode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/drawable/hinttwo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_activation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_bombe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_bombe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_choice.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_desktop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_desktop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_desktop2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_introduction.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_nothing.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_nothing_code.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_rating_other_player.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_something.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/app/src/main/res/layout/activity_something_code.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotate4/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rotate4/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="950" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MiniProjectPCSS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniProjectPCSS" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rotate4" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4631bf5-e29d-4a20-80b6-89129610e1fc" name="Default Changelist" comment="" />
+      <created>1570106076345</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570106076345</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32980832" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Resources Explorer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/rotate4.zip" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
