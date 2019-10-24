@@ -9,6 +9,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.Scanner;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -21,6 +27,34 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Scanner input = new Scanner(System.in);
+        boolean connect = true;
+
+        try {
+            Socket connectToServer = new Socket("localhost", 7500);
+            System.out.println("Connected to server");
+            DataInputStream isFromServer = new DataInputStream(connectToServer.getInputStream());
+            DataOutputStream osToServer = new DataOutputStream(connectToServer.getOutputStream());
+
+            while(connect) {
+                System.out.print("Waiting for 2 player");
+                String Waiting;
+
+                
+
+
+
+
+
+
+            }
+
+            input.close();
+            connectToServer.close();
+        } catch (IOException var15) {
+            System.out.println(var15.toString() + "\n");
+        }
 
     }
 
