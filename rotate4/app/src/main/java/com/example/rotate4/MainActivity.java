@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             DataOutputStream osToServer = new DataOutputStream(connectToServer.getOutputStream());
 
             while(connect) {
-                System.out.print("Waiting for 2 player");
+                System.out.print("Waiting for 2 player to start");
                 String Waiting;
 
                 
