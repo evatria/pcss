@@ -39,9 +39,13 @@ For starting the game, after making sure the server is running, both players mus
 To complete the game, the intelligence officer is opening the poem on their table, and the War officer (using the code on his table) should collaborate in solving the small puzzle the War Officer is presented to. Together they should spell out the sentence "The name of a brilliant mind". Then, the players should discuss the meaning of this sentence and what/who it is reffering to. When they have come up with a possible solution, the war officer should go to the box on his table and spell out what he thinks is the answer. If the war officer spells out "TURING" then the game is completed and over.
 
 #  UML class, use case, and sequence diagrams
-### Class diagram:
+### Class diagram client:
 
 ![Class Diagram](https://github.com/CatharinaP/MiniProjectPCSS/blob/master/class_diagram.jpg)
+
+### Class diagram server:
+
+![Class Diagram Server](https://github.com/CatharinaP/MiniProjectPCSS/blob/master/server_class.jpg)
 
 ### Use case diagram:
 
