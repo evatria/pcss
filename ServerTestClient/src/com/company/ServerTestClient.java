@@ -29,7 +29,7 @@ public class ServerTestClient {
                 System.out.println(testData);
                 toServer.writeDouble(testData);
 
-                testData = fromServer.readDouble(testData);
+                testData = fromServer.readDouble();
                 System.out.println(testData);
 
             }
