@@ -1,3 +1,4 @@
+package company;
 import java.util.Scanner;
 import java.net.*;
 import java.io.*;
@@ -28,10 +29,12 @@ public class ServerTestClient {
                 System.out.println(testData);
                 toServer.writeDouble(testData);
 
-                double testDataBack = fromServer.readDouble(testData);
-                System.out.println(testDataBack);
+                testData = fromServer.readDouble(testData);
+                System.out.println(testData);
 
             }
+        }
+
             catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,4 +44,3 @@ public class ServerTestClient {
     }
 }
 
-}
