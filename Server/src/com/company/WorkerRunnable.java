@@ -1,13 +1,26 @@
+package src.com.company;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.*;
 import java.util.Date;
 
+/**
 
-public class Main {
-    int port = 8000;
+ */
+public class WorkerRunnable implements Runnable{
 
-    public static void main(String[] args) {
+    protected Socket clientSocket = null;
+    protected String serverText   = null;
+
+    public WorkerRunnable(Socket clientSocket, String serverText) {
+        this.clientSocket = clientSocket;
+        this.serverText   = serverText;
+    }
+
+    public void run() {
+        int port = 8000;
+
         try {
             // Create a server socket
             ServerSocket serverSocket = new ServerSocket(port);
