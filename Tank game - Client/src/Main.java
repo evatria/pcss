@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -42,5 +43,12 @@ public class Main extends Application {
             System.out.println(keyEvent);
         });
     }
+=======
+public class Main {
+    public static void main(String[] args) {
+
+    }
+
+>>>>>>> master
 
 }
