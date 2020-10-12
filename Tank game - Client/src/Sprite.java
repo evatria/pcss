@@ -2,14 +2,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 
-public class Tank extends Rectangle {
+public class Sprite extends Rectangle {
     boolean dead = false;
     private int angle = 0;
     private int angleIncrease = 10;
     private int moveSpeed = 10;
     final String type; //either bullet or player
 
-    Tank(int x, int y, int w, int h, String type, Color color) { //constructor
+    Sprite(int x, int y, int w, int h, String type, Color color) { //constructor
         super(w, h, color);
         this.type = type;
         setTranslateX(x);
@@ -47,5 +47,8 @@ public class Tank extends Rectangle {
     public int getAngle() {
         return angle;
     }
+
+
+
 
 }

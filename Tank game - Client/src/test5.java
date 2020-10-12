@@ -16,7 +16,7 @@ public class test5 extends Application {
     int width = 1200;
     int height = 700;
 
-    private Sprite player = new Sprite(300, 300, 70, 40, "player", Color.BLUE);
+    private Tank player = new Tank(300, 300, 70, 40, "player", Color.BLUE);
 
 
     private Parent createContent() {
@@ -31,7 +31,7 @@ public class test5 extends Application {
             }
         };
         timer.start();
-        nextLevel();
+        nextLevel(); //initiater enemies - skal slette
         return root;
     }
 
@@ -75,7 +75,7 @@ public class test5 extends Application {
         });
     }
 
-    private void shoot(Sprite who) { //shoot function, creates sprites from shooting player
+    private void shoot(Tank who) { //shoot function, creates sprites from shooting player
         int bulletW = 5; //bullet width
         int bulletH = 5; //bullet height
         Sprite s = new Sprite((int) who.getTranslateX() + (int) who.getWidth() / 2, (int) who.getTranslateY() + (int) who.getHeight() / 2, bulletW, bulletH, who.type + "bullet", Color.BLACK);
@@ -108,7 +108,7 @@ public class test5 extends Application {
     }
 
 
-    private static class Sprite extends Rectangle {
+/*    private static class Sprite extends Rectangle {
         boolean dead = false;
         private int angle = 0;
         private int angleIncrease = 10;
@@ -156,6 +156,7 @@ public class test5 extends Application {
 
     }
 
+ */
 
     public static void main(String[] args) {
         launch(args);
