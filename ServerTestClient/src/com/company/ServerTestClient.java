@@ -12,7 +12,7 @@ public class ServerTestClient {
         DataInputStream fromServer = null;
         int port = 8000;
         // ipv4 address for server
-        String host = "172.30.242.61";
+        String host = "192.168.43.236";
         boolean Continue = true;
         Socket socket = null;
 

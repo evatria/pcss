@@ -16,6 +16,20 @@
             "name": "CodeLens (Launch) - ServerTestClient",
             "request": "launch",
             "mainClass": "company.ServerTestClient",
+            "projectName": "Gruppe-306-PCSS_7226f30"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ServerTestClient",
+            "request": "launch",
+            "mainClass": "ServerTestClient",
+            "projectName": "Gruppe-306-PCSS_7226f30"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ServerTestClient",
+            "request": "launch",
+            "mainClass": "company.ServerTestClient",
             "projectName": "Gruppe-306-PCSS_7455d736"
         },
         {
