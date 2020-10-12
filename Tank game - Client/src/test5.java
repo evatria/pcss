@@ -13,13 +13,14 @@ import java.util.stream.Collectors;
 
 public class test5 extends Application {
     private Pane root = new Pane();
-
+    int width = 1200;
+    int height = 700;
 
     private Sprite player = new Sprite(300, 300, 70, 40, "player", Color.BLUE);
 
 
     private Parent createContent() {
-        root.setPrefSize(1200, 700);
+        root.setPrefSize(width, height);
         root.getChildren().add(player);
 
 
@@ -34,14 +35,14 @@ public class test5 extends Application {
         return root;
     }
 
-    private void nextLevel() {
+    private void nextLevel() { //laver de røde enemies - skal slettes senere
         for (int i = 0; i < 10; i++) {
             Sprite s = new Sprite(90 + i * 100, 150, 30, 30, "enemy", Color.RED);
             root.getChildren().add(s);
         }
     }
 
-    private List<Sprite> sprites() {
+    private List<Sprite> sprites() { //funktion der returner en liste
         return root.getChildren().stream().map(n -> (Sprite) n).collect(Collectors.toList());
     }
 
@@ -49,7 +50,6 @@ public class test5 extends Application {
         sprites().forEach(s -> { //handles what happens to the sprites/bullets
             switch (s.type) {
                 case "enemybullet":
-                    s.moveDown();
                     if (s.getBoundsInParent().intersects(player.getBoundsInParent())) {
                         player.dead = true;
                         s.dead = true;
@@ -82,7 +82,6 @@ public class test5 extends Application {
         root.getChildren().add(s);
     }
 
-
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(createContent());
 
@@ -111,20 +110,12 @@ public class test5 extends Application {
 
     private static class Sprite extends Rectangle {
         boolean dead = false;
-        int angle = 0;
-        int angleIncrease = 10;
-        int moveSpeed = 10;
+        private int angle = 0;
+        private int angleIncrease = 10;
+        private int moveSpeed = 10;
         final String type; //either bullet or player
 
-
         Sprite(int x, int y, int w, int h, String type, Color color) { //constructor
-            super(w, h, color);
-            this.type = type;
-            setTranslateX(x);
-            setTranslateY(y);
-        }
-
-        Sprite(int x, int y, int w, int h, String type, Color color, int angle) { //constructor
             super(w, h, color);
             this.type = type;
             setTranslateX(x);
@@ -159,25 +150,10 @@ public class test5 extends Application {
             setY(getY() + moveSpeed * Math.sin(angleR));
         }
 
-        int getAngle() {
+        public int getAngle() {
             return angle;
         }
 
-        void moveLeft() {
-            setTranslateX(getTranslateX() - 5);
-        }
-
-        void moveRight() {
-            setTranslateX(getTranslateX() + 5);
-        }
-
-        void moveUp() {
-            setTranslateY(getTranslateY() - 5);
-        }
-
-        void moveDown() {
-            setTranslateY(getTranslateY() + 5);
-        }
     }
 
 
