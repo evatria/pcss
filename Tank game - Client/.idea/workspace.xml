@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f716ca59-c1f0-4a46-90bb-e7de6626bdf2" name="Default Changelist" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tank game - Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tank game - Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
->>>>>>> master
-    </list>
+    <list default="true" id="f716ca59-c1f0-4a46-90bb-e7de6626bdf2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +10,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -41,56 +27,63 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-<<<<<<< HEAD
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Tank game - Client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Map" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Map" />
-      <module name="Tank game - Client" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\atlen\Downloads\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-=======
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\signe\Documents\GitHub\Ny mappe\Gruppe-306-PCSS\Tank game - Client\src" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Map" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Map" />
+  <component name="RunManager" selected="Application.test5">
+    <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test2" />
       <module name="Tank game - Client" />
->>>>>>> master
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-<<<<<<< HEAD
-    <list>
-      <item itemvalue="Application.Map" />
-      <item itemvalue="Application.Main" />
-    </list>
+    <configuration name="Test4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test4" />
+      <module name="Tank game - Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestGame" />
+      <module name="Tank game - Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test3" />
+      <module name="Tank game - Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test5" />
+      <module name="Tank game - Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-=======
-    <recent_temporary>
-      <list>
->>>>>>> master
-        <item itemvalue="Application.Map" />
+        <item itemvalue="Application.test5" />
+        <item itemvalue="Application.Test4" />
+        <item itemvalue="Application.Test2" />
+        <item itemvalue="Application.test3" />
+        <item itemvalue="Application.TestGame" />
       </list>
     </recent_temporary>
   </component>
@@ -105,15 +98,10 @@
       <option name="presentableId" value="Default" />
       <updated>1601469582604</updated>
       <workItem from="1601469586513" duration="67000" />
-<<<<<<< HEAD
-      <workItem from="1601470118480" duration="1850000" />
-      <workItem from="1601630831105" duration="2365000" />
-      <workItem from="1601898139383" duration="562000" />
-      <workItem from="1601898744095" duration="2244000" />
-      <workItem from="1601901042094" duration="3011000" />
-=======
       <workItem from="1601470118480" duration="1294000" />
->>>>>>> master
+      <workItem from="1601899799180" duration="1427000" />
+      <workItem from="1601901242378" duration="8031000" />
+      <workItem from="1602149432118" duration="38397000" />
     </task>
     <servers />
   </component>
@@ -121,72 +109,69 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601899273283">
+    <state x="190" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1602243734292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1601899273283" />
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1601901825712">
+    <state x="190" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1602243734292" />
+    <state x="400" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1601901289659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1601901825712" />
-    <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1601903384057">
+    <state x="400" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1601901289659" />
+    <state x="914" y="0" width="629" height="830" key="DiffContextDialog" timestamp="1602488236416">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1601903384057" />
-    <state x="501" y="154" key="FileChooserDialogImpl" timestamp="1601899171252">
+    <state x="914" y="0" width="629" height="830" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1602488236416" />
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1601901471006">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="501" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601899171252" />
-    <state width="1493" height="103" key="GridCell.Tab.0.bottom" timestamp="1601903773009">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601901471006" />
+    <state width="1493" height="164" key="GridCell.Tab.0.bottom" timestamp="1602500471890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="103" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601903773009" />
-    <state width="1493" height="103" key="GridCell.Tab.0.center" timestamp="1601903773009">
+    <state width="1493" height="164" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602500471890" />
+    <state width="1493" height="164" key="GridCell.Tab.0.center" timestamp="1602500471890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="103" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601903773009" />
-    <state width="1493" height="103" key="GridCell.Tab.0.left" timestamp="1601903773009">
+    <state width="1493" height="164" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602500471890" />
+    <state width="1493" height="164" key="GridCell.Tab.0.left" timestamp="1602500471890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="103" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601903773009" />
-    <state width="1493" height="103" key="GridCell.Tab.0.right" timestamp="1601903773009">
+    <state width="1493" height="164" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602500471890" />
+    <state width="1493" height="164" key="GridCell.Tab.0.right" timestamp="1602500471890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="103" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601903773009" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1601899251381">
+    <state width="1493" height="164" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602500471890" />
+    <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1602492299740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601899251381" />
-    <state x="209" y="33" key="new project wizard" timestamp="1601637568024">
+    <state width="1493" height="257" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602492299740" />
+    <state width="1493" height="257" key="GridCell.Tab.1.center" timestamp="1602492299740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1601637568024" />
-=======
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1601471008675">
+    <state width="1493" height="257" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602492299740" />
+    <state width="1493" height="257" key="GridCell.Tab.1.left" timestamp="1602492299740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601471008675" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1601471008675">
+    <state width="1493" height="257" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602492299740" />
+    <state width="1493" height="257" key="GridCell.Tab.1.right" timestamp="1602492299740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601471008675" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1601471008675">
+    <state width="1493" height="257" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602492299740" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1602236542668">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601471008675" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1601471008675">
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602236542668" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1602235737088">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601471008675" />
-    <state x="277" y="55" key="SettingsEditor" timestamp="1601469654290">
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1602235737088" />
+    <state x="209" y="114" key="new project wizard" timestamp="1602161145789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601469654290" />
->>>>>>> master
-    <state x="431" y="145" key="search.everywhere.popup" timestamp="1601469659992">
+    <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1602161145789" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602247471663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601469659992" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602247471663" />
   </component>
 </project>
