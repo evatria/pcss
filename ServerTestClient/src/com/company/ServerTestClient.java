@@ -22,14 +22,15 @@ public class ServerTestClient {
             System.out.println("Connection to server established ");
             toServer = new DataOutputStream(socket.getOutputStream());
             fromServer = new DataInputStream(socket.getInputStream());
+            objectToServer = new ObjectInputStream(socket.getInputStream());
+            objectFromServer = new ObjectOutputStream(socket.getOutputStream());
 
             while (Continue == true) {
 
-                double testData = 1;
-                System.out.println(testData);
-                toServer.writeDouble(testData);
+                Scanner testScanner = new Scanner();
+                objectToServer.writeUTF(testScanner);
 
-                testData = fromServer.readDouble();
+                testData = objectFromServer.readString();
                 System.out.println(testData);
 
             }

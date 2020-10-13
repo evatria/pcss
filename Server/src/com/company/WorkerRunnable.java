@@ -34,16 +34,18 @@ public class WorkerRunnable implements Runnable{
             // input and output streams
             DataInputStream isFromClient = new DataInputStream(connectToClient.getInputStream());
             DataOutputStream isToClient = new DataOutputStream(connectToClient.getOutputStream());
+            ObjectInputStream objectFromClient = new ObjectInputStream(connectToClient.getInputStream());
+            ObjectOutputStream objectToClient = new ObjectOutputStream(connectToClient.getOutputStream());
 
             while (true) {
 
                 // Calculations made by server
-                double testData = isFromClient.readDouble();
-                testData += 1;
+                String testScanner = objectFromClient.readString();
+
+                String testData = testScanner;
 
                 //send back to client
-
-                isToClient.writeDouble(testData);
+                isToClient.writeUTF(testData);
 
             }
 
