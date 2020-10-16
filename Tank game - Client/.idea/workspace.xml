@@ -2,31 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f716ca59-c1f0-4a46-90bb-e7de6626bdf2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TODO list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tank game - Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tank game - Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Map2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Projectile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Sprite.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Tank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Test2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Test2$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Test2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/test5$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/test5$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/test5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,22 +150,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602506772798" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1602836898561">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1602848652406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602836898561" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1602836898560">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602848652406" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1602848652406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602836898560" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1602836898560">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602848652406" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1602848652406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602836898560" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1602836898560">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602848652406" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1602848652406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602836898560" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602848652406" />
     <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1602680763418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -207,9 +194,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1602161145789" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602760655645">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602847875287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602760655645" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602847875287" />
   </component>
 </project>
