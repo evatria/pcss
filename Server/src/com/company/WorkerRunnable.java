@@ -12,6 +12,7 @@ public class WorkerRunnable implements Runnable{
 
     protected Socket clientSocket = null;
     protected String serverText   = null;
+    public static double testData;
 
     public WorkerRunnable(Socket clientSocket, String serverText) {
         this.clientSocket = clientSocket;
@@ -38,7 +39,7 @@ public class WorkerRunnable implements Runnable{
             while (true) {
 
                 // Calculations made by server
-                double testData = isFromClient.readDouble();
+                testData = isFromClient.readDouble();
                 testData += 1;
 
                 //send back to client

@@ -15,6 +15,7 @@ public class Main {
                 ServerSocket serverSocket = new ServerSocket(8000);
                 System.out.println("Loan Server started at " + new Date() + '\n');
                 System.out.println("IP address: " + Inet4Address.getLocalHost().getHostAddress());
+                final double testData;
 
                 // Number a client
                 int clientNo = 0;
