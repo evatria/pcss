@@ -1,21 +1,20 @@
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import javax.swing.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
-public class Map extends JPanel {
+public class Map extends Rectangle {
+    //final static Color color = Color.GRAY;
+    final static int width = 100;
+    final static int height = 100;
 
-    public static void main(String[] args) {
 
-        JFrame frame = new JFrame("My Drawing");
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(720,720);
-        ImageIcon pic = new ImageIcon("path");
-        Image tank = pic.getImage();
+
+    Map(int x, int y){
+        super();
+        setHeight(height);
+        setWidth(width);
+        setTranslateX(x);
+        setTranslateY(y);
     }
 
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    }
 }
 
