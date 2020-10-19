@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 
 public class Game extends Application {
-
     Projectile[] projectiles;
 
     //movement booleans
@@ -50,8 +49,6 @@ public class Game extends Application {
     }
 
     public void update() {//function where everything that happens every frame is called
-
-
         //moves ALL bullets on the map
         for (int i = 0; i < projectiles.length; i++) {
             if (projectiles[i] != null) { //only does this function if there are bullets in the array
@@ -59,7 +56,11 @@ public class Game extends Application {
 
                 //removes a tank if hit
                 if(projectiles[i].collision(tanks) != null){//only does this if there is a hit tank
-                    root.getChildren().remove(projectiles[i].collision(tanks));//removes the tank visually
+
+                    Tank tank = projectiles[i].collision(tanks);
+                    root.getChildren().remove(tank);
+                    tank.setDead();
+                    //root.getChildren().remove(projectiles[i].collision(tanks));//removes the tank visually
                     root.getChildren().remove(projectiles[i]);//removes the bullet visually
                     projectiles[i] = null;//removes the bullets from the array
                 }
