@@ -27,9 +27,9 @@ public class Lobby {
     }
 
     void createLobby(String code) {
+        checkLobbyDuplicate(code);
         SubLobby subLobby = new SubLobby(code, this.playerID);
         this.subLobbies.add(subLobby);
-
     }
 
     void joinLobby(String lobbyName) {
@@ -40,12 +40,20 @@ public class Lobby {
         }
     }
 
-    void checkDuplicate() {
-    }
+    void checkLobbyDuplicate(String lobbyName) {
+        for (int i = 0; i < subLobbies.size(); i++) {
+            if (subLobbies.get(i).getLobbyName().equals(lobbyName)) {
+                System.out.println("that lobby name is occupied. returning to main menu");
+                options();
+                }
+            }
+        }
 
 
-    void startGame(String lobby) {
 
+    void startGame(String lobbyName) {
+        System.out.println("Game started");
+        //start the game
     }
 
     void removeFromLobby(String lobbyName) {
@@ -62,7 +70,6 @@ public class Lobby {
                 }
             }
         }
-
 
         options();
     }
@@ -95,7 +102,6 @@ public class Lobby {
 
     }
 
-
     void hostOptions(String lobbyName) {
         System.out.println("Write \"start\" to start the game, or write \"list\" to see player list.");
         System.out.println("Write \"exit\" to leave lobby");
@@ -103,16 +109,17 @@ public class Lobby {
         try {
             String input = scanner.nextLine();
             if (input.equals("start")) {
-                System.out.println("GET REAAAADYYY!!!!");
+                System.out.println("Starting the game with lobby name "+lobbyName);
                 startGame(lobbyName); //Start ny instance af et game!
             } else if (input.equals("list")) {
 
                 for (int i = 0; i < subLobbies.size(); i++) {
                     if (subLobbies.get(i).getLobbyName().equals(lobbyName)) {
+                        System.out.println("Lobby name: "+subLobbies.get(i).getLobbyName());
+                        System.out.println("Players: ");
                         subLobbies.get(i).printPlayers();
                     }
                 }
-
 
                 hostOptions(lobbyName);
             } else if (input.equals("exit")) {
@@ -153,6 +160,9 @@ public class Lobby {
                 this.currentLobby = lobbyName;
                 isHost = false;
                 joinLobby(lobbyName); //Try Catch her måske, kommer and på hvad funktionen skal
+            } else {
+                System.out.println("please enter a valid option");
+                options();
             }
 
 
