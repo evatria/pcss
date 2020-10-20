@@ -24,7 +24,8 @@ public class UserThread extends Thread {
 		try {
 			output.writeUTF(message);
 			output.flush();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
     }
