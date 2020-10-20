@@ -6,7 +6,7 @@ public class Tank extends Rectangle {
     boolean dead = false; //is not used for anything YET
     private int angle = 0; //variable that stores the tanks angle
     private int angleIncrease = 3;
-    private int moveSpeed = 5;
+    private int moveSpeed = 3;
     final static int MAX_PROJECTILES = 10; //max amount of projectiles a player can have at the same time
     private Projectile[] projectiles = new Projectile[MAX_PROJECTILES]; //array with the tanks projectiles
     final String playerID; //either bullet or player-- IS NOT UTILISED YET
@@ -25,34 +25,40 @@ public class Tank extends Rectangle {
     void setDead(){
         dead = true;
     }
+    boolean getDead(){
+        return dead;
+    }
 
     Projectile shoot() { //shoot method, returns a projectile array or null
-        for(int i = 0; i < projectiles.length; i++){
-            if(projectiles[i] == null){ //let's the player shoot if there is an empty space in the array aka. there are less than 10 bullets on the map
-                int k = 70; //offset value
+        if(!dead) {
+            for (int i = 0; i < projectiles.length; i++) {
+                if (projectiles[i] == null) { //let's the player shoot if there is an empty space in the array aka. there are less than 10 bullets on the map
+                    int k = 60; //offset value
 
-                //x and y for the center of the tank
-                float centerX = (float)this.getTranslateX()+(float)this.getWidth()/2; //center of tank
-                float centerY = (float)this.getTranslateY()+(float)this.getHeight()/2;
+                    //x and y for the center of the tank
+                    float centerX = (float) this.getTranslateX() + (float) this.getWidth() / 2; //center of tank
+                    float centerY = (float) this.getTranslateY() + (float) this.getHeight() / 2;
 
-                //cos and sin for the tanks angle
-                float cos = (float)Math.cos(Math.toRadians(getAngle()*-1));
-                float sin = (float)Math.sin(Math.toRadians(getAngle()*-1));
+                    //cos and sin for the tanks angle
+                    float cos = (float) Math.cos(Math.toRadians(getAngle() * -1));
+                    float sin = (float) Math.sin(Math.toRadians(getAngle() * -1));
 
-                //cos and sin multiplied with a constant, calculating the x and y offset
-                float widthOffset = cos*k;
-                float heightOffset = sin*k;
+                    //cos and sin multiplied with a constant, calculating the x and y offset
+                    float widthOffset = cos * k;
+                    float heightOffset = sin * k;
 
-                //start coordinates for x and y
-                float x = centerX+widthOffset;
-                float y = centerY-heightOffset;
+                    //start coordinates for x and y
+                    float x = centerX + widthOffset;
+                    float y = centerY - heightOffset;
 
-                Projectile p = new Projectile(x,y, this); //creates a new projectile
-                projectiles[i] = p; //puts the bullets in the bullet array
-                return projectiles[i]; //returns the array, now with bullets in it
+                    Projectile p = new Projectile(x, y, this); //creates a new projectile
+                    projectiles[i] = p; //puts the bullets in the bullet array
+                    return projectiles[i]; //returns the array, now with bullets in it
+                }
             }
         }
-        return null;
+            return null;
+
     }
 
 
