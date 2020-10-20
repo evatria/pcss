@@ -75,13 +75,13 @@ public class Server {
 			}
 		}
 
-		if(start) {
-			lobby = false;
-			for (UserThread userThread : users) {
-				userThread.sendMessage("Game started");
-			}
-			new Thread(new HandleASession(this)).start();
-		}
+		// if(start) {
+		// 	lobby = false;
+		// 	for (UserThread userThread : users) {
+		// 		userThread.sendMessage("Game started");
+		// 	}
+		// 	new Thread(new HandleASession(this)).start();
+		// }
 	}
 
 	public ServerSocket getServerSocket() {
