@@ -32,22 +32,22 @@ public class Game extends Application {
     Tank[] tanks = {player, player2};//puts the tanks into an array
 
 
-    private Map map = new Map(0, 0, 1200, wallWidth);
+    private Map top = new Map(0, 0, 1200, wallWidth);
     private Map bund = new Map(0, height - wallWidth, 1200, wallWidth);
     private Map hoejre = new Map(width - wallWidth, 0, wallWidth, height);
     private Map venstre = new Map(0, 0, wallWidth, height);
     private Map map1 = new Map(200, 100, width / 2, wallWidth);
-    Map[] maps = {map, bund, venstre, hoejre, map1};
+    Map[] maps = {top, bund, venstre, hoejre, map1};
 
 
     private Parent createContent() { //creates the "draw" function - creates a Parent and returns it
         root.setPrefSize(width, height); //sets width and height of window
         root.getChildren().add(player); //adds tank as a child
         root.getChildren().add(player2);
+
         for (int i = 0; i < maps.length; i++) {
             root.getChildren().add(maps[i]);
         }
-
 
         AnimationTimer timer = new AnimationTimer() { //everything in this is called each frame
             @Override
@@ -66,7 +66,6 @@ public class Game extends Application {
                 for (int j = 0; j < maps.length; j++) {
                     projectiles[i].moveBullet(maps[j]);//moves bullets
                 }
-
 
                 //removes a tank if hit
                 if (projectiles[i].collision(tanks) != null) {//only does this if there is a hit tank
@@ -160,6 +159,7 @@ public class Game extends Application {
 
 
     public static void main(String[] args) {
+        Lobby lobby = new Lobby();
         launch(args);
     }
 }
