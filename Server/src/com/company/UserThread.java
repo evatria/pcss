@@ -12,7 +12,7 @@ public class UserThread extends Thread {
 	private String userName;
 	private DataOutputStream output;
 	private DataInputStream input;
-    
+    private boolean readyCheck;
 
 	public UserThread(Server server, Socket socket) {
         this.server = server;
@@ -27,5 +27,10 @@ public class UserThread extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+    }
+    
+    public boolean isReadyCheck() {
+		return readyCheck;
+    }
+    
 }
