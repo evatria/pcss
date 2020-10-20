@@ -25,6 +25,9 @@ public class Tank extends Rectangle {
     void setDead(){
         dead = true;
     }
+    boolean getDead(){
+        return dead;
+    }
 
     Projectile shoot() { //shoot method, returns a projectile array or null
         if(!dead) {

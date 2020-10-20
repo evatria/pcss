@@ -48,7 +48,6 @@ public class Projectile extends Circle {
         for (int i = 0; i < tank.length; i++) {
             if (this.getBoundsInParent().intersects(tank[i].getBoundsInParent())) {
                 //lifespan = 300;
-                System.out.println(this);
                 return tank[i];
             }
         }

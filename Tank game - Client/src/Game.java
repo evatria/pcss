@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 
 public class Game extends Application {
+
     Projectile[] projectiles;
 
     //movement booleans
@@ -35,7 +36,7 @@ public class Game extends Application {
     private Map bund = new Map(0, height - wallWidth, 1200, wallWidth);
     private Map hoejre = new Map(width - wallWidth, 0, wallWidth, height);
     private Map venstre = new Map(0, 0, wallWidth, height);
-    private Map map1 = new Map(200, 100, width/2, wallWidth);
+    private Map map1 = new Map(200, 100, width / 2, wallWidth);
     Map[] maps = {map, bund, venstre, hoejre, map1};
 
 
@@ -62,7 +63,7 @@ public class Game extends Application {
         //moves ALL bullets on the map
         for (int i = 0; i < projectiles.length; i++) {
             if (projectiles[i] != null) { //only does this function if there are bullets in the array
-                for(int j = 0; j<maps.length; j++){
+                for (int j = 0; j < maps.length; j++) {
                     projectiles[i].moveBullet(maps[j]);//moves bullets
                 }
 
@@ -71,11 +72,15 @@ public class Game extends Application {
                 if (projectiles[i].collision(tanks) != null) {//only does this if there is a hit tank
 
                     Tank tank = projectiles[i].collision(tanks);
-                    root.getChildren().remove(tank);
+                    if (tank.getDead() == false) {
+                        root.getChildren().remove(tank);
+                        root.getChildren().remove(projectiles[i]);//removes the bullet visually
+                        projectiles[i] = null;//removes the bullets from the array
+                    }
                     tank.setDead();
                     //root.getChildren().remove(projectiles[i].collision(tanks));//removes the tank visually
-                    root.getChildren().remove(projectiles[i]);//removes the bullet visually
-                    projectiles[i] = null;//removes the bullets from the array
+
+
                 }
             }
         }
