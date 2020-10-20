@@ -15,9 +15,5 @@ public class Map extends Rectangle {
         setTranslateX(x);
         setTranslateY(y);
     }
-
-
-
-
 }
 
