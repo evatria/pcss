@@ -3,7 +3,7 @@ import javafx.scene.shape.Circle;
 
 public class Projectile extends Circle {
 
-    final static int MAX_SPEED = 5;
+    final static int MAX_SPEED = 1;
     static final int RADIUS = 5;
 
     private Tank player;
@@ -33,7 +33,9 @@ public class Projectile extends Circle {
     void moveBullet(Map map) {
         this.setCenterX(getCenterX() + xSpeed); //affyrer skud med dens vinkel fra setSpeed
         this.setCenterY(getCenterY() + ySpeed);
-        if (this.getCenterX() > map.getTranslateX() && this.getCenterX() < map.getTranslateX() + map.getWidth() && this.getCenterY() < map.getTranslateY() && this.getCenterY() < map.getTranslateY() + map.getHeight() && this.getBoundsInParent().intersects(map.getBoundsInParent())) {
+
+
+        if (this.getCenterX() > map.getTranslateX() && this.getCenterX() < map.getTranslateX() + map.getWidth() && (this.getCenterY() < map.getTranslateY() || this.getCenterY() < map.getTranslateY() + map.getHeight()+RADIUS) && this.getBoundsInParent().intersects(map.getBoundsInParent())) {
             ySpeed = -ySpeed; //inverter hastigheden hvis en top eller bund væg rammes
         } else if (this.getBoundsInParent().intersects(map.getBoundsInParent())) {
             xSpeed = -xSpeed; //inverter speed hvis sidevæg rammes
