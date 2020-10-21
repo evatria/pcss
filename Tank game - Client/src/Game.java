@@ -32,11 +32,11 @@ public class Game extends Application {
     Tank[] tanks = {player, player2};//puts the tanks into an array
 
 
-    private Map map = new Map(0, 0, 1200, wallWidth);
-    private Map bund = new Map(0, height - wallWidth, 1200, wallWidth);
-    private Map hoejre = new Map(width - wallWidth, 0, wallWidth, height);
-    private Map venstre = new Map(0, 0, wallWidth, height);
-    private Map map1 = new Map(200, 100, width / 2, wallWidth);
+    public Map map = new Map(0, 0, 1200, wallWidth);
+    public Map bund = new Map(0, height - wallWidth, 1200, wallWidth);
+    public Map hoejre = new Map(width - wallWidth, 0, wallWidth, height);
+    public Map venstre = new Map(0, 0, wallWidth, height);
+    public Map map1 = new Map(200, 100, width / 2, wallWidth);
     Map[] maps = {map, bund, venstre, hoejre, map1};
 
 
@@ -68,6 +68,7 @@ public class Game extends Application {
                 }
 
 
+
                 //removes a tank if hit
                 if (projectiles[i].collision(tanks) != null) {//only does this if there is a hit tank
 
@@ -96,15 +97,30 @@ public class Game extends Application {
 
         if (left) { //moves if the boolean is true, this is smoother than having the move in the start function
             player.rotateLeft();
+            if (player.isColliding(maps)){
+                player.rotateRight();
+
+            }
         }
         if (right) {
             player.rotateRight();
+            if (player.isColliding(maps)){
+                player.rotateLeft();
+            }
         }
         if (forward) {
             player.moveForward();
+            if (player.isColliding(maps)){
+                player.moveBackward();
+
+            }
         }
         if (backward) {
             player.moveBackward();
+            if (player.isColliding(maps)){
+                player.moveForward();
+
+            }
         }
     }
 

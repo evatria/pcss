@@ -15,7 +15,6 @@ public class Lobby {
 
     Scanner scanner = new Scanner(System.in);
 
-
     Lobby() {
 
         System.out.println("Welcome to TANK the game!");
