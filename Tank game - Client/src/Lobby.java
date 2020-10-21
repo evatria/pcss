@@ -12,24 +12,26 @@ public class Lobby {
     private String[] OtherPlayers = {};
     private boolean isHost;
     private String currentLobby;
+    private Datasender datasender;
 
     Scanner scanner = new Scanner(System.in);
 
 
     Lobby() {
-
         System.out.println("Welcome to TANK the game!");
         System.out.println("What is your name?");
         this.playerID = scanner.nextLine();
-
+        //datasender = new Datasender(playerID);
         options();
+    }
 
+    public String getPlayerID(){
+        return playerID;
     }
 
     void createLobby(String code) {
         SubLobby subLobby = new SubLobby(code, this.playerID);
         this.subLobbies.add(subLobby);
-
     }
 
     void joinLobby(String lobbyName) {
@@ -45,7 +47,9 @@ public class Lobby {
 
 
     void startGame(String lobby) {
-
+        //Game game = new Game(playerID);
+        String[] arguments = new String[]{playerID};
+        Game.main(arguments);
     }
 
     void removeFromLobby(String lobbyName) {
@@ -174,9 +178,7 @@ public class Lobby {
     }
 
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Lobby l = new Lobby();
-
-    }*/
-
+    }
 }
