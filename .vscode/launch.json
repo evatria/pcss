@@ -15,6 +15,20 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "src.com.company.Main",
+            "projectName": "Gruppe-306-PCSS_ef11dab7"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Server",
+            "request": "launch",
+            "mainClass": "src.com.company.Server",
+            "projectName": "Gruppe-306-PCSS_ef11dab7"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "Main",
             "projectName": "Gruppe-306-PCSS_7455d736"
         },
