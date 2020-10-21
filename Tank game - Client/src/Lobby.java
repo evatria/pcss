@@ -21,7 +21,6 @@ public class Lobby {
         System.out.println("Welcome to TANK the game!");
         System.out.println("What is your name?");
         this.playerID = scanner.nextLine();
-
         options();
 
     }
@@ -41,6 +40,7 @@ public class Lobby {
     }
 
     void checkDuplicate() {
+
     }
 
 
