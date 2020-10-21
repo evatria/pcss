@@ -6,6 +6,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Game extends Application {
 
@@ -26,12 +29,14 @@ public class Game extends Application {
 
     int wallWidth = 10;
 
+    String playerID;
 
-    private Tank player = new Tank(300, 300, 70, 40, "1", Color.BLUE);
+    private Tank player = new Tank(300, 300, 70, 40, playerID, Color.BLUE);
     private Tank player2 = new Tank(100, 100, 70, 40, "2", Color.BISQUE);
     Tank[] tanks = {player, player2};//puts the tanks into an array
+    //private List<SubLobby> tank = new ArrayList<SubLobby>();
 
-
+    //map
     private Map top = new Map(0, 0, 1200, wallWidth);
     private Map bund = new Map(0, height - wallWidth, 1200, wallWidth);
     private Map hoejre = new Map(width - wallWidth, 0, wallWidth, height);
@@ -42,8 +47,12 @@ public class Game extends Application {
 
     private Parent createContent() { //creates the "draw" function - creates a Parent and returns it
         root.setPrefSize(width, height); //sets width and height of window
-        root.getChildren().add(player); //adds tank as a child
-        root.getChildren().add(player2);
+
+        for(int i = 0; i< tanks.length; i++){ //makes the tanks
+            if(tanks[i] != null) {
+                root.getChildren().add(tanks[i]);
+            }
+        }
 
         for (int i = 0; i < maps.length; i++) {
             root.getChildren().add(maps[i]);
@@ -107,9 +116,15 @@ public class Game extends Application {
         }
     }
 
+
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(createContent()); //creates a scene with the root createContent as input
         projectiles = player.getProjectiles(); //initializes the projectile array
+        Parameters para = getParameters();
+        List<String> list = para.getRaw();
+        playerID = list.get(0);
+        System.out.println(list.get(0));
+
 
         //sets booleans to false if key is released
         scene.setOnKeyReleased(e -> {
@@ -158,8 +173,8 @@ public class Game extends Application {
     }
 
 
+
     public static void main(String[] args) {
-        Lobby lobby = new Lobby();
         launch(args);
     }
 }
