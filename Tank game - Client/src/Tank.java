@@ -22,6 +22,7 @@ public class Tank extends Rectangle {
         return projectiles; //returns the tanks array of projectiles
     }
 
+
     void setDead(){
         dead = true;
     }
