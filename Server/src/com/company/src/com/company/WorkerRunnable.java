@@ -1,4 +1,4 @@
-package src.com.company;
+package src.com.company.src.com.company;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;

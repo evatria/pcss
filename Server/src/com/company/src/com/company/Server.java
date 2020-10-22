@@ -1,12 +1,9 @@
-package src.com.company;
+package src.com.company.src.com.company;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -24,7 +21,7 @@ public class Server {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Type the port of the server, the default should be 8000 ");
+		System.out.println("Connection established. ");
 		int paPort = scan.nextInt();
 		Server server = new Server(paPort);
 		scan.close();
@@ -65,23 +62,6 @@ public class Server {
 			if (userThread != ut)
 				userThread.sendMessage(message);
 		}
-	}
-
-	public void startGame() {
-		boolean start = true;
-		for (UserThread userThread : users) {
-			if (userThread.isReadyCheck() == true) {
-				start = false;
-			}
-		}
-
-		// if(start) {
-		// 	lobby = false;
-		// 	for (UserThread userThread : users) {
-		// 		userThread.sendMessage("Game started");
-		// 	}
-		// 	new Thread(new HandleASession(this)).start();
-		// }
 	}
 
 	public ServerSocket getServerSocket() {
