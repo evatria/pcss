@@ -32,6 +32,10 @@ public class UserThread extends Thread {
 			server.sendToAll(userName + " joined the server.", this);
 
 			readyCheck = true;
+
+			
+
+
 			while (readyCheck) {
 				String clientMessage = input.readUTF();
 				server.sendToAll(userName + ": " + clientMessage, this);
@@ -46,10 +50,21 @@ public class UserThread extends Thread {
 				if(clientMessage.equalsIgnoreCase("ready")) {
 					server.sendToAll(userName + " is ready", this);
 					readyCheck = false;
-					server.startGame();
+					//System.out.println(clientMessageDouble);
+					//server.startGame();
 				}
+			
+				
 
 			}
+
+			while (true) {
+				int clientMessageint = input.readInt();
+				System.out.println(clientMessageint);
+				server.sendToAllxpos(clientMessageint, this);
+			}
+
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,7 +80,17 @@ public class UserThread extends Thread {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
+	
+	public void sendInt(int messageint) {
+		try {
+			output.writeInt(messageint);
+			output.flush();
+		} catch (Exception e) {
+			//TODO: handle exception
+			e.printStackTrace();
+		}
+	}
     
     public boolean isReadyCheck() {
 		return readyCheck;

@@ -67,6 +67,13 @@ public class Server {
 		}
 	}
 
+	public void sendToAllxpos(int messageint, UserThread ut){
+		for (UserThread userThread : users){
+			if (userThread != ut)
+				userThread.sendInt(messageint);
+		}
+	}
+
 	public void startGame() {
 		boolean start = true;
 		for (UserThread userThread : users) {
