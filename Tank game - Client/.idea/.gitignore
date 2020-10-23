@@ -1,9 +1,9 @@
 # Default ignored files
-.workspace.xml
-.misc.xml
-.modules.xml
-.uiDesigner.xml
-.vcs.xml
-.workspace.xml
-.labraries.*
-Tank game - Client\.idea\libraries
+/workspace.xml
+/misc.xml
+/modules.xml
+/uiDesigner.xml
+/vcs.xml
+/workspace.xml
+/labraries.*
+/libraries
