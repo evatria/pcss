@@ -74,21 +74,22 @@ public class LobbySender {
         toServer.writeUTF("requestLobbyList");
 
         int numOfLobbies = fromServer.readInt();
-
+        System.out.println(numOfLobbies);
         for(int i = 0; i< numOfLobbies; i++) {
             String lobbyName = fromServer.readUTF();
             String host = fromServer.readUTF();
             int len = fromServer.readInt();
             List<String> players = new ArrayList<String>();
-            for (int j = 0; j < len; i++) {
+            for (int j = 0; j < len; j++) {
                 players.add(fromServer.readUTF());
             }
+            System.out.println("Recieved sublobby: "+lobbyName);
             SubLobby newLobby = new SubLobby(lobbyName, host);
             newLobby.setPlayers(players);
             subLobbies.add(newLobby);
         }
-
-     return subLobbies;
+        System.out.println("recieving done!");
+        return subLobbies;
     }
 
 

@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="852c60dd-ea8a-4497-bf36-2330b936adc6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LobbySender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tank game - Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tank game - Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Datasender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Datasender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Lobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Projectile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/SubLobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/SubLobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/TODO list" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/TODO list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Tank.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Lobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/LobbySender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/LobbySender.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/SubLobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/SubLobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Datasender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Datasender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lobby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SubLobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubLobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LobbySender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LobbySender.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -134,7 +134,8 @@
       <workItem from="1603278182104" duration="44000" />
       <workItem from="1603278726396" duration="834000" />
       <workItem from="1603279696395" duration="13398000" />
-      <workItem from="1603438596977" duration="955000" />
+      <workItem from="1603438596977" duration="2098000" />
+      <workItem from="1603441070032" duration="2855000" />
     </task>
     <servers />
   </component>
@@ -170,22 +171,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603279815468" />
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1603374947206">
+    <state width="1493" height="109" key="GridCell.Tab.0.bottom" timestamp="1603443316414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603374947206" />
-    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1603374947206">
+    <state width="1493" height="109" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
+    <state width="1493" height="109" key="GridCell.Tab.0.center" timestamp="1603443316413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603374947206" />
-    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1603374947206">
+    <state width="1493" height="109" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
+    <state width="1493" height="109" key="GridCell.Tab.0.left" timestamp="1603443316413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603374947206" />
-    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1603374947206">
+    <state width="1493" height="109" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
+    <state width="1493" height="109" key="GridCell.Tab.0.right" timestamp="1603443316413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603374947206" />
+    <state width="1493" height="109" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
     <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1602680763418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

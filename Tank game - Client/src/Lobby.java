@@ -43,18 +43,32 @@ public class Lobby {
 
 
     void updateLobbies(List<SubLobby> s) throws IOException{
+        System.out.println("1");
+        System.out.println(s.size());
         for(int i = 0; i < s.size(); i++) {
+            System.out.println("2");
+
+            if(subLobbies.size() == 0){
+                subLobbies.add(s.get(i));
+                System.out.println("New lobby found!: "+s.get(i).getLobbyName());
+                break;
+            }
+
             for (int j = 0; j<subLobbies.size(); j++){
+                System.out.println("3");
                 if(s.get(i).getLobbyName().equals(subLobbies.get(j).getLobbyName())){
+                    System.out.println("4");
                     break; //Run next  i (atlså ikke add!!)
+                } else if (j == subLobbies.size()-1){
+                    subLobbies.add(s.get(i));
+                    System.out.println("New lobby found!: "+s.get(i).getLobbyName());
                 }
             }
-            subLobbies.add(s.get(i));
+
         }
     }
     void joinLobby(String lobbyName) throws IOException {
         updateLobbies(sender.requestLobbyList());
-
 
         ////
         ////CREATE THE SUBLOBIES FIRST!!!!
@@ -168,6 +182,8 @@ public class Lobby {
                 this.currentLobby = lobbyName;
                 isHost = true;
             } else if (option.equals("join")) {
+                updateLobbies(sender.requestLobbyList());
+
                 if (subLobbies.size() == 0) {
                     System.out.println("No available games at the moment :(");
                     options();
