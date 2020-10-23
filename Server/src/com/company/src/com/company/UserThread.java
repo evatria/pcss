@@ -14,7 +14,6 @@ public class UserThread extends Thread {
 	private String playerID;
 	private DataOutputStream output;
 	private DataInputStream input;
-    private boolean readyCheck;
     public static Database database = new Database();
 
 	public UserThread(Server server, Socket socket) {
@@ -35,25 +34,18 @@ public class UserThread extends Thread {
 			while(true){
 				String commandType = input.readUTF();
 				if(commandType.equals("sendSubLobby")){
+					System.out.println(playerID + "creating lobby ");
 					recieveSubLobby();
+					System.out.println(playerID + "'s lobby created");
 				}
-				if(commandType.equals("..")); //Her skal indsættes kode til at sende lobbylist til client.
+				if(commandType.equals("requestLobbyList")){
+					System.out.println("Sending lobby list to " + playerID);
+					sendSubLobby();
+				} 
+
 
 
 			}
-
-			/*while (readyCheck) {
-				String clientMessage = input.readUTF();
-				server.sendToAll(playerID + ": " + clientMessage, this);
-				if(clientMessage.equalsIgnoreCase("quit")) {
-					server.sendToAll(playerID + " disconnected from the server", this);
-					server.removeUser(this, playerID);
-					socket.close();
-
-					readyCheck = false;
-
-				}
-			}*/
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -71,6 +63,21 @@ public class UserThread extends Thread {
 		// 	players.add(input.readUTF());
 		// }
 
+	}
+
+	public void sendSubLobby() throws IOException {
+		List<LobbyDatabase> lobbies = new ArrayList<>();
+		lobbies = database.getLobbies();
+		output.writeInt(lobbies.size());
+		System.out.println("lobby size: " + lobbies.size());
+		for (int i = 0; i< lobbies.size(); i++){
+			output.writeUTF(lobbies.get(i).getLobbyName());
+			output.writeUTF(lobbies.get(i).getHost());
+			output.writeInt(lobbies.get(i).getPlayers().size());
+			for (int j = 0; j< lobbies.get(i).getPlayers().size(); j++){
+				output.writeUTF(lobbies.get(i).getPlayers().get(j));
+			}
+		}
 	}
 
 

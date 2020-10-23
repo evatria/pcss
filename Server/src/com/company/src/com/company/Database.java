@@ -24,6 +24,10 @@ public class Database {
         this.lobbies.add(l);
     }
 
+    public List<LobbyDatabase> getLobbies() {
+        return lobbies;
+    }
+
 
 
 }

@@ -15,6 +15,18 @@ public class LobbyDatabase {
         this.players = players;
     }
 
+    public String getHost() {
+        return host;
+    }
+
+    public String getLobbyName() {
+        return lobbyName;
+    }
+
+    public List<String> getPlayers() {
+        return players;
+    }
+
 
 
 }

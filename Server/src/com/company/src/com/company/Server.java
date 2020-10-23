@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Server {
+public class Server extends Thread {
     private int port;
 	private ArrayList<UserThread> users;
 	private boolean lobby;
@@ -22,6 +22,7 @@ public class Server {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Connection established. ");
+		System.out.println("Enter Port: ");
 		int paPort = scan.nextInt();
 		Server server = new Server(paPort);
 		scan.close();
@@ -33,6 +34,7 @@ public class Server {
 
 			serverSocket = new ServerSocket(port);
 			System.out.println("Server started at " + new Date());
+			
 
 			while (lobby) {
 				Socket socket = serverSocket.accept();
