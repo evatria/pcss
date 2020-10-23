@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class Game extends Application {
 
     Projectile[] projectiles;
+
+    InputStream in = LobbySender.getFromServer();
 
     //movement booleans
     boolean left = false;
