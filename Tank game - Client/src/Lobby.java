@@ -1,4 +1,4 @@
-import javax.swing.plaf.synth.SynthTextAreaUI;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,29 +12,54 @@ public class Lobby {
     private String[] OtherPlayers = {};
     private boolean isHost;
     private String currentLobby;
-    private Datasender datasender;
+    private LobbySender sender;
 
     Scanner scanner = new Scanner(System.in);
 
 
-    Lobby() {
+    Lobby() throws IOException {
         System.out.println("Welcome to TANK the game!");
+
+
+
         System.out.println("What is your name?");
-        this.playerID = scanner.nextLine();
-        //datasender = new Datasender(playerID);
+        String id = scanner.nextLine();
+        this.playerID = id;
+        sender = new LobbySender(id);
+        sender.setPlayerID(id);
+        sender.sendPlayerID();
         options();
     }
 
-    public String getPlayerID(){
+    public String PlayerID(){
         return playerID;
     }
 
-    void createLobby(String code) {
+    void createLobby(String code) throws IOException {
         SubLobby subLobby = new SubLobby(code, this.playerID);
         this.subLobbies.add(subLobby);
+        sender.sendSubLobby(subLobby);
     }
 
-    void joinLobby(String lobbyName) {
+
+    void updateLobbies(List<SubLobby> s) throws IOException{
+        for(int i = 0; i < s.size(); i++) {
+            for (int j = 0; j<subLobbies.size(); j++){
+                if(s.get(i).getLobbyName().equals(subLobbies.get(j).getLobbyName())){
+                    break; //Run next  i (atlså ikke add!!)
+                }
+            }
+            subLobbies.add(s.get(i));
+        }
+    }
+    void joinLobby(String lobbyName) throws IOException {
+        updateLobbies(sender.requestLobbyList());
+
+
+        ////
+        ////CREATE THE SUBLOBIES FIRST!!!!
+        ////
+
         for (int i = 0; i < subLobbies.size(); i++) {
             if (subLobbies.get(i).getLobbyName().equals(lobbyName)) {
                 subLobbies.get(i).addToPlayers(this.playerID);
@@ -62,7 +87,6 @@ public class Lobby {
                 subLobbies.get(i).getPlayers().remove(j);
                 if(subLobbies.get(i).getPlayers().size() == 0) {
                     subLobbies.remove(i);
-
                 }
             }
         }
@@ -156,29 +180,28 @@ public class Lobby {
                 String lobbyName = scanner.nextLine();
                 this.currentLobby = lobbyName;
                 isHost = false;
+
                 joinLobby(lobbyName); //Try Catch her måske, kommer and på hvad funktionen skal
+            } else {
+                System.out.println("please enter a valid option");
+                options();
             }
-
-
         } catch (
                 Exception e) {
+            System.out.println(e);
             System.out.println("please enter a valid option");
             options();
         }
 
-
         if (this.isHost) {
             hostOptions(this.currentLobby);
-
         } else {
             playerOptions(this.currentLobby);
-
         }
-
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Lobby l = new Lobby();
     }
 }
