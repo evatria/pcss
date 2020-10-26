@@ -8,15 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 public class ClientController implements Initializable{
+	
+	
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+			
 	}
-	
-	@FXML
-	private Button cake;
-	
-
 }
