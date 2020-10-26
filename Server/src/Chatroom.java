@@ -28,6 +28,11 @@ public class Chatroom {
 		
 	}
 	
+	public int getChatID() {
+		
+		return chatID;
+	}
+	
     public String getCreatorName() {
     	
 		return this.creator.getUsername();
@@ -57,5 +62,4 @@ public class Chatroom {
 		chatHistory.add(displayMessage());
 		
 	}
-
 }
