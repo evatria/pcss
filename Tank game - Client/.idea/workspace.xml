@@ -2,20 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="852c60dd-ea8a-4497-bf36-2330b936adc6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameStartChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tank game - Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Gruppe-306-PCSS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Gruppe-306-PCSS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Lobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Projectile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/LobbySender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/LobbySender.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/SubLobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/SubLobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/TODO list" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/TODO list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gruppe-306-PCSS/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/Lobby.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/LobbySender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/LobbySender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tank game - Client/SubLobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tank game - Client/SubLobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lobby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LobbySender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LobbySender.java" afterDir="false" />
     </list>
@@ -47,7 +54,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -68,7 +75,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Lobby" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="Lobby" />
       <module name="Tank game - Client" />
@@ -94,6 +101,19 @@
     <configuration name="test5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test5" />
       <module name="Tank game - Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -143,10 +163,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603279788641">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603706570728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603279788641" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603706570728" />
     <state x="534" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602681955786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -159,6 +179,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="400" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1601901289659" />
+    <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1603703440871">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603703440871" />
     <state x="266" y="6" key="CommitChangelistDialog2" timestamp="1602768065149">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -167,26 +191,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="914" y="0" width="629" height="830" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1602488236416" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1603279815468">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1603706830145">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603279815468" />
-    <state width="1493" height="109" key="GridCell.Tab.0.bottom" timestamp="1603443316414">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603706830145" />
+    <state width="1493" height="95" key="GridCell.Tab.0.bottom" timestamp="1603715205961">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
-    <state width="1493" height="109" key="GridCell.Tab.0.center" timestamp="1603443316413">
+    <state width="1493" height="95" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603715205961" />
+    <state width="1493" height="95" key="GridCell.Tab.0.center" timestamp="1603715205961">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
-    <state width="1493" height="109" key="GridCell.Tab.0.left" timestamp="1603443316413">
+    <state width="1493" height="95" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603715205961" />
+    <state width="1493" height="95" key="GridCell.Tab.0.left" timestamp="1603715205961">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
-    <state width="1493" height="109" key="GridCell.Tab.0.right" timestamp="1603443316413">
+    <state width="1493" height="95" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603715205961" />
+    <state width="1493" height="95" key="GridCell.Tab.0.right" timestamp="1603715205961">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="109" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603443316413" />
+    <state width="1493" height="95" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603715205961" />
     <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1602680763418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
