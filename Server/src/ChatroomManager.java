@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class ChatroomManager {
 	
 	
-	private Chatroom[] chatrooms = new Chatroom[];
+	private ArrayList<Chatroom> chatrooms = new ArrayList<>();
 	
 	
 	public void createChatroom(User user, String name) {
@@ -16,11 +18,12 @@ public class ChatroomManager {
 	
 	public void deleteChatroom(Chatroom chatroom) {
 		
-		for(int i : chatrooms) {
-			if(chatrooms[i].equals(chatroom)) {
-				chatrooms.delete(i);
+		for(Chatroom i : chatrooms) {
+			int index = 0;
+			if(chatrooms.get(index).equals(chatroom)) {
+				chatrooms.remove(i);
 		}
-			
+			index++;
 	}
 }
 }

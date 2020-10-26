@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Chatroom {
@@ -6,16 +7,16 @@ public class Chatroom {
 	
 	private int chatID;
 	
-	private User[] users;
+	private ArrayList<User> users = new ArrayList<>();
 	
 	private User creator;
 	
 	private ChatHistory chatHistory;
 	
-	Chatroom(User user_temp, String name_temp){
+	Chatroom(User user, String name){
 		
-		this.creator = user_temp;
-		this.name = name_temp;
+		this.creator = user;
+		this.name = name;
 		
 		Random rd = new Random();
         this.chatID = rd.nextInt();
@@ -33,14 +34,14 @@ public class Chatroom {
 		
 	}
     
-    public String[] getUsernames() {
+    public ArrayList<String> getUsernames() {
     	
-    	String[] usernames;
+    	ArrayList<String> usernames = new ArrayList<>();
     	
     	for(int i: users) {
-    		usernames.
+    		usernames.add(users.get(i).getUsername);
     	}
-    	
+
  		return usernames;
  		
  	}
