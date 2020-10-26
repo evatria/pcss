@@ -8,46 +8,53 @@ public class Chatroom {
 	
 	private User[] users;
 	
-	private user creator;
+	private User creator;
+	
+	private ChatHistory chatHistory;
 	
 	Chatroom(User user_temp, String name_temp){
 		
-		creator = user_temp;
-		name = name_temp;
+		this.creator = user_temp;
+		this.name = name_temp;
 		
 		Random rd = new Random();
-        chatID = rd.nextInt();
-        
+        this.chatID = rd.nextInt();
 	}
 	
-	public String getName() {
+	public String getRoomName() {
 		
-		return name;
+		return this.name;
 		
 	}
 	
     public String getCreatorName() {
     	
-		return user.getName();
+		return this.creator.getUsername();
 		
 	}
     
-    public String[] getCreatorName() {
+    public String[] getUsernames() {
     	
-		return users.getNames();
-		
-	}
+    	String[] usernames;
+    	
+    	for(int i: users) {
+    		usernames.
+    	}
+    	
+ 		return usernames;
+ 		
+ 	}
 	
-	public void displayMessage(User user, String message) {
+	public String displayMessage(User user, String message) {
 		
-		int index = 0;
-		
-		System.out.println(users[index].getName + ": " + message);
+		return user.getName + ": " + message;
 		
 	}
 	
 	public void sendMessage(String message) {
-		chatHis.add(message);
+		
+		chatHistory.add(displayMessage());
+		
 	}
 
 }

@@ -1,11 +1,7 @@
-
 public class ChatroomManager {
 	
 	
-	private Chatroom[] chatrooms;
-	
-	
-	public chatRooms
+	private Chatroom[] chatrooms = new Chatroom[];
 	
 	
 	public void createChatroom(User user, String name) {
@@ -18,16 +14,13 @@ public class ChatroomManager {
 		
 	}
 	
-	public void deleteChatroom(User user, String name) {
+	public void deleteChatroom(Chatroom chatroom) {
 		
 		for(int i : chatrooms) {
-			if(chatrooms[i] ) {
-				
-				
-			}
-			
-			
+			if(chatrooms[i].equals(chatroom)) {
+				chatrooms.delete(i);
 		}
-		
+			
 	}
+}
 }
