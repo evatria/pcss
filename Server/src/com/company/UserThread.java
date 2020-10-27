@@ -13,8 +13,8 @@ public class UserThread extends Thread {
 	private String userName;
 	private DataOutputStream output;
 	private DataInputStream input;
-    private boolean readyCheck;
-
+	private boolean readyCheck;
+	
 	public UserThread(Server server, Socket socket) {
         this.server = server;
 		this.socket = socket;
@@ -26,7 +26,6 @@ public class UserThread extends Thread {
 		try {
 			input = new DataInputStream(socket.getInputStream());
 			output = new DataOutputStream(socket.getOutputStream());
-
 			userName = input.readUTF();
 			System.out.println(userName + " joined the server");
 			server.sendToAll(userName + " joined the server.", this);
@@ -59,9 +58,28 @@ public class UserThread extends Thread {
 			}
 
 			while (true) {
-				int clientMessageint = input.readInt();
-				System.out.println(clientMessageint);
-				server.sendToAllxpos(clientMessageint, this);
+				String clientMessage = input.readUTF();
+				
+
+				if (clientMessage.equals("INFO")){
+				
+					
+					int x = input.readInt();
+					System.out.println("X: "+x);
+					int y = input.readInt();
+					System.out.println("Y: "+y);
+					int a = input.readInt();
+					System.out.println("A: "+a);
+					server.sendToAll("INFO", this);
+					server.sendToAllxpos(x, this);
+					server.sendToAllxpos(y, this);
+					server.sendToAllxpos(a, this);
+				}
+				
+				//System.out.println(userName);
+				//System.out.println(clientMessage);
+				//server.sendToAllxpos(clientMessageint, this);
+				//server.sendToAll(clientMessage, this);
 			}
 
 			
