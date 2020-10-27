@@ -1,12 +1,9 @@
 package src.com.company;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -67,28 +64,11 @@ public class Server {
 		}
 	}
 
-	public void sendToAllxpos(int messageint, UserThread ut){
+	public void sendToAllInts(int messageint, UserThread ut){
 		for (UserThread userThread : users){
 			if (userThread != ut)
 				userThread.sendInt(messageint);
 		}
-	}
-
-	public void startGame() {
-		boolean start = true;
-		for (UserThread userThread : users) {
-			if (userThread.isReadyCheck() == true) {
-				start = false;
-			}
-		}
-
-		// if(start) {
-		// 	lobby = false;
-		// 	for (UserThread userThread : users) {
-		// 		userThread.sendMessage("Game started");
-		// 	}
-		// 	new Thread(new HandleASession(this)).start();
-		// }
 	}
 
 	public ServerSocket getServerSocket() {

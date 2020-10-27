@@ -4,7 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class UserThread extends Thread {
     
@@ -71,15 +70,17 @@ public class UserThread extends Thread {
 					int a = input.readInt();
 					System.out.println("A: "+a);
 					server.sendToAll("INFO", this);
-					server.sendToAllxpos(x, this);
-					server.sendToAllxpos(y, this);
-					server.sendToAllxpos(a, this);
+					server.sendToAllInts(x, this);
+					server.sendToAllInts(y, this);
+					server.sendToAllInts(a, this);
 				}
-				
-				//System.out.println(userName);
-				//System.out.println(clientMessage);
-				//server.sendToAllxpos(clientMessageint, this);
-				//server.sendToAll(clientMessage, this);
+
+				if (clientMessage.equals("BULLET")){
+					System.out.println("BULLET!!!!!!!!!!!!!!!!!!!!!!!");
+					
+					server.sendToAll("BULLET", this);
+
+				}
 			}
 
 			
