@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
-public class ChatSelectorController implements Initializable{
+public class ChatSelectorController extends Controller implements Initializable{
 	
 	
 	@FXML
@@ -30,8 +30,6 @@ public class ChatSelectorController implements Initializable{
 	
 	@FXML
 	private Button createRoomBtn;
-	
-	User user;
 	
 	private ObservableList<Chatroom> classroomObservableList;
 
@@ -49,9 +47,10 @@ public class ChatSelectorController implements Initializable{
 		System.out.println("Room btn works");
 		UserPopUp pop = new UserPopUp();
 		String test = pop.display("new chatroom", "PopUps/newChatroom.fxml");
-		Chatroom ctm = new Chatroom(new User("Jerry", "123"),test);
+		Chatroom ctm = new Chatroom(getUser(),test);
 		listview.getItems().add(ctm);
 	}
+
 
 
 	

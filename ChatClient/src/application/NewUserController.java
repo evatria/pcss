@@ -24,14 +24,14 @@ public class NewUserController {
 	{
 		if (this.userNameInput != null && this.passWordInput.getText() != null) 
 		{
-			setUserPass(this.userNameInput.getText()+ ("|") + this.passWordInput.getText());
+			setUserPass(this.userNameInput.getText()+ (" ") + this.passWordInput.getText());
 		}
 
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
 	}
 
 	public String getUserPass() {
-		return userPass;
+		return this.userPass;
 	}
 
 	private void setUserPass(String userPass) {
