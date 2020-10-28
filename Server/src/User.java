@@ -3,8 +3,8 @@ import java.util.Random;
 public class User {
 	
 	
-	private String username;
-	private String password;
+	public static String username;
+	public static String password;
 	private int id;
 	
 	
