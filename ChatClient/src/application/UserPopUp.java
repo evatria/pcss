@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.nio.file.Path;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,7 +33,7 @@ public class UserPopUp {
 		else if (FXML.compareTo("PopUps/newChatroom.fxml") == 0)
 		{
 			NewChatroomController controller = loader.getController();
-			outCome = controller.newChatName;
+			outCome = controller.getNewChatName();
 		}
 		return outCome;
 	}

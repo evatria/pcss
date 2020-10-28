@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ClientController extends SceneChanger implements Initializable{
+public class ClientController extends Controller implements Initializable{
 	
 	@FXML
 	private TextField userNameInput;
@@ -30,8 +30,6 @@ public class ClientController extends SceneChanger implements Initializable{
 	@FXML
 	private Button createUserBtn;
 	
-	private User user;
-	
 	private String userName;
 	
 	private String passWord;
@@ -43,7 +41,7 @@ public class ClientController extends SceneChanger implements Initializable{
 		this.userName = userNameInput.getText();
 		this.passWord = passWordInput.getText();
 		try {
-			changeScene(event, "ChatSelector.fxml", user);
+			changeScene(event, "ChatSelector.fxml", getUser());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,9 +54,10 @@ public class ClientController extends SceneChanger implements Initializable{
 	{
 		UserPopUp pop = new UserPopUp();
 		String userPass = pop.display("new User", "PopUps/newUser.fxml");
-		user = new User(userPass.split("|")[0], userPass.split("|")[1]);
+		System.out.println(userPass.split(" ")[0]);
+		setUser(new User(userPass.split(" ")[0], userPass.split(" ")[1]));
 		try {
-			changeScene(event, "ChatSelector.fxml", user);
+			changeScene(event, "ChatSelector.fxml", getUser());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
