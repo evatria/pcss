@@ -9,3 +9,22 @@
 .btn:hover {
     -fx-text-fill: black;
 }
+
+.list-view .list-cell {
+    -fx-background-color: none;
+    -fx-text-fill:#a154e5;
+
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: none;
+    -fx-font-weight: bold;
+    -fx-font-size:15.0;
+    -fx-color:#b173ea;
+    
+}
+
+#cssRoomList {
+	-fx-background-color: none;
+    -fx-text-fill:#a154e5;
+}
