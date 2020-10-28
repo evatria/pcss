@@ -36,7 +36,7 @@ public class NewUserController {
 		
 		else if (this.newUserNameInput.getText() != null && this.newUserNameInput.getText() != null) 
 		{
-			setUserPass(this.newUserNameInput.getText()+ ("|") + this.newPassWordInput.getText());
+			setUserPass(this.newUserNameInput.getText()+ (" ") + this.newPassWordInput.getText());
 			System.out.println("It saved... "+ userPass);
 			((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
 		}
