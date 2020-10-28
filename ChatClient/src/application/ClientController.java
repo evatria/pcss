@@ -28,9 +28,6 @@ public class ClientController implements Initializable{
 	
 	private String passWord;
 	
-	public String test = "MUAHAHAHAHA!";
-	
-	
 	
 	
 	public void login(ActionEvent event)
