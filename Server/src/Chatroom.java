@@ -5,13 +5,13 @@ public class Chatroom {
 	
 	private String name;
 	
-	private int chatID;
+	private int chatId;
 	
 	private ArrayList<User> users = new ArrayList<>();
 	
 	private User creator;
 	
-	private ChatHistory chatHistory;
+	//private ChatHistory chatHistory;
 	
 	Chatroom(User user, String name){
 		
@@ -19,18 +19,18 @@ public class Chatroom {
 		this.name = name;
 		
 		Random rd = new Random();
-        this.chatID = rd.nextInt();
+        this.chatId = rd.nextInt();
 	}
 	
-	public String getRoomName() {
+	public String getChatroomName() {
 		
 		return this.name;
 		
 	}
 	
-	public int getChatID() {
+	public int getChatId() {
 		
-		return chatID;
+		return chatId;
 	}
 	
     public String getCreatorName() {
@@ -43,8 +43,8 @@ public class Chatroom {
     	
     	ArrayList<String> usernames = new ArrayList<>();
     	
-    	for(int i: users) {
-    		usernames.add(users.get(i).getUsername);
+    	for(User i: users) {
+    		usernames.add(i.getUsername());
     	}
 
  		return usernames;
@@ -53,13 +53,13 @@ public class Chatroom {
 	
 	public String displayMessage(User user, String message) {
 		
-		return user.getName + ": " + message;
+		return user.getUsername() + ": " + message;
 		
 	}
 	
 	public void sendMessage(String message) {
 		
-		chatHistory.add(displayMessage());
+		//chatHistory.add(displayMessage());
 		
 	}
 }

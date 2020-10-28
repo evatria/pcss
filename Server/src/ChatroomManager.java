@@ -19,17 +19,13 @@ public class ChatroomManager {
 	public void deleteChatroom(Chatroom chatroom) {
 		
 		for(Chatroom i : chatrooms) {
+	
 			
-			int index = 0;
-			
-			if(chatrooms.get(index).getChatID() == chatroom.getChatID()) {
+			if(i.getChatId() == chatroom.getChatId()) {
 				
 				chatrooms.remove(i);
-				
+
 		}
-			
-			index++;
-			
 	}
   }
 }
