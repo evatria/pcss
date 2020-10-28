@@ -23,59 +23,28 @@ import javafx.util.Callback;
 public class ChatSelectorController implements Initializable{
 	
 	
-	public void changeSceen(ActionEvent event) throws IOException
-	{
-		AnchorPane chatRoot = (AnchorPane)FXMLLoader.load(getClass().getResource("Chat.fxml"));
-		Scene chat = new Scene(chatRoot);
-		chat.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-		window.setScene(chat);
-		window.show();
-	}
+	@FXML
+	private ListView<Chatroom> listview;
+	
+	@FXML
+	private Button createRoomBtn;
+	
+	private ObservableList<Chatroom> classroomObservableList;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		listview.setCellFactory(classRoomListView -> new ChatRoomListViewCell());
 
-		/*
-		workNow.setItems(ChatRoomTempObservableList);
-		workNow.setCellFactory(new Callback<ListView<ChatRoomTemp>, ListCell<ChatRoomTemp>>() {
-		    @Override
-		    public ListCell<ChatRoomTemp> call(ListView<ChatRoomTemp> ChatRoomListView) {
-		        return new ListCell<ChatRoomTemp>();
-		    }
-		});
-		*/
 	}
 
-	@FXML
-	private Button createRoomBtn;
-	
-	@FXML
-	private ListView<String> roomList;
-	
-	/*
-	private ObservableList<ChatRoomTemp> ChatRoomTempObservableList;
-
-	public ChatSelectorController() {
-		
-		ChatRoomTempObservableList = FXCollections.observableArrayList();
-		
-		ChatRoomTempObservableList.addAll(
-				new ChatRoomTemp("Test", "Test discription"),
-				new ChatRoomTemp("Test2", "Test discription"),
-				new ChatRoomTemp("Test3", "Test discription")
-				);
-	}
-	*/
 
 
-	public void createRoomBtn(ActionEvent event) {
+	public void createRoomBtn(ActionEvent event) throws IOException {
 		
 		System.out.println("Room btn works");
-		this.roomList.getItems().add("Room");
+		UserPopUp pop = new UserPopUp();
+		pop.display("new User", "newUser.fxml");
 	}
 
 

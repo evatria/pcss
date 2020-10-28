@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 
 public class UserPopUp {
 	
-	public void display(String title) throws IOException
+	public void display(String title, String FXML) throws IOException
 	{
 		Stage window = new Stage();
 		
 		window.initModality(Modality.APPLICATION_MODAL);
-		AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("PopUp.fxml"));
+		AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource(FXML));
 		Scene popUp = new Scene(root);
 		popUp.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
