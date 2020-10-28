@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import application.dataTypes.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class SceneChanger {
-	public void changeSceen(ActionEvent event, String FXML) throws IOException
+	public void changeScene(ActionEvent event, String FXML, User user) throws IOException
 	{
 		AnchorPane chatRoot = (AnchorPane)FXMLLoader.load(getClass().getResource(FXML));
 		Scene chat = new Scene(chatRoot);

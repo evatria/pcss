@@ -18,19 +18,24 @@ public class NewUserController {
 	@FXML
 	private Button createUserBtn;
 	
-	private String newUserName;
-	
-	private String newPassWord;
+	private String userPass;
 	
 	public void login(ActionEvent event)
 	{
 		if (this.userNameInput != null && this.passWordInput.getText() != null) 
 		{
-			this.newUserName = this.userNameInput.getText();
-			this.newPassWord = this.passWordInput.getText();
+			setUserPass(this.userNameInput.getText()+ ("|") + this.passWordInput.getText());
 		}
 
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
+	}
+
+	public String getUserPass() {
+		return userPass;
+	}
+
+	private void setUserPass(String userPass) {
+		this.userPass = userPass;
 	}
 
 }

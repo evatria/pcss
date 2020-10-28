@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.dataTypes.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ClientController implements Initializable{
+public class ClientController extends SceneChanger implements Initializable{
 	
 	@FXML
 	private TextField userNameInput;
@@ -29,6 +30,8 @@ public class ClientController implements Initializable{
 	@FXML
 	private Button createUserBtn;
 	
+	private User user;
+	
 	private String userName;
 	
 	private String passWord;
@@ -40,7 +43,7 @@ public class ClientController implements Initializable{
 		this.userName = userNameInput.getText();
 		this.passWord = passWordInput.getText();
 		try {
-			changeSceen(event);
+			changeScene(event, "ChatSelector.fxml", user);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,8 +55,14 @@ public class ClientController implements Initializable{
 	public void createNewuser(ActionEvent event) throws IOException
 	{
 		UserPopUp pop = new UserPopUp();
-		pop.display("new User", "newUser.fxml");
-		System.out.print("Done");
+		String userPass = pop.display("new User", "PopUps/newUser.fxml");
+		user = new User(userPass.split("|")[0], userPass.split("|")[1]);
+		try {
+			changeScene(event, "ChatSelector.fxml", user);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.dataTypes.Chatroom;
+import application.dataTypes.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +31,8 @@ public class ChatSelectorController implements Initializable{
 	@FXML
 	private Button createRoomBtn;
 	
+	User user;
+	
 	private ObservableList<Chatroom> classroomObservableList;
 
 	@Override
@@ -44,7 +48,9 @@ public class ChatSelectorController implements Initializable{
 		
 		System.out.println("Room btn works");
 		UserPopUp pop = new UserPopUp();
-		pop.display("new User", "newUser.fxml");
+		String test = pop.display("new chatroom", "PopUps/newChatroom.fxml");
+		Chatroom ctm = new Chatroom(new User("Jerry", "123"),test);
+		listview.getItems().add(ctm);
 	}
 
 

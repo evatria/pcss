@@ -1,4 +1,4 @@
-package application;
+package application.dataTypes;
 
 import java.util.Random;
 
@@ -10,7 +10,7 @@ public class User {
     private int id;
 
 
-    User(String username, String password){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
 

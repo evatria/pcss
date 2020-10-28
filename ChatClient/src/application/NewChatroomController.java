@@ -14,14 +14,15 @@ public class NewChatroomController {
 	@FXML
 	private TextField chatName;
 	
-	private String newChatName;
+	public String newChatName = "testing";
 	
 	public void create(ActionEvent event)
 	{
 		if (this.chatName != null ) 
 		{
-			this.newChatName = this.chatName.getText();;
+			this.newChatName = this.chatName.getText();
 		}
+		
 
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
 	}

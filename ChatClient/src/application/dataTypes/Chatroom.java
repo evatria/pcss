@@ -1,4 +1,4 @@
-package application;
+package application.dataTypes;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +15,7 @@ public class Chatroom {
 
     //private ChatHistory chatHistory;
 
-    Chatroom(User user, String name){
+    public Chatroom(User user, String name){
 
         this.creator = user;
         this.name = name;
