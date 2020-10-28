@@ -8,24 +8,25 @@ import java.io.RandomAccessFile;
 
 public class UserDataBase {
 
-	String fileSeparator = System.getProperty("file.separator");
+	static String fileSeparator = System.getProperty("file.separator");
 	
-	String supUsers = fileSeparator+"Server"+fileSeparator+"src"+fileSeparator+"userList.txt";
-	File userList = new File(supUsers);
+	static String supUsers = fileSeparator+"Server"+fileSeparator+"src"+fileSeparator+"userList.txt";
+	static File userList = new File(supUsers);
 	
-	if(usernamelist.createNewFile()) {
+	if(userList.createNewFile()) {
 		System.out.println(userList+"File created");
-	}else
-		System.out.println("File"+usernamelist+"already exists");
-	
-	
+	}else {
+		System.out.println("File"+userList+"already exists");
+	}
+
 	FileWriter usernameWriter = new FileWriter("usernamelist.txt");
 	FileWriter passwordWriter = new FileWriter("E/demo.txt");
 	
 	private String[] usernames;
 	private String[] passwords;
 	private String[] ids;
-	int ln;
+	static int ln;
+
 	
 
 	
@@ -53,7 +54,7 @@ public class UserDataBase {
 		
 	}
 	
-	public void createUser(String username, String password) {
+	public static void createUser(String username, String password) {
 		
 		RandomAccessFile raf = new RandomAccessFile(userList, "rw");
 		for (int i = 0 ; i<ln;i++) {
@@ -70,3 +71,4 @@ public class UserDataBase {
 	}
 	
 }
+
