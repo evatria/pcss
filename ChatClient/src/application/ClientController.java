@@ -52,20 +52,8 @@ public class ClientController implements Initializable{
 	public void createNewuser(ActionEvent event) throws IOException
 	{
 		UserPopUp pop = new UserPopUp();
-		pop.display("new User");
+		pop.display("new User", "newUser.fxml");
 		System.out.print("Done");
-	}
-	
-	public void changeSceen(ActionEvent event) throws IOException
-	{
-		AnchorPane chatRoot = (AnchorPane)FXMLLoader.load(getClass().getResource("ChatSelector.fxml"));
-		Scene chat = new Scene(chatRoot);
-		chat.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-		window.setScene(chat);
-		window.show();
 	}
 	
 
