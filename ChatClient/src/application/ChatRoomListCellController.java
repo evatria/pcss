@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 
-public class ChatRoomListViewCell extends ListCell<Chatroom>{
+public class ChatRoomListCellController extends ListCell<Chatroom>{
 
 	@FXML
 	Label chatRoomName;

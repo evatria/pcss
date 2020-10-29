@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.dataTypes.ChatMessage;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -30,6 +31,8 @@ public class ChatController extends Controller implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		chatDisplayList.setCellFactory(chatRoomListView -> new ChatListCellController());
+		
 		EventHandler filter = new EventHandler<MouseEvent>()
 			{
 		    	public void handle(MouseEvent event) {
@@ -42,7 +45,7 @@ public class ChatController extends Controller implements Initializable{
 
 	//FXML imports 
 	@FXML
-	private ListView<String> chatDisplayList;
+	private ListView<ChatMessage> chatDisplayList;
 	
 	@FXML
 	private Button sendbtn;
@@ -74,9 +77,9 @@ public class ChatController extends Controller implements Initializable{
 
 	//Method for sending message to list
 	public void sendMessage() {
-		String message = chatField.getText();
+		ChatMessage message = new ChatMessage(chatField.getText(), getUser());
 		
-		if (message != null) {
+		if (message.getMessage() != null) {
 			chatField.setText(null);
 			this.chatDisplayList.getItems().add(message);
 			chatDisplayList.scrollTo(chatDisplayList.getItems().size());
