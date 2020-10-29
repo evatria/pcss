@@ -1,15 +1,19 @@
 package application;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class NewUserController {
+public class NewUserController implements Initializable{
 	
 	@FXML
 	private TextField newUserNameInput;
@@ -17,7 +21,7 @@ public class NewUserController {
 	@FXML
 	private PasswordField newPassWordInput;
 	
-	@FXML
+	@FXML  
 	private Button newCreateUserBtn;
 	
 	@FXML
@@ -28,7 +32,7 @@ public class NewUserController {
 	public void createNewUser(ActionEvent event)
 	{
 		
-		if (newUserNameInput.getText() == null && newUserNameInput.getPromptText() != null || newPassWordInput.getText() == null && newPassWordInput.getPromptText() != null){
+		if (newUserNameInput.getText().trim().isEmpty() && newUserNameInput.getPromptText() != null || newPassWordInput.getText().trim().isEmpty() && newPassWordInput.getPromptText() != null){
 			popErrorNameTxt.setText("Test");
 			System.out.println("Error");
 		}
@@ -45,6 +49,10 @@ public class NewUserController {
 
 
 	}
+	public void userExists()
+	{
+		popErrorNameTxt.setVisible(true);
+	}
 
 
 	public String getUserPass() {
@@ -53,6 +61,12 @@ public class NewUserController {
 
 	private void setUserPass(String userPass) {
 		this.userPass = userPass;
+	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		popErrorNameTxt.setVisible(false);
 	}
 
 }
