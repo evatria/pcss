@@ -33,6 +33,9 @@ public class ChatSelectorController extends Controller implements Initializable{
 	@FXML
 	private Button createRoomBtn;
 	
+	@FXML
+	private Button logOutBtn;
+	
 	Chatroom currentItemSelected;
 
 	@Override
@@ -84,6 +87,15 @@ public class ChatSelectorController extends Controller implements Initializable{
 	}
 
 
+	public void logOut(ActionEvent event)
+	{
+		try {
+			changeScene(event, "Client.fxml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	
 }
