@@ -13,7 +13,7 @@ public class Chatroom {
 	
 	//private ChatHistory chatHistory;
 	
-	Chatroom(User user, String name){
+	public Chatroom(User user, String name){
 		
 		this.creator = user;
 		this.name = name;

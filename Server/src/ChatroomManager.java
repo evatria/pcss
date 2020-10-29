@@ -6,6 +6,13 @@ public class ChatroomManager {
 	private ArrayList<Chatroom> chatrooms = new ArrayList<>();
 	
 	
+public ArrayList<Chatroom> getChatrooms() {
+		
+		return chatrooms;
+
+		}
+	
+	
 	public void createChatroom(User user, String name) {
 		
 		Chatroom newChatroom;
