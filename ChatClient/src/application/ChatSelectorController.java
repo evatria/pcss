@@ -34,20 +34,28 @@ public class ChatSelectorController extends Controller implements Initializable{
 	private Button createRoomBtn;
 	
 	private ObservableList<Chatroom> classroomObservableList;
+	
+	Chatroom currentItemSelected;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		listview.setCellFactory(classRoomListView -> new ChatRoomListViewCell());
 		
-		listview.setOnMouseClicked((EventHandler<? super MouseEvent>) new EventHandler<MouseEvent>() {
+		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 		    @Override
 		    public void handle(MouseEvent click) {
 
 		        if (click.getClickCount() == 2) {
 		           //Use ListView's getSelected Item
-		           Chatroom currentItemSelected = listview.getSelectionModel().getSelectedItem();
+		           currentItemSelected = listview.getSelectionModel().getSelectedItem();
+		           try {
+		        	   changeScene(click, "Chat.fxml", getUser());
+		           } catch (IOException e) {
+					// TODO Auto-generated catch block
+		        	   e.printStackTrace();
+		           }
 		           //use this to do whatever you want to. Open Link etc.
 		        }
 		    }
