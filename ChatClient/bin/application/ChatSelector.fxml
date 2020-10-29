@@ -57,7 +57,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ListView id="cssRoomList" fx:id="listview" layoutX="74.0" layoutY="147.0" prefHeight="395.0" prefWidth="345.0" style="-fx-background-color: none;" stylesheets="@application.css">
+      <ListView id="cssRoomList" fx:id="listview" layoutX="74.0" layoutY="147.0" prefHeight="395.0" prefWidth="418.0" style="-fx-background-color: none;" stylesheets="@application.css">
          <styleClass>
             <String fx:value="list-view" />
             <String fx:value="list-cell" />
