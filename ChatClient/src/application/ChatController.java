@@ -22,20 +22,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ChatController implements Initializable{
+public class ChatController extends Controller implements Initializable{
 	
-	
-	public void changeSceen(ActionEvent event) throws IOException
-	{
-		AnchorPane chatSelectorRoot = (AnchorPane)FXMLLoader.load(getClass().getResource("ChatSelector.fxml"));
-		Scene chatSelector = new Scene(chatSelectorRoot);
-		chatSelector.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-		window.setScene(chatSelector);
-		window.show();
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
