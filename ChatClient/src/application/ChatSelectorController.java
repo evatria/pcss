@@ -57,6 +57,15 @@ public class ChatSelectorController extends Controller implements Initializable{
 		    }
 		});
 
+
+	}
+	
+	public void loadChatrooms() 
+	{
+		for(Chatroom i: this.getUser().getChatRooms())
+		{
+			listview.getItems().add(i);
+		}
 	}
 	
 
@@ -70,6 +79,7 @@ public class ChatSelectorController extends Controller implements Initializable{
 		String test = pop.display("new chatroom", "PopUps/newChatroom.fxml");
 		Chatroom ctm = new Chatroom(getUser(),test);
 		listview.getItems().add(ctm);
+		this.getUser().addChatRoom(ctm);
 	}
 
 

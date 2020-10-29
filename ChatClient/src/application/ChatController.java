@@ -49,6 +49,9 @@ public class ChatController extends Controller implements Initializable{
 	private Button sendbtn;
 	
 	@FXML
+	private Button exitChatbtn;
+	
+	@FXML
 	private TextArea chatField;
 	
 	@FXML
@@ -82,6 +85,16 @@ public class ChatController extends Controller implements Initializable{
 		
 		else {
 			System.out.println("No message sent. Message was: " + message);
+		}
+	}
+	
+	public void goBack(ActionEvent event)
+	{
+		try {
+			changeScene(event, "ChatSelector.fxml", getUser());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

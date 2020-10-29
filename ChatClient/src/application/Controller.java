@@ -28,6 +28,11 @@ public class Controller {
 		window.setScene(chat);
 		Controller controller = (Controller) loader.getController();
 		controller.setUser(this.user);
+		if (FXML.compareTo("ChatSelector.fxml") == 0)
+		{
+			ChatSelectorController sController = (ChatSelectorController) loader.getController();
+			sController.loadChatrooms();
+		}
 		window.show();
 	}
 	
@@ -45,6 +50,10 @@ public class Controller {
 		window.setScene(chat);
 		Controller controller = (Controller) loader.getController();
 		controller.setUser(this.user);
+		if (FXML.compareTo("ChatSelector.fxml") == 0)
+		{
+			ChatSelectorController sController = (ChatSelectorController) loader.getController();
+		}
 		window.show();
 	}
 
