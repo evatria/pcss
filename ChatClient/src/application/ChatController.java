@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
@@ -41,6 +43,7 @@ public class ChatController extends Controller implements Initializable{
 			};
 		chatDisplayList.addEventFilter(MouseEvent.MOUSE_PRESSED, filter);
 
+		
 	}
 
 	//FXML imports 
@@ -60,8 +63,6 @@ public class ChatController extends Controller implements Initializable{
 	private Text roomNametxt;
 	
 
-	
-	
 	//Send by pressing the button
 	public void sendbtn(ActionEvent event) {
 		sendMessage();
