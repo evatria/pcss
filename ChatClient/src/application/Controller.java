@@ -15,6 +15,21 @@ public class Controller {
 	
 	private User user;
 	
+	public void changeScene(ActionEvent event, String FXML) throws IOException
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(FXML));
+		AnchorPane chatRoot = (AnchorPane)loader.load();
+		Scene chat = new Scene(chatRoot);
+		chat.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		
+		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
+				window.setScene(chat);
+		Controller controller = (Controller) loader.getController();
+		controller.setUser(null);
+		window.show();
+	}
+	
 	public void changeScene(ActionEvent event, String FXML, User user) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
