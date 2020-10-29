@@ -33,8 +33,6 @@ public class ChatSelectorController extends Controller implements Initializable{
 	@FXML
 	private Button createRoomBtn;
 	
-	private ObservableList<Chatroom> classroomObservableList;
-	
 	Chatroom currentItemSelected;
 
 	@Override
@@ -48,7 +46,6 @@ public class ChatSelectorController extends Controller implements Initializable{
 		    public void handle(MouseEvent click) {
 
 		        if (click.getClickCount() == 2) {
-		           //Use ListView's getSelected Item
 		           currentItemSelected = listview.getSelectionModel().getSelectedItem();
 		           try {
 		        	   changeScene(click, "Chat.fxml", getUser());
@@ -56,7 +53,6 @@ public class ChatSelectorController extends Controller implements Initializable{
 					// TODO Auto-generated catch block
 		        	   e.printStackTrace();
 		           }
-		           //use this to do whatever you want to. Open Link etc.
 		        }
 		    }
 		});

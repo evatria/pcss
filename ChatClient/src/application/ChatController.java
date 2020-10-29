@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -23,14 +26,19 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ChatController extends Controller implements Initializable{
-	
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 		roomNametxt.setText("Chad Room"); 							//**Test for changing Chat Room name**
-		
+		EventHandler filter = new EventHandler<MouseEvent>()
+			{
+		    	public void handle(MouseEvent event) {
+		    		event.consume();
+		    	}
+			};
+		chatDisplayList.addEventFilter(MouseEvent.MOUSE_PRESSED, filter);
+
 	}
 
 	//FXML imports 
