@@ -41,7 +41,7 @@ public class ChatSelectorController extends Controller implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		listview.setCellFactory(classRoomListView -> new ChatRoomListViewCell());
+		listview.setCellFactory(chatRoomListView -> new ChatRoomListCellController());
 		
 		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
