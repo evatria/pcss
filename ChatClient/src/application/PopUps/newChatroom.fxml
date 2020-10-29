@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="10.0" minWidth="10.0" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewChatroomController">
+<AnchorPane minHeight="10.0" minWidth="10.0" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewChatroomController">
    <children>
-      <TextField fx:id="chatName" layoutX="76.0" layoutY="50.0" />
-      <Label layoutX="20.0" layoutY="54.0" text="Name" />
-      <Label layoutX="119.0" layoutY="14.0" text="new Chatroom" />
-      <Button fx:id="createUserBtn" layoutX="225.0" layoutY="111.0" mnemonicParsing="false" onAction="#create" text="Button" />
+      <ImageView fitHeight="158.0" fitWidth="300.0" layoutY="-1.0">
+         <image>
+            <Image url="@../../../assets/UI/body.png" />
+         </image>
+      </ImageView>
+      <TextField id="inputNewRoom" fx:id="chatName" layoutX="114.0" layoutY="66.0" style="-fx-background-color: #3e3a42;" styleClass="fillColor" stylesheets="@../application.css" />
+      <Label layoutX="30.0" layoutY="70.0" text="Room Name" textFill="#8b7b8d" />
+      <Label layoutX="97.0" layoutY="15.0" text="New Chatroom" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Button fx:id="createChatBtn" layoutX="188.0" layoutY="109.0" mnemonicParsing="false" onAction="#create" style="-fx-background-color: none;" text="Create Room" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fx:id="popErrorRoomTxt" fill="#d30027" layoutX="16.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: Name already taken" textAlignment="CENTER" wrappingWidth="167.21875" />
    </children>
 </AnchorPane>
