@@ -44,10 +44,6 @@ public class NewUserController implements Initializable{
 			System.out.println("It saved... "+ userPass);
 			((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
 		}
-
-
-
-
 	}
 	public void userExists()
 	{

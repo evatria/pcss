@@ -30,7 +30,6 @@ public class ChatController extends Controller implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-		roomNametxt.setText("Chad Room"); 							//**Test for changing Chat Room name**
 		EventHandler filter = new EventHandler<MouseEvent>()
 			{
 		    	public void handle(MouseEvent event) {
@@ -47,7 +46,7 @@ public class ChatController extends Controller implements Initializable{
 	
 	@FXML
 	private Button sendbtn;
-	
+
 	@FXML
 	private Button exitChatbtn;
 	
@@ -96,5 +95,13 @@ public class ChatController extends Controller implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public Text getRoomNametxt() {
+		return roomNametxt;
+	}
+
+	public void setRoomNametxt(String roomNametxt) {
+		this.roomNametxt.setText(roomNametxt);
 	}
 }

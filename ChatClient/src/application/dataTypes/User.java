@@ -8,6 +8,7 @@ public class User {
 
     private String username;
     private String password;
+    private Chatroom currentChatRoom;
     private int id;
     
     private ArrayList<Chatroom> chatRooms = new ArrayList<Chatroom>();
@@ -51,6 +52,14 @@ public class User {
 	
 	public void addChatRoom(Chatroom chatRoom) {
 		this.chatRooms.add(chatRoom);
+	}
+
+	public Chatroom getCurrentChatRoom() {
+		return currentChatRoom;
+	}
+
+	public void setCurrentChatRoom(Chatroom currentChatRoom) {
+		this.currentChatRoom = currentChatRoom;
 	}
 
 }

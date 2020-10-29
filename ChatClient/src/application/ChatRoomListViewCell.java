@@ -37,7 +37,7 @@ public class ChatRoomListViewCell extends ListCell<Chatroom>{
         else 
         {
         	if (mLLoader == null) {
-                mLLoader = new FXMLLoader(getClass().getResource("ChatRoomListView.fxml"));
+                mLLoader = new FXMLLoader(getClass().getResource("ChatRoomListCell.fxml"));
                 mLLoader.setController(this);
 
                 try {

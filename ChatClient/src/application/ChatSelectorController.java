@@ -48,6 +48,7 @@ public class ChatSelectorController extends Controller implements Initializable{
 		        if (click.getClickCount() == 2) {
 		           currentItemSelected = listview.getSelectionModel().getSelectedItem();
 		           try {
+		        	   getUser().setCurrentChatRoom(currentItemSelected);
 		        	   changeScene(click, "Chat.fxml", getUser());
 		           } catch (IOException e) {
 					// TODO Auto-generated catch block

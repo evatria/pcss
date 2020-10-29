@@ -53,6 +53,12 @@ public class Controller {
 		if (FXML.compareTo("ChatSelector.fxml") == 0)
 		{
 			ChatSelectorController sController = (ChatSelectorController) loader.getController();
+			sController.loadChatrooms();
+		} 
+		else if(FXML.compareTo("Chat.fxml") == 0) 
+		{
+			ChatController cController = (ChatController) loader.getController();
+			cController.setRoomNametxt(user.getCurrentChatRoom().getChatroomName());
 		}
 		window.show();
 	}
