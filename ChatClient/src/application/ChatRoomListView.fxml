@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pane" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="chatRoomName" layoutX="6.0" layoutY="1.0" prefHeight="17.0" prefWidth="288.0" text="Label">
+      <Label fx:id="chatRoomName" layoutX="7.0" layoutY="6.0" prefHeight="17.0" prefWidth="288.0" text="• Room name •" textFill="#a154e5">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="chatRoomUsers" layoutX="7.0" layoutY="28.0" prefHeight="17.0" prefWidth="288.0" text="Label" />
+      <Label fx:id="chatRoomUsers" layoutX="8.0" layoutY="26.0" prefHeight="17.0" prefWidth="288.0" style="-fx-background-color: none;" text="Created by User" textFill="#8b7b8d">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Label>
    </children>
 </AnchorPane>
