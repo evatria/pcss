@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class NewChatroomController {
 	
 	@FXML
-	private Button createUserBtn;
+	private Button createChatBtn;
 	
 	@FXML
 	private TextField chatName;
