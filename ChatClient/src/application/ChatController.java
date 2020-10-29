@@ -81,6 +81,7 @@ public class ChatController implements Initializable{
 		if (message != null) {
 			chatField.setText(null);
 			this.chatDisplayList.getItems().add(message);
+			chatDisplayList.scrollTo(chatDisplayList.getItems().size());
 		}
 		
 		else {
