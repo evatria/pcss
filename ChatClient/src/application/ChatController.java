@@ -89,6 +89,10 @@ public class ChatController extends Controller implements Initializable{
 			System.out.println("No message sent. Message was: " + message);
 		}
 	}
+	public void addMessage(ChatMessage msg)
+	{
+		this.chatDisplayList.getItems().add(msg);
+	}
 	
 	public void goBack(ActionEvent event)
 	{
