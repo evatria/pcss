@@ -5,7 +5,7 @@ public class User {
 	
 	public static String username;
 	public static String password;
-	private int id;
+	public static int id;
 	
 	
 	User(String username, String password){
