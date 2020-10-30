@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ClientController extends Controller implements Initializable{
@@ -30,6 +31,9 @@ public class ClientController extends Controller implements Initializable{
 	@FXML
 	private Button createUserBtn;
 	
+	@FXML
+	private Text invalidLoginTxt;
+	
 	private String userName;
 	
 	private String passWord;
@@ -38,13 +42,23 @@ public class ClientController extends Controller implements Initializable{
 	
 	public void login(ActionEvent event)
 	{
+		
 		this.userName = userNameInput.getText();
 		this.passWord = passWordInput.getText();
-		try {
-			changeScene(event, "ChatSelector.fxml", getUser());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if (userNameInput.getText().trim().isEmpty() || passWordInput.getText().trim().isEmpty()) {
+			System.out.println("Error");
+			invalidLoginTxt.setText("invalidLoginTxt");
+			invalidLoginTxt.setVisible(true);
+		}
+		
+		else if (userName != null && passWord != null) {
+			try {
+				changeScene(event, "ChatSelector.fxml", getUser());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		
