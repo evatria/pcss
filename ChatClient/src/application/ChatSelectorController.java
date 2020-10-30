@@ -90,7 +90,7 @@ public class ChatSelectorController extends Controller implements Initializable{
 	public void logOut(ActionEvent event)
 	{
 		try {
-			changeScene(event, "Client.fxml");
+			changeScene(event, "Client.fxml", getUser());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -10,6 +10,8 @@ public class Chatroom {
     private int chatId;
 
     private ArrayList<User> users = new ArrayList<>();
+    
+    private ArrayList<ChatMessage> messages = new ArrayList<>();
 
     private User creator;
 
@@ -76,4 +78,16 @@ public class Chatroom {
         //chatHistory.add(displayMessage());
 
     }
+
+	public ArrayList<ChatMessage> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(ArrayList<ChatMessage> messages) {
+		this.messages = messages;
+	}
+	
+	public void addMessage(ChatMessage message) {
+		this.messages.add(message);
+	}
 }

@@ -62,6 +62,14 @@ public class ChatController extends Controller implements Initializable{
 	@FXML
 	private Text roomNametxt;
 	
+	public void loadChat() 
+	{
+		for(ChatMessage e: getUser().getCurrentChatRoom().getMessages()) 
+		{
+			addMessage(e);
+		}
+	}
+	
 
 	//Send by pressing the button
 	public void sendbtn(ActionEvent event) {
@@ -84,6 +92,7 @@ public class ChatController extends Controller implements Initializable{
 			chatField.setText(null);
 			this.chatDisplayList.getItems().add(message);
 			chatDisplayList.scrollTo(chatDisplayList.getItems().size());
+			getUser().getCurrentChatRoom().addMessage(message);
 		}
 		
 		else {
