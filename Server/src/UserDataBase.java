@@ -60,7 +60,7 @@ public class UserDataBase {
 	}
 	
 	
-	public void getUser(){
+	public void getUser(String username){
 		
 	}
 	
@@ -151,8 +151,10 @@ public class UserDataBase {
 		}
 	}
 	
-	void deleteUser() {
-		
+	void deleteUser(String username) {
+		if (username.equals(username)) {
+			
+		}
 	}
 	
 }
