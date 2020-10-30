@@ -33,7 +33,8 @@ public class NewUserController implements Initializable{
 	{
 		
 		if (newUserNameInput.getText().trim().isEmpty() && newUserNameInput.getPromptText() != null || newPassWordInput.getText().trim().isEmpty() && newPassWordInput.getPromptText() != null){
-			popErrorNameTxt.setText("Test");
+			popErrorNameTxt.setText("Missing input");
+			popErrorNameTxt.setVisible(true);
 			System.out.println("Error");
 		}
 		
@@ -41,12 +42,14 @@ public class NewUserController implements Initializable{
 		else if (this.newUserNameInput.getText() != null && this.newUserNameInput.getText() != null) 
 		{
 			setUserPass(this.newUserNameInput.getText()+ (" ") + this.newPassWordInput.getText());
-			System.out.println("It saved... "+ userPass);
+			System.out.println("User saved: "+ userPass);
 			((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
 		}
 	}
+	
 	public void userExists()
 	{
+		popErrorNameTxt.setText("Username already taken");
 		popErrorNameTxt.setVisible(true);
 	}
 

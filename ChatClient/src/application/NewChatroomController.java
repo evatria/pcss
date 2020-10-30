@@ -22,7 +22,7 @@ public class NewChatroomController {
 	
 	public void create(ActionEvent event)
 	{
-		if (chatName.getText().trim().isEmpty() || chatName.getPromptText() != null ) {
+		if (chatName.getText().trim().isEmpty()) {
 			System.out.println("Error");
 			popErrorRoomTxt.setText("Error: Missing room name");
 			popErrorRoomTxt.setVisible(true);
