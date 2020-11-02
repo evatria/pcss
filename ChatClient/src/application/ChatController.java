@@ -89,10 +89,17 @@ public class ChatController extends Controller implements Initializable{
 		ChatMessage message = new ChatMessage(chatField.getText(), getUser());
 		
 		if (message.getMessage() != null) {
-			chatField.setText(null);
+			chatField.clear();
 			this.chatDisplayList.getItems().add(message);
 			chatDisplayList.scrollTo(chatDisplayList.getItems().size());
 			getUser().getCurrentChatRoom().addMessage(message);
+			try {
+				getConnection().send(message);
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+			
 		}
 		
 		else {
@@ -107,7 +114,7 @@ public class ChatController extends Controller implements Initializable{
 	public void goBack(ActionEvent event)
 	{
 		try {
-			changeScene(event, "ChatSelector.fxml", getUser());
+			changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

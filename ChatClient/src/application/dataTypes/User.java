@@ -1,12 +1,17 @@
 package application.dataTypes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class User {
+public class User implements Serializable {
 
 
-    private String username;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String username;
     private String password;
     private Chatroom currentChatRoom;
     private int id;

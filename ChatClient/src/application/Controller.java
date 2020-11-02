@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 public class Controller {
 	
 	private User user;
+	private NetworkConnection connection;
 	
-	public void changeScene(ActionEvent event, String FXML, User user) throws IOException
+	public void changeScene(ActionEvent event, String FXML, User user, NetworkConnection connection) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(FXML));
@@ -27,7 +28,8 @@ public class Controller {
 		
 		window.setScene(chat);
 		Controller controller = (Controller) loader.getController();
-		controller.setUser(this.user);
+		controller.setUser(user);
+		controller.setConnection(connection);
 		if (FXML.compareTo("ChatSelector.fxml") == 0)
 		{
 			ChatSelectorController sController = (ChatSelectorController) loader.getController();
@@ -55,7 +57,8 @@ public class Controller {
 		
 		window.setScene(chat);
 		Controller controller = (Controller) loader.getController();
-		controller.setUser(this.user);
+		controller.setUser(user);
+		controller.setConnection(connection);
 		if (FXML.compareTo("ChatSelector.fxml") == 0)
 		{
 			ChatSelectorController sController = (ChatSelectorController) loader.getController();
@@ -76,5 +79,15 @@ public class Controller {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public NetworkConnection getConnection() {
+		return connection;
+	}
+
+
+	public void setConnection(NetworkConnection connection) {
+		this.connection = connection;
 	}
 }

@@ -54,7 +54,7 @@ public class ClientController extends Controller implements Initializable{
 		
 		else if (userName != null && passWord != null) {
 			try {
-				changeScene(event, "ChatSelector.fxml", getUser());
+				changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -71,7 +71,7 @@ public class ClientController extends Controller implements Initializable{
 		System.out.println(userPass.split(" ")[0]);
 		setUser(new User(userPass.split(" ")[0], userPass.split(" ")[1]));
 		try {
-			changeScene(event, "ChatSelector.fxml", getUser());
+			changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

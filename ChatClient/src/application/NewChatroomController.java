@@ -32,6 +32,7 @@ public class NewChatroomController {
 		{
 			this.setNewChatName(this.chatName.getText());
 			((Stage)(((Button)event.getSource()).getScene().getWindow())).close(); 
+			
 		}
 		
 

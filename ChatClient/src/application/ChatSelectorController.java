@@ -84,13 +84,19 @@ public class ChatSelectorController extends Controller implements Initializable{
 		Chatroom ctm = new Chatroom(getUser(),test);
 		listview.getItems().add(ctm);
 		this.getUser().addChatRoom(ctm);
+		try {
+			getConnection().send(ctm);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
 	public void logOut(ActionEvent event)
 	{
 		try {
-			changeScene(event, "Client.fxml", getUser());
+			changeScene(event, "Client.fxml", getUser(), getConnection());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -3,26 +3,23 @@ package application;
 import java.io.Serializable;
 import java.util.function.Consumer;
 
-public class ClientConnection extends NetworkConnection {
+public class Server extends NetworkConnection {
 
-	private String ip;
 	private int port;
 	
-	public ClientConnection(String ip, int port, Consumer<Serializable> onReceiveCallback) {
+	public Server(int port, Consumer<Serializable> onReceiveCallback) {
 		super(onReceiveCallback);
-		this.ip = ip;
 		this.port = port;
-		
 	}
 
 	@Override
 	protected boolean isServer() {
-		return false;
+		return true;
 	}
 
 	@Override
 	protected String getIP() {
-		return ip;
+		return null;
 	}
 
 	@Override
