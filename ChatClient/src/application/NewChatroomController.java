@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class NewChatroomController {
+public class NewChatroomController extends Controller {
 	
 	@FXML
 	private Button createChatBtn;

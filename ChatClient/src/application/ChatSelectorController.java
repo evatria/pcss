@@ -52,7 +52,7 @@ public class ChatSelectorController extends Controller implements Initializable{
 		           currentItemSelected = listview.getSelectionModel().getSelectedItem();
 		           try {
 		        	   getUser().setCurrentChatRoom(currentItemSelected);
-		        	   changeScene(click, "Chat.fxml", getUser());
+		        	   changeScene(click, "Chat.fxml", getUser(), getConnection());
 		           } catch (IOException e) {
 					// TODO Auto-generated catch block
 		        	   e.printStackTrace();
@@ -80,14 +80,13 @@ public class ChatSelectorController extends Controller implements Initializable{
 		
 		System.out.println("Room btn works");
 		UserPopUp pop = new UserPopUp();
-		String test = pop.display("new chatroom", "PopUps/newChatroom.fxml");
-		Chatroom ctm = new Chatroom(getUser(),test);
+		String roomName = pop.displayChatroom("new chatroom", "PopUps/newChatroom.fxml");
+		Chatroom ctm = new Chatroom(getUser(),roomName);
 		listview.getItems().add(ctm);
 		this.getUser().addChatRoom(ctm);
 		try {
 			getConnection().send(ctm);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -54,6 +54,11 @@ public class ClientController extends Controller implements Initializable{
 		
 		else if (userName != null && passWord != null) {
 			try {
+				getConnection().send(userName);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			try {
 				changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -67,15 +72,8 @@ public class ClientController extends Controller implements Initializable{
 	public void createNewuser(ActionEvent event) throws IOException
 	{
 		UserPopUp pop = new UserPopUp();
-		String userPass = pop.display("new User", "PopUps/newUser.fxml");
-		System.out.println(userPass.split(" ")[0]);
-		setUser(new User(userPass.split(" ")[0], userPass.split(" ")[1]));
-		try {
-			changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		pop.setConnection(getConnection());
+		pop.displayUser("new User", "PopUps/newUser.fxml");
 	}
 	
 

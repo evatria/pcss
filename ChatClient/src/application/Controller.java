@@ -45,7 +45,7 @@ public class Controller {
 	}
 	
 	
-	public void changeScene(MouseEvent event, String FXML, User user) throws IOException
+	public void changeScene(MouseEvent event, String FXML, User user, NetworkConnection connection) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(FXML));
