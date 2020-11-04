@@ -10,6 +10,9 @@ import java.util.function.Consumer;
 public abstract class NetworkConnection {
 	
 	private Consumer<Serializable> onReceiveCallback;
+	private ConnectionThread connThread = new ConnectionThread();
+	
+	
 	
 	public NetworkConnection(Consumer<Serializable> onReceiveCallback) 
 	{
@@ -30,6 +33,12 @@ public abstract class NetworkConnection {
 	{
 		
 	}
+	
+	public void receive(Serializable data) throws Exception
+	{
+		
+	}
+	
 
 	protected abstract boolean isServer();
 	protected abstract String getIP();
