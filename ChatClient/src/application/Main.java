@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
 	
-	private boolean isServer = true;
+	private boolean isServer = false;
 	
 	private NetworkConnection connection = isServer ? createServer() : createClient();
 	
@@ -26,7 +26,7 @@ public class Main extends Application {
 			login.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(login);
 			primaryStage.show();
-			
+		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.dataTypes.User;
@@ -38,6 +39,7 @@ public class ClientController extends Controller implements Initializable{
 	
 	private String passWord;
 	
+	private ArrayList<String> userData = new ArrayList<>();
 	
 	
 	public void login(ActionEvent event)
@@ -54,16 +56,26 @@ public class ClientController extends Controller implements Initializable{
 		
 		else if (userName != null && passWord != null) {
 			try {
-				getConnection().send(userName);
+				
+				
+				getConnection().send(userData);
+				Object received = getConnection().receive();
+				
+				if(received instanceof User) {
+					getConnection().receive();
+					try {
+						changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			try {
-				changeScene(event, "ChatSelector.fxml", getUser(), getConnection());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+
 		}
 
 		

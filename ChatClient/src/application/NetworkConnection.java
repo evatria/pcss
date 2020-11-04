@@ -17,26 +17,34 @@ public abstract class NetworkConnection {
 	public NetworkConnection(Consumer<Serializable> onReceiveCallback) 
 	{
 		this.onReceiveCallback = onReceiveCallback;
+		connThread.setDaemon(true);
 	}
 
 	public void startConnection() throws Exception 
 	{
-		
+		connThread.start();
 	}
 	
 	public void send(Serializable data) throws Exception 
 	{
-		
+		connThread.out.writeObject(data);
 	}
 	
 	public void closeConnection() throws Exception
 	{
-		
+		connThread.socket.close();
 	}
 	
-	public void receive(Serializable data) throws Exception
+	public Object receive() throws Exception
 	{
 		
+		if(connThread.in.readObject() instanceof Object) {
+			return connThread.in.readObject();	
+		}
+		
+		else {
+			return null;
+		}
 	}
 	
 
@@ -48,6 +56,7 @@ public abstract class NetworkConnection {
 	{
 		private Socket socket;
 		private ObjectOutputStream out;
+		private ObjectInputStream in;
 
 		@Override
 		public void run()
@@ -59,6 +68,7 @@ public abstract class NetworkConnection {
 				{
 					this.socket = socket;
 					this.out = out;
+					this.in = in;
 					socket.setTcpNoDelay(true);
 					
 					while (true) {

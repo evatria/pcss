@@ -13,11 +13,14 @@ public class ChatMessage implements Serializable{
 	
 	private User user;
 	
+	private int roomID;
 	
-	public ChatMessage(String msg, User user)
+	
+	public ChatMessage(String msg, User user, int roomID)
 	{
 		this.message = msg;
 		this.user = user;
+		this.setRoomID(roomID);
 	}
 
 	public String getMessage() {
@@ -34,6 +37,14 @@ public class ChatMessage implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getRoomID() {
+		return roomID;
+	}
+
+	public void setRoomID(int roomID) {
+		this.roomID = roomID;
 	}
 
 }

@@ -43,7 +43,6 @@ public class ChatController extends Controller implements Initializable{
 			};
 		chatDisplayList.addEventFilter(MouseEvent.MOUSE_PRESSED, filter);
 
-		
 	}
 
 	//FXML imports 
@@ -62,6 +61,26 @@ public class ChatController extends Controller implements Initializable{
 	@FXML
 	private Text roomNametxt;
 	
+	private boolean isChatting;
+	
+	private Thread chatThread = new Thread() {
+		public void run() {
+			isChatting = true;
+			
+			while(isChatting) {
+				try {
+					chatDisplayList.getItems().add((ChatMessage)getConnection().receive());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	};
+	
+	private int roomID = getUser().getCurrentChatRoom().getChatId();
+	
+
 	public void loadChat() 
 	{
 		for(ChatMessage e: getUser().getCurrentChatRoom().getMessages()) 
@@ -86,7 +105,8 @@ public class ChatController extends Controller implements Initializable{
 
 	//Method for sending message to list
 	public void sendMessage() {
-		ChatMessage message = new ChatMessage(chatField.getText(), getUser());
+		int roomID = getUser().getCurrentChatRoom().getChatId();
+		ChatMessage message = new ChatMessage(chatField.getText(), getUser(), roomID);
 		
 		if (message.getMessage() != null) {
 			chatField.clear();
@@ -108,7 +128,12 @@ public class ChatController extends Controller implements Initializable{
 	}
 	public void addMessage(ChatMessage msg)
 	{
-		this.chatDisplayList.getItems().add(msg);
+		try {
+			getConnection().send(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	//	this.chatDisplayList.getItems().add(msg);
 	}
 	
 	public void goBack(ActionEvent event)
@@ -128,4 +153,6 @@ public class ChatController extends Controller implements Initializable{
 	public void setRoomNametxt(String roomNametxt) {
 		this.roomNametxt.setText(roomNametxt);
 	}
+	
+
 }
