@@ -3,48 +3,48 @@ package application.dataTypes;
 import java.io.Serializable;
 
 public class ChatMessage implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+      /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	private String message;
-	
-	private User user;
-	
-	private int roomID;
-	
-	
-	public ChatMessage(String msg, User user, int roomID)
-	{
-		this.message = msg;
-		this.user = user;
-		this.setRoomID(roomID);
-	}
+    private String message;
 
-	public String getMessage() {
-		return message;
-	}
+    private String userID;
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    private String roomID;
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public ChatMessage(String msg, String userID, String roomID)
+    {
+        this.message = msg;
+        this.userID = userID;
+        this.setRoomID(roomID);
+    }
 
-	public int getRoomID() {
-		return roomID;
-	}
+    public String getMessage() {
+        return message;
+    }
 
-	public void setRoomID(int roomID) {
-		this.roomID = roomID;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getUser() {
+        return userID;
+    }
+
+    public void setUser(String userID) {
+        this.userID = userID;
+    }
+
+    public String getRoomID() {
+        return roomID;
+    }
+
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
+    }
+
 
 }

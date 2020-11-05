@@ -1,6 +1,8 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -39,9 +41,9 @@ public class UserPopUp {
 		this.connection = connection;
 	}
 	
-	public String displayChatroom(String title, String FXML) throws IOException
+	public ArrayList<String> displayChatroom(String title, String FXML) throws IOException
     {
-        String outCome = null;
+		ArrayList<String> outCome = new ArrayList<>();
         Stage window = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(FXML));
@@ -58,7 +60,9 @@ public class UserPopUp {
         if (FXML.compareTo("PopUps/newChatroom.fxml") == 0)
         {
             NewChatroomController controller = loader.getController();
-            outCome = controller.getNewChatName();
+            outCome.add(controller.getNewChatName());
+            ArrayList<String> users = new ArrayList<String>(Arrays.asList(controller.getNewChatUsers().split(", ")));
+            outCome.addAll(users);
         }
         return outCome;
     }

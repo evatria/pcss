@@ -16,12 +16,13 @@ public class Controller {
 	private User user;
 	private NetworkConnection connection;
 	
+	// Method for changing a scene
 	public void changeScene(ActionEvent event, String FXML, User user, NetworkConnection connection) throws IOException
 	{
-		FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();														 
 		loader.setLocation(getClass().getResource(FXML));
 		AnchorPane chatRoot = (AnchorPane)loader.load();
-		Scene chat = new Scene(chatRoot);
+		Scene chat = new Scene(chatRoot);																	
 		chat.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -44,7 +45,7 @@ public class Controller {
 		window.show();
 	}
 	
-	
+	// Method for changing a scene with mouse event
 	public void changeScene(MouseEvent event, String FXML, User user, NetworkConnection connection) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
@@ -73,6 +74,7 @@ public class Controller {
 		window.show();
 	}
 
+	// Getters and setters
 	public User getUser() {
 		return user;
 	}

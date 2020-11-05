@@ -7,25 +7,30 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
-
+// Main class
 public class Main extends Application {
 	
-	private boolean isServer = false;
 	
-	private NetworkConnection connection = isServer ? createServer() : createClient();
+	// Initializing variables
+	private boolean isServer = false;														// Boolean to server/client test. 
 	
+	private NetworkConnection connection = isServer ? createServer() : createClient(); 		// Network connection check is the boolean is true or false to run server (true) or client (false) method. 
+	
+	
+	// Start that creates the primary stage
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Client.fxml"));
-			AnchorPane root = (AnchorPane)loader.load();
-			Controller controller = (Controller) loader.getController();
-			controller.setConnection(this.connection);
-			Scene login = new Scene(root);
-			login.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(login);
-			primaryStage.show();
+			FXMLLoader loader = new FXMLLoader();														// New loader
+			loader.setLocation(getClass().getResource("Client.fxml"));									// Uses the resources of the Client.fxml file
+			AnchorPane root = (AnchorPane)loader.load();												// 
+			Controller controller = (Controller) loader.getController();								// gets the controller from loader
+			controller.setConnection(this.connection);													// Sets connection
+			Scene login = new Scene(root);																// Sets the first scene to login.
+			login.getStylesheets().add(getClass().getResource("application.css").toExternalForm());		// Adds the .css file
+			primaryStage.setScene(login);																// Sets the stage scene to login
+			primaryStage.show();																		// Shows the stage
+			primaryStage.setResizable(false);															// Removes option to resize and maximize window
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -41,29 +46,31 @@ public class Main extends Application {
 		connection.closeConnection();
 	}
 	
+	// Method for creating a test local server.
 	private Server createServer() {
 		return new Server(55555, data -> {
 			Platform.runLater(()-> {
 				
-				System.out.println("create server test");
+				System.out.println("create server test");											// Sys write for debug
 			});
 		});
 	}
 	
+	
+	// Method for creating a client connection
 	private ClientConnection createClient() {
-		return new ClientConnection("127.0.0.1", 55555, data -> {
+		return new ClientConnection("127.0.0.1", 55555, data -> {									// Sets client connection to ip and port
 			Platform.runLater(()-> {
 				
-				System.out.println("create client test");
+				System.out.println("Create Client Test");											// Sys write for debug
 			});
 		});
 	}
 	
 
-	
+	// Main method
 	public static void main(String[] args) {
 		launch(args);
 
 	}
-
 }

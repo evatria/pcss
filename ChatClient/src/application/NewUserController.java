@@ -29,7 +29,7 @@ public class NewUserController extends Controller implements Initializable{
 	private Text popErrorNameTxt;
 	
 
-	
+	// Method for creating new user
 	public void createNewUser(ActionEvent event)
 	{
 		
