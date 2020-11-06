@@ -14,7 +14,7 @@ public class Main extends Application {
 	// Initializing variables
 	private boolean isServer = false;														// Boolean to server/client test. 
 	
-	private NetworkConnection connection = isServer ? createServer() : createClient(); 		// Network connection check is the boolean is true or false to run server (true) or client (false) method. 
+	private NetworkConnection connection = createClient(); 									// Network connection check return form method
 	
 	
 	// Start that creates the primary stage
@@ -45,17 +45,6 @@ public class Main extends Application {
 	public void stop() throws Exception {
 		connection.closeConnection();
 	}
-	
-	// Method for creating a test local server.
-	private Server createServer() {
-		return new Server(55555, data -> {
-			Platform.runLater(()-> {
-				
-				System.out.println("create server test");											// Sys write for debug
-			});
-		});
-	}
-	
 	
 	// Method for creating a client connection
 	private ClientConnection createClient() {
