@@ -25,6 +25,7 @@ public class ServerRunnable implements Runnable{
 
             while(connected){
                 //Stuff happens here that makes the program work
+                //Github work ploz
             }
 
         } catch (Exception e) {
