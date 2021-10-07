@@ -25,7 +25,13 @@ public class ServerRunnable implements Runnable{
 
             while(connected){
                 //Stuff happens here that makes the program work
-                //Github work ploz
+                 boolean gameCreated = false;
+                 gameCreated = dataFromUser.readBoolean();
+
+                 if(gameCreated = true){
+
+                 }
+
             }
 
         } catch (Exception e) {
