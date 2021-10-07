@@ -1,6 +1,4 @@
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +22,7 @@ public class ServerRunnable implements Runnable{
             DataInputStream dataFromUser = new DataInputStream(clientSocket.getInputStream());
             DataOutputStream dataToUser = new DataOutputStream(clientSocket.getOutputStream());
 
+
             while(connected){
                 //Stuff happens here that makes the program work
                 ArrayList<Game> gameList = new ArrayList<>();
@@ -32,8 +31,12 @@ public class ServerRunnable implements Runnable{
                  gameCreated = dataFromUser.readBoolean();
 
                  if(gameCreated = true){
-                     gameList.add(new Game(dataFromUser.readLine()));
+                     gameList.add(new Game(dataFromUser.readUTF()));
 
+                     //Sends the gameNames created back to the user
+                     for (int i = 0; i < gameList.size(); i++){
+                         dataToUser.writeUTF(gameList.get(i).getGameName());
+                     }
 
                  }
 
