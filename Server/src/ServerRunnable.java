@@ -2,6 +2,7 @@ import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ServerRunnable implements Runnable{
@@ -25,10 +26,14 @@ public class ServerRunnable implements Runnable{
 
             while(connected){
                 //Stuff happens here that makes the program work
+                ArrayList<Game> gameList = new ArrayList<>();
+
                  boolean gameCreated = false;
                  gameCreated = dataFromUser.readBoolean();
 
                  if(gameCreated = true){
+                     gameList.add(new Game(dataFromUser.readLine()));
+
 
                  }
 
