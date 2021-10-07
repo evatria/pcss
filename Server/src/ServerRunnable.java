@@ -8,10 +8,10 @@ public class ServerRunnable implements Runnable{
     private Socket clientSocket = null;
     private String serverText = "";
 
-    //Constructer for the class
-    public ServerRunnable(Socket clientSocket, String servertext){
+    //Constructor for the class
+    public ServerRunnable(Socket clientSocket, String serverText){
         this.clientSocket = clientSocket;
-        this.serverText = servertext;
+        this.serverText = serverText;
     }
 
     @Override
