@@ -3,15 +3,14 @@ public class QuestionBlock {
     public String question;
     public int value;
     public int categoryId;
-    public boolean notUsed;
+    public boolean isUsed;
 
 //Constructor of questionBlock
-    public QuestionBlock(String answer, String question, int value, int categoryId, Boolean notUsed) {
+    public QuestionBlock(String answer, String question, int value, int categoryId) {
         this.answer = answer;
         this.question = question;
         this.value = value;
         this.categoryId = categoryId;
-        this.notUsed = notUsed;
     }
 
     //Getters and Setters
@@ -48,11 +47,11 @@ public class QuestionBlock {
     }
 
     public boolean isNotUsed() {
-        return notUsed;
+        return isUsed;
     }
 
-    public void setNotUsed(boolean notUsed) {
-        this.notUsed = notUsed;
+    public void toggleUsed() {
+        isUsed = true;
     }
 
     @Override
@@ -62,7 +61,7 @@ public class QuestionBlock {
                 ", question='" + question + '\'' +
                 ", value=" + value + '\'' +
                 ", categoryId=" + categoryId +  '\''
-                + "not used=" + notUsed +
+                + "not used=" + isUsed +
                 '}';
     }
 }

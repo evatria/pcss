@@ -34,7 +34,7 @@ public class Game {
         Scanner sc = null;
         //Try Catch to find file
         try {
-            sc = new Scanner(new File("C:\\Users\\Victor Hjort\\IdeaProjects\\VictorsServer\\lol.csv"));
+            sc = new Scanner(new File("C:\\Users\\Victor Hjort\\OneDrive\\Gymnasie\\Documents\\PCSS-G301\\Back end\\MiniprojectServer\\lol.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("COULD NOT FIND FILE OF QUESTIONS");
@@ -60,7 +60,7 @@ public class Game {
                     categoryId = Integer.parseInt(sc.next());
                 }
             }
-            questionBlock.add(new QuestionBlock(question, answer, value, categoryId, true));
+            questionBlock.add(new QuestionBlock(question, answer, value, categoryId));
         }
         sc.close();  //closes the scanner
 
@@ -76,7 +76,7 @@ public class Game {
       //Transfer questionblocks out to clients
       public void transferBlockOut(Socket socket, DataOutputStream output) throws IOException {
         //Letting client know how many loops it needs to run
-        output.writeInt(questionBlock.size());
+          System.out.println(questionBlock.size());
         //For loop sending information from questionblocks
         for(int i = 0; i < questionBlock.size(); i++) {
             output.writeUTF(questionBlock.get(i).getQuestion());

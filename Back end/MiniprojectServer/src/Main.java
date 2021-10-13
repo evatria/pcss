@@ -17,8 +17,6 @@ public class Main implements Serializable {
         Socket socket = Server.accept();
         System.out.println("Connection from " + socket + "!");
 
-
-
         //Creating input and output streams
         DataInputStream input = new DataInputStream(socket.getInputStream());
         DataOutputStream output = new DataOutputStream(socket.getOutputStream());
@@ -27,9 +25,8 @@ public class Main implements Serializable {
         game.transferBlockOut(socket, output);
 
         //Receiving name of the first user
-        game.loadPlayerInfo(socket, input);
+        //game.loadPlayerInfo(socket, input);
 
-        //
 
 
     }
