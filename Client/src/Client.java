@@ -44,9 +44,11 @@ public class Client {
         while(true){
         String name = input.nextLine();
         out.writeUTF(name);
+        while(true){
+            String print = in.readUTF();
+            System.out.println(print);
+        }
 
-        String print = in.readUTF();
-        System.out.println(print);
         }
 
         } catch (UnknownHostException e) {
