@@ -16,7 +16,7 @@ public class ServerRunnable implements Runnable{
     @Override
     public void run() {
         try{
-            System.out.println("A client has been connected at:" + new Date() + '\n');
+            //System.out.println("A client has been connected at:" + new Date() + '\n');
             boolean connected = true;
 
             DataInputStream dataFromUser = new DataInputStream(clientSocket.getInputStream());
@@ -24,7 +24,9 @@ public class ServerRunnable implements Runnable{
 
 
             while(connected){
-                //Stuff happens here that makes the program work
+
+
+                /*//Stuff happens here that makes the program work
                 ArrayList<Game> gameList = new ArrayList<>();
 
                  boolean gameCreated = false;
@@ -38,7 +40,7 @@ public class ServerRunnable implements Runnable{
                          dataToUser.writeUTF(gameList.get(i).getGameName());
                      }
 
-                 }
+                 }*/
 
             }
 

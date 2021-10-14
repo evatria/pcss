@@ -11,29 +11,7 @@ public class Server {
 
     public static void main(String[] args) {
 
-        //Creates a deck of solution cards and adds them in an arraylist
-        ArrayList<SolutionCard> solutionDeck = new ArrayList<>();
-        for(SolutionText solutionText : SolutionText.values()){
-            solutionDeck.add(new SolutionCard(solutionText.printSolutionText()));
-        }
 
-        //Creates a deck of problem cards and adds them in an arraylist
-        ArrayList<ProblemCard> problemDeck = new ArrayList<>();
-        for(ProblemText problemText : ProblemText.values()){
-            solutionDeck.add(new SolutionCard(problemText.printProblemText()));
-        }
-
-        //Shuffles the two decks
-        Collections.shuffle(solutionDeck);
-        Collections.shuffle(problemDeck);
-
-        //Printing of the deck to check if it works
-        for(int i = 0; i < problemDeck.size();i++)
-            System.out.println(problemDeck.get(i).toString());
-
-        //Printing of the deck to check if it works
-        for(int i = 0; i < solutionDeck.size();i++)
-        System.out.println(solutionDeck.get(i).toString());
 
         new Thread( () -> {
             try {
@@ -52,7 +30,7 @@ public class Server {
                     System.out.println("Total number of client connected: " + numberOfClient + '\n');
 
                     new Thread(
-                            new ServerRunnable(connectToCLient, "Multithreaded Server")
+                           new ServerRunnable(connectToCLient, "Multithreaded Server")
                     ).start();
 
 
