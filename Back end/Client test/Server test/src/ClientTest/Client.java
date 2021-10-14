@@ -15,7 +15,7 @@ public class Client {
 	
 	
 	public static void main(String[]args) throws IOException, ClassNotFoundException {
-        String Host = "172.20.10.2";
+        String Host = "localhost";
         int port = 9696;
         
         //Connecting and printing proof

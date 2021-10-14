@@ -34,7 +34,7 @@ public class Game {
         Scanner sc = null;
         //Try Catch to find file
         try {
-            sc = new Scanner(new File("C:\\Users\\Victor Hjort\\OneDrive\\Gymnasie\\Documents\\PCSS-G301\\Back end\\MiniprojectServer\\lol.csv"));
+            sc = new Scanner(new File("C:\\Users\\mikke\\OneDrive\\Dokumenter\\GitHub\\PCSS-G301\\Back end\\MiniprojectServer\\lol.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("COULD NOT FIND FILE OF QUESTIONS");
